@@ -1,0 +1,45 @@
+.content {
+  overflow-x: hidden;
+
+  .scroll-section {
+    position: relative;
+    padding-top: 50vh;
+    border: 3px solid #fff;
+
+    .title {
+      position: relative;
+      font-size: 5rem;
+      text-align: center;
+      top: -10vh;
+    }
+
+    .main-message {
+      top: 40vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2.5rem;
+      height: 3em;
+      opacity: 0;
+    }
+
+    .desc-message {
+      top: 15%;
+      width: 50%;
+      opacity: 0;
+    }
+
+    .sticky-elem {
+      display: none;
+      position: fixed;
+      left: 0;
+      width: 100%;
+    }
+  }
+}
+
+#show-section-0 #scroll-section-0 .sticky-elem,
+#show-section-1 #scroll-section-1 .sticky-elem {
+  display: block;
+  will-change: transform, opacity; /* 성능향상을 위한 구문 */
+}
