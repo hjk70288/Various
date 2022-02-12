@@ -4,7 +4,7 @@
   .scroll-section {
     position: relative;
     padding-top: 50vh;
-    border: 3px solid #fff;
+    border-bottom: 3px solid #fff;
 
     .title {
       position: relative;
@@ -15,18 +15,14 @@
 
     .main-message {
       top: 40vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       font-size: 2.5rem;
       height: 3em;
       opacity: 0;
-    }
 
-    .desc-message {
-      top: 15%;
-      width: 50%;
-      opacity: 0;
+      p {
+        font-weight: bold;
+        text-align: center;
+      }
     }
 
     .sticky-elem {
