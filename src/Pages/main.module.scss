@@ -25,10 +25,16 @@
       }
     }
 
+    .main-image {
+      opacity: 0;
+      top: 50%;
+      left: 50%;
+    }
+
     .sticky-elem {
       display: none;
       position: fixed;
-      left: 0;
+
       width: 100%;
     }
   }
@@ -38,4 +44,15 @@
 #show-section-1 #scroll-section-1 .sticky-elem {
   display: block;
   will-change: transform, opacity; /* 성능향상을 위한 구문 */
+}
+
+/* PC화면 반응형 */
+@media (min-width: 1024px) {
+  .content {
+    .scroll-section {
+      .main-image {
+        top: 0;
+      }
+    }
+  }
 }
