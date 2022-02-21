@@ -1,10 +1,12 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./main.module.scss";
 import Header from "Components/Header/Header";
-import selfProtrait from "Images/self_portrait.jpeg";
-import sunflowers from "Images/sunflowers.jpeg";
+import selfProtrait from "Images/얼렁방구.jpg22.jpg33.4.jpg";
+import sunflowers from "Images/사랑인피니티.jpg";
 
 function Main() {
+  const [isLoaded, setIsLoaded] = useState(false); // 로딩 여부
+
   const section0 = useRef(); // 0 번째 스크롤 섹션
   const section1 = useRef(); // 1 번째 스크롤 섹션
   const messagesInSection0 = useRef([]); // 0 번째 스크롤 섹션 내의 메시지 목록
@@ -46,8 +48,6 @@ function Main() {
         imageFadeIn1: [0, 1, { start: 0.5, end: 0.6 }],
         imageFadeOut0: [1, 0, { start: 0.48, end: 0.5 }],
         imageFadeOut1: [1, 0, { start: 0.88, end: 0.9 }],
-        imageIn0: [20, 0, { start: 0.1, end: 0.2 }],
-        imageIn1: [20, 0, { start: 0.5, end: 0.6 }],
         imageOut0: [0, -20, { start: 0.48, end: 0.5 }],
         imageOut1: [0, -20, { start: 0.88, end: 0.9 }],
       },
@@ -132,13 +132,9 @@ function Main() {
             sectionYOffset
           );
 
-          // PC환경인 경우
+          // PC환경인 경우 이미지를 화면 너비만큼 가득 채움
           if (windowWidth >= 1024) {
-            // 이미지를 화면 너비만큼 가득 채움
-            objs.image0.style.transform = `translate3d(-50%, ${calcAnimationValues(
-              values.imageIn0,
-              sectionYOffset
-            )}%, 0)`;
+            objs.image0.style.transform = `translate3d(-50%, 0%, 0)`;
 
             if (values.imageOut0[1] === -20 && objs.image0.height !== 0) {
               // Translate Y 값을 화면에 표시되지 않은 이미지의 비율만큼 상승시키도록 애니메이션 값 변경
@@ -167,9 +163,9 @@ function Main() {
               sectionYOffset
             )}%, 0)`;
           } else {
-            objs.image0.style.transform = `translate3d(-50% , ${
-              -50 + calcAnimationValues(values.imageOut0, sectionYOffset)
-            }%, 0) scale(${window.innerHeight / objs.image0.height})`;
+            objs.image0.style.transform = `translate3d(-50% , -50%, 0) scale(${
+              window.innerHeight / objs.image0.height
+            })`;
           }
         }
 
@@ -179,10 +175,7 @@ function Main() {
             sectionYOffset
           );
           if (windowWidth >= 1024) {
-            objs.image1.style.transform = `translate3d(-50%, ${calcAnimationValues(
-              values.imageIn1,
-              sectionYOffset
-            )}%, 0)`;
+            objs.image1.style.transform = `translate3d(-50%, 0%, 0)`;
 
             if (values.imageOut1[1] === -20 && objs.image1.height !== 0) {
               values.imageOut1[1] =
@@ -191,9 +184,9 @@ function Main() {
               values.imageOut1[2].start -= 0.18;
             }
           } else {
-            objs.image1.style.transform = `translate3d(-50%, ${
-              -50 + calcAnimationValues(values.imageIn1, sectionYOffset)
-            }%, 0) scale(${window.innerHeight / objs.image1.height})`;
+            objs.image1.style.transform = `translate3d(-50%, -50%, 0) scale(${
+              window.innerHeight / objs.image1.height
+            })`;
 
             values.imageOut1[1] = -20;
           }
@@ -419,13 +412,28 @@ function Main() {
     });
 
     window.addEventListener("resize", () => {
-      setScrollSectionInfo();
-      handlePageScroll();
+      // setScrollSectionInfo();
+      // handlePageScroll();
+      window.location.reload();
+    });
+
+    window.addEventListener("load", () => {
+      console.log("window load");
+      setIsLoaded(true);
     });
   });
 
   return (
-    <div className={styles["content"]}>
+    <div
+      className={`${styles["content"]} ${
+        !isLoaded ? styles["before-load"] : null
+      }`}
+    >
+      <div className={styles["loading"]}>
+        <svg className={styles["loading__circle"]}>
+          <circle cx="50%" cy="50%" r="25"></circle>
+        </svg>
+      </div>
       <Header></Header>
       <section
         ref={section0}
