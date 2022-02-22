@@ -5,7 +5,7 @@ import selfProtrait from "Images/얼렁방구.jpg22.jpg33.4.jpg";
 import sunflowers from "Images/사랑인피니티.jpg";
 
 function Main() {
-  const [isLoaded, setIsLoaded] = useState(false); // 로딩 여부
+  const [isLoaded, setIsLoaded] = useState(false); // 리소스 로딩 완료 여부
 
   const section0 = useRef(); // 0 번째 스크롤 섹션
   const section1 = useRef(); // 1 번째 스크롤 섹션
@@ -121,10 +121,31 @@ function Main() {
 
     const scrollRatio = sectionYOffset / scrollHeight; // 현재 섹션 안에서의 스크롤이 진행된 비율
 
-    const windowWidth = window.innerWidth; // 윈도우 가로 너비
-
     switch (currentSection) {
       case 0:
+        /* 배경 이미지의 높이가 현재 윈도우 높이보다 큰 경우 처리 */
+        if (
+          values.imageOut0[1] === -20 &&
+          window.innerHeight / objs.image0.height < 1
+        ) {
+          // 이미지를 윈도우 화면 최상단에 고정
+          objs.image0.style.top = 0;
+          // Translate Y 값을 화면에 표시되지 않은 이미지의 비율만큼 상승시키도록 애니메이션 값 변경
+          values.imageOut0[1] =
+            -(1 - window.innerHeight / objs.image0.height) * 100;
+          // 이미지가 화면 높이보다 작은 경우보다 out 애니메이션을 더욱 빨리 실행시키도록 함
+          values.imageOut0[2].start -= 0.18;
+        }
+        if (
+          values.imageOut1[1] === -20 &&
+          window.innerHeight / objs.image1.height < 1
+        ) {
+          objs.image1.style.top = 0;
+          values.imageOut1[1] =
+            -(1 - window.innerHeight / objs.image1.height) * 100;
+          values.imageOut1[2].start -= 0.18;
+        }
+
         /* 배경 이미지 애니메이션 */
         if (scrollRatio < 0.22) {
           objs.image0.style.opacity = calcAnimationValues(
@@ -132,32 +153,23 @@ function Main() {
             sectionYOffset
           );
 
-          // PC환경인 경우 이미지를 화면 너비만큼 가득 채움
-          if (windowWidth >= 1024) {
+          // 배경 이미지의 높이가 현재 윈도우 높이보다 큰 경우
+          if (window.innerHeight / objs.image0.height < 1) {
             objs.image0.style.transform = `translate3d(-50%, 0%, 0)`;
-
-            if (values.imageOut0[1] === -20 && objs.image0.height !== 0) {
-              // Translate Y 값을 화면에 표시되지 않은 이미지의 비율만큼 상승시키도록 애니메이션 값 변경
-              values.imageOut0[1] =
-                -(1 - window.innerHeight / objs.image0.height) * 100;
-
-              // 애니메이션을 모바일 화면에서보다 더욱 빨리 실행시키도록 함
-              values.imageOut0[2].start -= 0.18;
-            }
           }
-          // 모바일 환경인 경우
+          // 배경 이미지의 높이가 현재 윈도우 높이보다 작은 경우
           else {
-            // 이미지를 높이만큼 가득 채움
-            objs.image0.style.transform = `translate3d(-50%, ${
-              -50 + calcAnimationValues(values.imageIn0, sectionYOffset)
-            }%, 0) scale(${window.innerHeight / objs.image0.height})`;
+            // 이미지를 윈도우 높이만큼 가득 채움
+            objs.image0.style.transform = `translate3d(-50%, -50%, 0) scale(${
+              window.innerHeight / objs.image0.height
+            })`;
           }
         } else {
           objs.image0.style.opacity = calcAnimationValues(
             values.imageFadeOut0,
             sectionYOffset
           );
-          if (windowWidth >= 1024) {
+          if (window.innerHeight / objs.image0.height < 1) {
             objs.image0.style.transform = `translate3d(-50% , ${calcAnimationValues(
               values.imageOut0,
               sectionYOffset
@@ -174,15 +186,8 @@ function Main() {
             values.imageFadeIn1,
             sectionYOffset
           );
-          if (windowWidth >= 1024) {
+          if (window.innerHeight / objs.image1.height < 1) {
             objs.image1.style.transform = `translate3d(-50%, 0%, 0)`;
-
-            if (values.imageOut1[1] === -20 && objs.image1.height !== 0) {
-              values.imageOut1[1] =
-                -(1 - window.innerHeight / objs.image1.height) * 100;
-
-              values.imageOut1[2].start -= 0.18;
-            }
           } else {
             objs.image1.style.transform = `translate3d(-50%, -50%, 0) scale(${
               window.innerHeight / objs.image1.height
@@ -195,7 +200,7 @@ function Main() {
             values.imageFadeOut1,
             sectionYOffset
           );
-          if (windowWidth >= 1024) {
+          if (window.innerHeight / objs.image1.height < 1) {
             objs.image1.style.transform = `translate3d(-50% , ${calcAnimationValues(
               values.imageOut1,
               sectionYOffset
@@ -403,23 +408,20 @@ function Main() {
   };
 
   useEffect(() => {
-    // 스크롤 섹션 정보 설정 및 스크롤 섹션 판단
-    setScrollSectionInfo();
-    handlePageScroll();
-
-    window.addEventListener("scroll", () => {
-      handlePageScroll();
-    });
-
-    window.addEventListener("resize", () => {
-      // setScrollSectionInfo();
-      // handlePageScroll();
-      window.location.reload();
-    });
-
     window.addEventListener("load", () => {
-      console.log("window load");
       setIsLoaded(true);
+
+      // 스크롤 섹션 정보 설정 및 스크롤 섹션 판단
+      setScrollSectionInfo();
+      handlePageScroll();
+
+      window.addEventListener("scroll", () => {
+        handlePageScroll();
+      });
+
+      window.addEventListener("resize", () => {
+        window.location.reload();
+      });
     });
   });
 

@@ -97,13 +97,13 @@
   animation: loading-circle-animation 1s infinite;
 }
 
-/* PC화면 반응형 */
-@media (min-width: 1024px) {
-  .content {
-    .scroll-section {
-      .main-image {
-        top: 0;
-      }
-    }
-  }
-}
+// /* PC화면 반응형 */
+// @media (min-width: 1024px) {
+//   .content {
+//     .scroll-section {
+//       .main-image {
+//         top: 0;
+//       }
+//     }
+//   }
+// }
