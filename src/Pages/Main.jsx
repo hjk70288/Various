@@ -428,7 +428,7 @@ function Main() {
   return (
     <div
       className={`${styles["content"]} ${
-        !isLoaded ? styles["before-load"] : null
+        !isLoaded ? styles["content--before-load"] : null
       }`}
     >
       <div className={styles["loading"]}>
