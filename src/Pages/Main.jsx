@@ -1,11 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./main.module.scss";
+import Cursor from "Components/Cursor/Cursor";
 import Header from "Components/Header/Header";
-import selfProtrait from "Images/얼렁방구.jpg22.jpg33.4.jpg";
+import selfProtrait from "Images/유리땅.jpg";
 import sunflowers from "Images/사랑인피니티.jpg";
 
 function Main() {
   // Parameter
+  const cursorRef = useRef(); // 마우스 커서 컴포넌트의 Ref
   const [isLoaded, setIsLoaded] = useState(false); // 리소스 로딩 완료 여부
   const section0 = useRef(); // 0 번째 스크롤 섹션
   const section1 = useRef(); // 1 번째 스크롤 섹션
@@ -443,6 +445,13 @@ function Main() {
       window.addEventListener("resize", () => {
         window.location.reload();
       });
+
+      window.addEventListener("mousemove", e => {
+        if (cursorRef.current.style.display === "")
+          cursorRef.current.style.display = "block";
+        cursorRef.current.style.left = `${e.clientX - 250}px`;
+        cursorRef.current.style.top = `${e.clientY - 250}px`;
+      });
     });
   });
 
@@ -452,6 +461,7 @@ function Main() {
         !isLoaded ? styles["content--before-load"] : null
       }`}
     >
+      <Cursor ref={cursorRef}></Cursor>
       <div className={styles["loading"]}>
         <svg className={styles["loading__circle"]}>
           <circle cx="50%" cy="50%" r="25"></circle>
