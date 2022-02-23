@@ -5,8 +5,8 @@ import selfProtrait from "Images/얼렁방구.jpg22.jpg33.4.jpg";
 import sunflowers from "Images/사랑인피니티.jpg";
 
 function Main() {
+  // Parameter
   const [isLoaded, setIsLoaded] = useState(false); // 리소스 로딩 완료 여부
-
   const section0 = useRef(); // 0 번째 스크롤 섹션
   const section1 = useRef(); // 1 번째 스크롤 섹션
   const messagesInSection0 = useRef([]); // 0 번째 스크롤 섹션 내의 메시지 목록
@@ -14,6 +14,9 @@ function Main() {
   const messagesInSection1 = useRef([]); // 1 번째 스크롤 섹션 내의 메시지 목록
   let yOffset = 0; // 현재 스크롤 위치
   let currentSection = 0; // 현재 스크롤 섹션 Index
+  let delayedYOffset = 0; // 부드러운 애니메이션에 사용되는 yOffset (점점 커지다가 yOffset과 동일해짐)
+  let rafId; // requestAnimationFrame이 반환하는 값
+  let rafState = false; // 부드러운 애니메이션 동작 상태
 
   // 스크롤 섹션 정보
   const scrollSectionInfo = [
@@ -117,7 +120,7 @@ function Main() {
     for (let i = 0; i < currentSection; i++) {
       prevSectionHeight += scrollSectionInfo[i].sectionHeight;
     }
-    const sectionYOffset = yOffset - prevSectionHeight; // 현재 섹션 안에서의 스크롤 위치
+    const sectionYOffset = delayedYOffset - prevSectionHeight; // 현재 섹션 안에서의 스크롤 위치
 
     const scrollRatio = sectionYOffset / scrollHeight; // 현재 섹션 안에서의 스크롤이 진행된 비율
 
@@ -382,6 +385,21 @@ function Main() {
     );
   };
 
+  // 부드러운 애니메이션 감속을 위한 처리 (requestAnimationFrame 사용)
+  const loopAnimation = () => {
+    delayedYOffset = delayedYOffset + (yOffset - delayedYOffset) * 0.1;
+    rafId = requestAnimationFrame(loopAnimation);
+
+    // 해당 섹션에 해당하는 애니메이션 동작
+    playAnimation();
+
+    // 현재 스크롤 위치와 delayedYOffset(현재 스크롤 위치까지 점차 증가하는 스크롤)이 거의 동일해지면 애니메이션 중지
+    if (Math.abs(yOffset - delayedYOffset) < 0.1) {
+      cancelAnimationFrame(rafId);
+      rafState = false;
+    }
+  };
+
   // 페이지 스크롤 시 이벤트 핸들링
   const handlePageScroll = () => {
     yOffset = window.pageYOffset; // 스크롤 위치 설정
@@ -403,8 +421,11 @@ function Main() {
       `${styles[`show-section-${currentSection}`]}`
     );
 
-    // 해당 섹션에 해당하는 애니메이션 동작
-    playAnimation();
+    // 애니메이션 동작
+    if (!rafState) {
+      requestAnimationFrame(loopAnimation);
+      rafState = true;
+    }
   };
 
   useEffect(() => {
