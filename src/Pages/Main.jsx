@@ -2,10 +2,13 @@ import React, { useEffect, useRef, useState } from "react";
 import styles from "./main.module.scss";
 import Cursor from "Components/Cursor/Cursor";
 import Header from "Components/Header/Header";
-import selfProtrait from "Images/유리땅.jpg";
-import sunflowers from "Images/사랑인피니티.jpg";
+import Footer from "Components/Footer/Footer";
+import image1 from "Images/유리땅.jpg";
+import image2 from "Images/사랑인피니티.jpg";
+import image3 from "Images/멜롱멜롱메.jpg";
+import image4 from "Images/이인증...jpg";
 
-function Main() {
+const Main = () => {
   // Parameter
   const cursorRef = useRef(); // 마우스 커서 컴포넌트의 Ref
   const [isLoaded, setIsLoaded] = useState(false); // 리소스 로딩 완료 여부
@@ -14,6 +17,7 @@ function Main() {
   const messagesInSection0 = useRef([]); // 0 번째 스크롤 섹션 내의 메시지 목록
   const imagesInSection0 = useRef([]);
   const messagesInSection1 = useRef([]); // 1 번째 스크롤 섹션 내의 메시지 목록
+  const imagesInSection1 = useRef([]);
   let yOffset = 0; // 현재 스크롤 위치
   let currentSection = 0; // 현재 스크롤 섹션 Index
   let delayedYOffset = 0; // 부드러운 애니메이션에 사용되는 yOffset (점점 커지다가 yOffset과 동일해짐)
@@ -39,6 +43,39 @@ function Main() {
         messageFadeOut0: [1, 0, { start: 0.25, end: 0.3 }],
         messageFadeOut1: [1, 0, { start: 0.45, end: 0.5 }],
         messageFadeOut2: [1, 0, { start: 0.65, end: 0.7 }],
+        messageFadeOut3: [1, 0, { start: 0.88, end: 0.95 }],
+        messageIn0: [20, 0, { start: 0.1, end: 0.2 }],
+        messageIn1: [20, 0, { start: 0.3, end: 0.4 }],
+        messageIn2: [20, 0, { start: 0.5, end: 0.6 }],
+        messageIn3: [20, 0, { start: 0.7, end: 0.8 }],
+        messageOut0: [0, -20, { start: 0.25, end: 0.3 }],
+        messageOut1: [0, -20, { start: 0.45, end: 0.5 }],
+        messageOut2: [0, -20, { start: 0.65, end: 0.7 }],
+        messageOut3: [0, -20, { start: 0.88, end: 0.95 }],
+
+        imageFadeIn0: [0, 1, { start: 0.1, end: 0.2 }],
+        imageFadeIn1: [0, 1, { start: 0.5, end: 0.6 }],
+        imageFadeOut0: [1, 0, { start: 0.48, end: 0.5 }],
+        imageFadeOut1: [1, 0, { start: 0.88, end: 1 }],
+        imageOut0: [0, -20, { start: 0.48, end: 0.5 }],
+        imageOut1: [0, -20, { start: 0.88, end: 0.95 }],
+      },
+    },
+    {
+      // 스크롤 섹션 1
+      heightRatio: 10,
+      sectionHeight: 0,
+      objs: {
+        section: section1,
+      },
+      values: {
+        messageFadeIn0: [0, 1, { start: 0.1, end: 0.2 }],
+        messageFadeIn1: [0, 1, { start: 0.3, end: 0.4 }],
+        messageFadeIn2: [0, 1, { start: 0.5, end: 0.6 }],
+        messageFadeIn3: [0, 1, { start: 0.7, end: 0.8 }],
+        messageFadeOut0: [1, 0, { start: 0.25, end: 0.3 }],
+        messageFadeOut1: [1, 0, { start: 0.45, end: 0.5 }],
+        messageFadeOut2: [1, 0, { start: 0.65, end: 0.7 }],
         messageFadeOut3: [1, 0, { start: 0.85, end: 0.9 }],
         messageIn0: [20, 0, { start: 0.1, end: 0.2 }],
         messageIn1: [20, 0, { start: 0.3, end: 0.4 }],
@@ -49,34 +86,12 @@ function Main() {
         messageOut2: [0, -20, { start: 0.65, end: 0.7 }],
         messageOut3: [0, -20, { start: 0.85, end: 0.9 }],
 
-        imageFadeIn0: [0, 1, { start: 0.1, end: 0.2 }],
+        imageFadeIn0: [0, 1, { start: 0.0, end: 0.2 }],
         imageFadeIn1: [0, 1, { start: 0.5, end: 0.6 }],
         imageFadeOut0: [1, 0, { start: 0.48, end: 0.5 }],
         imageFadeOut1: [1, 0, { start: 0.88, end: 0.9 }],
         imageOut0: [0, -20, { start: 0.48, end: 0.5 }],
         imageOut1: [0, -20, { start: 0.88, end: 0.9 }],
-      },
-    },
-    {
-      // 스크롤 섹션 1
-      heightRatio: 5,
-      sectionHeight: 0,
-      objs: {
-        section: section1,
-      },
-      values: {
-        messageFadeIn0: [0, 1, { start: 0.1, end: 0.2 }],
-        messageFadeIn1: [0, 1, { start: 0.3, end: 0.4 }],
-        messageFadeIn2: [0, 1, { start: 0.5, end: 0.6 }],
-        messageFadeOut0: [1, 0, { start: 0.25, end: 0.3 }],
-        messageFadeOut1: [1, 0, { start: 0.45, end: 0.5 }],
-        messageFadeOut2: [1, 0, { start: 0.65, end: 0.7 }],
-        messageIn0: [20, 0, { start: 0.1, end: 0.2 }],
-        messageIn1: [20, 0, { start: 0.3, end: 0.4 }],
-        messageIn2: [20, 0, { start: 0.5, end: 0.6 }],
-        messageOut0: [0, -20, { start: 0.25, end: 0.3 }],
-        messageOut1: [0, -20, { start: 0.45, end: 0.5 }],
-        messageOut2: [0, -20, { start: 0.65, end: 0.7 }],
       },
     },
   ];
@@ -211,9 +226,9 @@ function Main() {
               sectionYOffset
             )}%, 0)`;
           } else {
-            objs.image1.style.transform = `translate3d(-50% , ${
-              -50 + calcAnimationValues(values.imageOut1, sectionYOffset)
-            }%, 0) scale(${window.innerHeight / objs.image1.height})`;
+            objs.image1.style.transform = `translate3d(-50%, -50%, 0) scale(${
+              window.innerHeight / objs.image1.height
+            })`;
           }
         }
 
@@ -300,6 +315,96 @@ function Main() {
 
         break;
       case 1:
+        /* 배경 이미지의 높이가 현재 윈도우 높이보다 큰 경우 처리 */
+        if (
+          values.imageOut0[1] === -20 &&
+          window.innerHeight / objs.image0.height < 1
+        ) {
+          // 이미지를 윈도우 화면 최상단에 고정
+          objs.image0.style.top = 0;
+          // Translate Y 값을 화면에 표시되지 않은 이미지의 비율만큼 상승시키도록 애니메이션 값 변경
+          values.imageOut0[1] =
+            -(1 - window.innerHeight / objs.image0.height) * 100;
+          // 이미지가 화면 높이보다 작은 경우보다 out 애니메이션을 더욱 빨리 실행시키도록 함
+          values.imageOut0[2].start -= 0.18;
+        }
+        if (
+          values.imageOut1[1] === -20 &&
+          window.innerHeight / objs.image1.height < 1
+        ) {
+          objs.image1.style.top = 0;
+          values.imageOut1[1] =
+            -(1 - window.innerHeight / objs.image1.height) * 100;
+          values.imageOut1[2].start -= 0.18;
+        }
+
+        /* 배경 이미지 애니메이션 */
+        if (scrollRatio < 0.22) {
+          objs.image0.style.opacity = calcAnimationValues(
+            values.imageFadeIn0,
+            sectionYOffset
+          );
+
+          // 배경 이미지의 높이가 현재 윈도우 높이보다 큰 경우
+          if (window.innerHeight / objs.image0.height < 1) {
+            objs.image0.style.transform = `translate3d(-50%, 0%, 0)`;
+          }
+          // 배경 이미지의 높이가 현재 윈도우 높이보다 작은 경우
+          else {
+            // 이미지를 윈도우 높이만큼 가득 채움
+            objs.image0.style.transform = `translate3d(-50%, -50%, 0) scale(${
+              window.innerHeight / objs.image0.height
+            })`;
+          }
+        } else {
+          objs.image0.style.opacity = calcAnimationValues(
+            values.imageFadeOut0,
+            sectionYOffset
+          );
+          if (window.innerHeight / objs.image0.height < 1) {
+            objs.image0.style.transform = `translate3d(-50% , ${calcAnimationValues(
+              values.imageOut0,
+              sectionYOffset
+            )}%, 0)`;
+          } else {
+            objs.image0.style.transform = `translate3d(-50% , -50%, 0) scale(${
+              window.innerHeight / objs.image0.height
+            })`;
+          }
+        }
+
+        if (scrollRatio < 0.62) {
+          objs.image1.style.opacity = calcAnimationValues(
+            values.imageFadeIn1,
+            sectionYOffset
+          );
+          if (window.innerHeight / objs.image1.height < 1) {
+            objs.image1.style.transform = `translate3d(-50%, 0%, 0)`;
+          } else {
+            objs.image1.style.transform = `translate3d(-50%, -50%, 0) scale(${
+              window.innerHeight / objs.image1.height
+            })`;
+
+            values.imageOut1[1] = -20;
+          }
+        } else {
+          objs.image1.style.opacity = calcAnimationValues(
+            values.imageFadeOut1,
+            sectionYOffset
+          );
+          if (window.innerHeight / objs.image1.height < 1) {
+            objs.image1.style.transform = `translate3d(-50% , ${calcAnimationValues(
+              values.imageOut1,
+              sectionYOffset
+            )}%, 0)`;
+          } else {
+            objs.image1.style.transform = `translate3d(-50%, -50%, 0) scale(${
+              window.innerHeight / objs.image1.height
+            })`;
+          }
+        }
+
+        /* 텍스트(메시지) 애니메이션 */
         if (scrollRatio < 0.22) {
           objs.message0.style.opacity = calcAnimationValues(
             values.messageFadeIn0,
@@ -360,6 +465,26 @@ function Main() {
           )}%, 0)`;
         }
 
+        if (scrollRatio < 0.82) {
+          objs.message3.style.opacity = calcAnimationValues(
+            values.messageFadeIn3,
+            sectionYOffset
+          );
+          objs.message3.style.transform = `translate3d(0, ${calcAnimationValues(
+            values.messageIn3,
+            sectionYOffset
+          )}%, 0)`;
+        } else {
+          objs.message3.style.opacity = calcAnimationValues(
+            values.messageFadeOut3,
+            sectionYOffset
+          );
+          objs.message3.style.transform = `translate3d(0, ${calcAnimationValues(
+            values.messageOut3,
+            sectionYOffset
+          )}%, 0)`;
+        }
+
         break;
       default:
         return;
@@ -384,6 +509,9 @@ function Main() {
     );
     messagesInSection1.current.map(
       (value, index) => (scrollSectionInfo[1].objs[`message${index}`] = value)
+    );
+    imagesInSection1.current.map(
+      (value, index) => (scrollSectionInfo[1].objs[`image${index}`] = value)
     );
   };
 
@@ -475,7 +603,7 @@ function Main() {
       >
         <h1 className={styles["title"]}>iiIIiIiIiiiiI</h1>
         <img
-          src={sunflowers}
+          src={image2}
           alt=""
           ref={ref => imagesInSection0.current.splice(0, 1, ref)}
           className={`${styles["sticky-elem"]} ${styles["main-image"]}`}
@@ -493,7 +621,7 @@ function Main() {
           <p>두 번째 메시지</p>
         </div>
         <img
-          src={selfProtrait}
+          src={image1}
           alt=""
           ref={ref => imagesInSection0.current.splice(1, 1, ref)}
           className={`${styles["sticky-elem"]} ${styles["main-image"]}`}
@@ -516,27 +644,46 @@ function Main() {
         className={styles["scroll-section"]}
         id={styles["scroll-section-1"]}
       >
+        <img
+          src={image3}
+          alt=""
+          ref={ref => imagesInSection1.current.splice(0, 1, ref)}
+          className={`${styles["sticky-elem"]} ${styles["main-image"]}`}
+        />
         <div
           ref={ref => messagesInSection1.current.splice(0, 1, ref)}
           className={`${styles["sticky-elem"]} ${styles["main-message"]}`}
         >
-          <p>두 번째 섹션 1</p>
+          <p>다섯 번째 메시지</p>
         </div>
         <div
           ref={ref => messagesInSection1.current.splice(1, 1, ref)}
           className={`${styles["sticky-elem"]} ${styles["main-message"]}`}
         >
-          <p>두 번째 섹션 2</p>
+          <p>여섯 번째 메시지</p>
         </div>
+        <img
+          src={image4}
+          alt=""
+          ref={ref => imagesInSection1.current.splice(1, 1, ref)}
+          className={`${styles["sticky-elem"]} ${styles["main-image"]}`}
+        />
         <div
           ref={ref => messagesInSection1.current.splice(2, 1, ref)}
           className={`${styles["sticky-elem"]} ${styles["main-message"]}`}
         >
-          <p>두 번째 섹션 3</p>
+          <p>일곱 번째 메시지</p>
+        </div>
+        <div
+          ref={ref => messagesInSection1.current.splice(3, 1, ref)}
+          className={`${styles["sticky-elem"]} ${styles["main-message"]}`}
+        >
+          <p>여덟 번째 메시지</p>
         </div>
       </section>
+      <Footer></Footer>
     </div>
   );
-}
+};
 
 export default Main;
