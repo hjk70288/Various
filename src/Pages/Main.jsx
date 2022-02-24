@@ -595,7 +595,7 @@ const Main = () => {
           <circle cx="50%" cy="50%" r="25"></circle>
         </svg>
       </div>
-      <Header></Header>
+      <Header />
       <section
         ref={section0}
         className={styles["scroll-section"]}
@@ -681,7 +681,7 @@ const Main = () => {
           <p>여덟 번째 메시지</p>
         </div>
       </section>
-      <Footer></Footer>
+      <Footer />
     </div>
   );
 };
