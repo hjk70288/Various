@@ -7,7 +7,7 @@ import image1 from "Images/유리땅.jpg";
 import image2 from "Images/사랑인피니티.jpg";
 import image3 from "Images/멜롱멜롱메.jpg";
 import image4 from "Images/이인증...jpg";
-// 테스트
+
 const Main = () => {
   // Parameter
   const cursorRef = useRef(); // 마우스 커서 컴포넌트의 Ref

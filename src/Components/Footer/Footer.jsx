@@ -8,4 +8,3 @@ const Footer = () => {
 };
 
 export default Footer;
-// 테스트
