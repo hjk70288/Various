@@ -1,7 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./main.module.scss";
 import Cursor from "Components/Cursor/Cursor";
-import Header from "Components/Header/Header";
+import Loading from "Components/Loading/Loading";
+import Header from "Components/Header/header/Header";
+import Progress from "Components/Header/progress/Progress";
 import Footer from "Components/Footer/Footer";
 import image1 from "Images/유리땅.jpg";
 import image2 from "Images/사랑인피니티.jpg";
@@ -10,8 +12,9 @@ import image4 from "Images/이인증...jpg";
 
 const Main = () => {
   // Parameter
-  const cursorRef = useRef(); // 마우스 커서 컴포넌트의 Ref
   const [isLoaded, setIsLoaded] = useState(false); // 리소스 로딩 완료 여부
+  const cursorRef = useRef(); // 마우스 커서 컴포넌트의 Ref
+  const progressRef = useRef(); // 스크롤 진행률 Ref
   const section0 = useRef(); // 0 번째 스크롤 섹션
   const section1 = useRef(); // 1 번째 스크롤 섹션
   const messagesInSection0 = useRef([]); // 0 번째 스크롤 섹션 내의 메시지 목록
@@ -140,6 +143,11 @@ const Main = () => {
     const sectionYOffset = delayedYOffset - prevSectionHeight; // 현재 섹션 안에서의 스크롤 위치
 
     const scrollRatio = sectionYOffset / scrollHeight; // 현재 섹션 안에서의 스크롤이 진행된 비율
+
+    // 스크롤 진행률 표시
+    progressRef.current.style.width = `${
+      (delayedYOffset / document.body.scrollHeight) * 105
+    }%`;
 
     switch (currentSection) {
       case 0:
@@ -584,18 +592,11 @@ const Main = () => {
   });
 
   return (
-    <div
-      className={`${styles["content"]} ${
-        !isLoaded ? styles["content--before-load"] : null
-      }`}
-    >
+    <div className={styles["content"]}>
+      <Loading isLoaded={isLoaded} />
       <Cursor ref={cursorRef}></Cursor>
-      <div className={styles["loading"]}>
-        <svg className={styles["loading__circle"]}>
-          <circle cx="50%" cy="50%" r="25"></circle>
-        </svg>
-      </div>
       <Header />
+      <Progress ref={progressRef} />
       <section
         ref={section0}
         className={styles["scroll-section"]}

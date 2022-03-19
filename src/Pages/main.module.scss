@@ -41,68 +41,12 @@
       width: 100%;
     }
   }
-
-  /* 로딩 효과 */
-  .loading {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 5;
-    background-color: #fff;
-    opacity: 0;
-    transition: 0.5s;
-
-    .loading__circle {
-      width: 54px;
-      height: 54px;
-      animation: loading-spin 3s infinite;
-
-      circle {
-        stroke: black;
-        stroke-width: 4;
-        stroke-dasharray: 157;
-        stroke-dashoffset: 0;
-        fill: #fff;
-        animation: loading-circle-animation 1s infinite;
-      }
-    }
-
-    @keyframes loading-spin {
-      100% {
-        transform: rotate(360deg);
-      }
-    }
-    @keyframes loading-circle-animation {
-      0% {
-        stroke-dashoffset: 157;
-      }
-      75% {
-        stroke-dashoffset: -147;
-      }
-      100% {
-        stroke-dashoffset: -157;
-      }
-    }
-  }
 }
 
 #show-section-0 #scroll-section-0 .sticky-elem,
 #show-section-1 #scroll-section-1 .sticky-elem {
   display: block;
   will-change: transform, opacity; /* 성능향상을 위한 구문 */
-}
-
-.content--before-load {
-  overflow: hidden;
-
-  .loading {
-    opacity: 1;
-  }
 }
 
 // /* PC화면 반응형 */

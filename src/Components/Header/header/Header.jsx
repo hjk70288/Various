@@ -9,12 +9,6 @@ const Header = () => {
         <Link to="#" className={`${styles["link"]} ${styles["title"]}`}>
           iillililiiiil
         </Link>
-        <Link to="#" className={styles["link"]}>
-          개요
-        </Link>
-        <Link to="#" className={styles["link"]}>
-          제품사항
-        </Link>
         <a
           className={styles["link"]}
           target="_blank"
