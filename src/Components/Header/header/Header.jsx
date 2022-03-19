@@ -6,7 +6,13 @@ const Header = () => {
   return (
     <nav className={styles["header"]}>
       <div className={styles["header__links"]}>
-        <Link to="#" className={`${styles["link"]} ${styles["title"]}`}>
+        <Link
+          to="#"
+          className={`${styles["link"]} ${styles["title"]}`}
+          onClick={() => {
+            window.scrollTo(0, 0);
+          }}
+        >
           iillililiiiil
         </Link>
         <a
