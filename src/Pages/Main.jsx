@@ -146,7 +146,7 @@ const Main = () => {
 
     // 스크롤 진행률 표시
     progressRef.current.style.width = `${
-      (delayedYOffset / document.body.scrollHeight) * 105
+      (delayedYOffset / document.body.scrollHeight) * 105.2
     }%`;
 
     switch (currentSection) {
@@ -602,7 +602,7 @@ const Main = () => {
         className={styles["scroll-section"]}
         id={styles["scroll-section-0"]}
       >
-        <h1 className={styles["title"]}>iiIIiIiIiiiiI</h1>
+        <h1 className={styles["title"]}>llllllilllllilllllillllil</h1>
         <img
           src={image2}
           alt=""

@@ -1,16 +1,30 @@
 .footer {
-  height: 300px;
-  // border-top: 1px solid #fff;
-  // background-color: #fff;
+  height: calc(100vh - 57px);
+  // border-top: 1px solid gray;
+  background-color: rgb(15, 15, 15);
   // color: #000;
   display: flex;
+  flex-flow: column;
   justify-content: center;
   align-items: center;
   font-size: 4rem;
+  position: relative;
+
+  .footer__people {
+    margin: 1em;
+  }
+
+  .footer__copy-right {
+    position: absolute;
+    bottom: 1em;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    color: gray;
+  }
 }
 
 /* PC화면 반응형 */
-@media (max-width: 640px) {
+@media (max-width: 750px) {
   .footer {
     font-size: 2rem;
   }

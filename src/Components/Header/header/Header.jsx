@@ -13,13 +13,13 @@ const Header = () => {
             window.scrollTo(0, 0);
           }}
         >
-          iillililiiiil
+          llllllilllllilllllillllil
         </Link>
         <a
           className={styles["link"]}
           target="_blank"
           rel="noreferrer"
-          href="https://www.instagram.com/iillililiiiil"
+          href="https://www.instagram.com/llllllilllllilllllillllil"
         >
           Instagram
         </a>
