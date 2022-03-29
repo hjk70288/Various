@@ -6,25 +6,47 @@
     padding-top: 50vh;
 
     img {
-      filter: brightness(50%);
+      filter: brightness(40%);
     }
+
+    // .sub-title {
+    //   position: absolute;
+    //   top: 10vh;
+    //   left: 5vw;
+    //   font-size: 1.8rem;
+    //   font-family: "Playfair Display", serif;
+    //   font-style: italic;
+    // }
 
     .title {
       position: relative;
-      font-size: 5rem;
+      font-size: 4rem;
       text-align: center;
       top: -10vh;
+      font-family: "Playfair Display", serif;
+      line-height: 1.3em;
+    }
+
+    .guide {
+      position: absolute;
+      top: 96vh;
+      left: 50vw;
+      transform: translate(-50%, 0%);
+      font-size: 1rem;
+      color: #808080;
     }
 
     .main-message {
-      top: 40vh;
+      top: 83vh;
       font-size: 2.5rem;
       height: 3em;
       opacity: 0;
 
       p {
         font-weight: bold;
-        text-align: center;
+        text-align: left;
+        margin-left: 7vh;
+        line-height: 1.2em;
       }
     }
 
@@ -49,13 +71,26 @@
   will-change: transform, opacity; /* 성능향상을 위한 구문 */
 }
 
-// /* PC화면 반응형 */
-// @media (min-width: 1024px) {
-//   .content {
-//     .scroll-section {
-//       .main-image {
-//         top: 0;
-//       }
-//     }
-//   }
-// }
+@media (max-width: 750px) {
+  .content {
+    .scroll-section {
+      .main-message {
+        p {
+          margin-left: 4vh;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .content {
+    .scroll-section {
+      .main-message {
+        p {
+          margin-left: 3vh;
+        }
+      }
+    }
+  }
+}

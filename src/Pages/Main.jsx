@@ -595,14 +595,19 @@ const Main = () => {
     <div className={styles["content"]}>
       <Loading isLoaded={isLoaded} />
       <Cursor ref={cursorRef}></Cursor>
-      <Header />
+      <Header scrollSectionInfo={scrollSectionInfo} />
       <Progress ref={progressRef} />
       <section
         ref={section0}
         className={styles["scroll-section"]}
         id={styles["scroll-section-0"]}
       >
-        <h1 className={styles["title"]}>llllllilllllilllllillllil</h1>
+        <p className={styles["title"]}>
+          EXHIBITION
+          <br />
+          llllllilllllilllllillllil
+        </p>
+        <p className={styles["guide"]}>SCROLL TO BOTTOM</p>
         <img
           src={image2}
           alt=""
@@ -613,13 +618,25 @@ const Main = () => {
           ref={ref => messagesInSection0.current.splice(0, 1, ref)}
           className={`${styles["sticky-elem"]} ${styles["main-message"]}`}
         >
-          <p>첫 번째 메시지</p>
+          <p>
+            사랑인피니티
+            <br />
+            596 x 842
+            <br />
+            2021
+          </p>
         </div>
         <div
           ref={ref => messagesInSection0.current.splice(1, 1, ref)}
           className={`${styles["sticky-elem"]} ${styles["main-message"]}`}
         >
-          <p>두 번째 메시지</p>
+          <p>
+            LOVE INFINITY
+            <br />
+            596 x 842
+            <br />
+            2021
+          </p>
         </div>
         <img
           src={image1}
@@ -631,13 +648,25 @@ const Main = () => {
           ref={ref => messagesInSection0.current.splice(2, 1, ref)}
           className={`${styles["sticky-elem"]} ${styles["main-message"]}`}
         >
-          <p>세 번째 메시지</p>
+          <p>
+            유리땅
+            <br />
+            2732 x 2048
+            <br />
+            2022
+          </p>
         </div>
         <div
           ref={ref => messagesInSection0.current.splice(3, 1, ref)}
           className={`${styles["sticky-elem"]} ${styles["main-message"]}`}
         >
-          <p>네 번째 메시지</p>
+          <p>
+            GLASS GROUND
+            <br />
+            2732 x 2048
+            <br />
+            2022
+          </p>
         </div>
       </section>
       <section
@@ -655,13 +684,25 @@ const Main = () => {
           ref={ref => messagesInSection1.current.splice(0, 1, ref)}
           className={`${styles["sticky-elem"]} ${styles["main-message"]}`}
         >
-          <p>다섯 번째 메시지</p>
+          <p>
+            멜롱멜롱메
+            <br />
+            2480 x 3508
+            <br />
+            2021
+          </p>
         </div>
         <div
           ref={ref => messagesInSection1.current.splice(1, 1, ref)}
           className={`${styles["sticky-elem"]} ${styles["main-message"]}`}
         >
-          <p>여섯 번째 메시지</p>
+          <p>
+            :-P
+            <br />
+            2480 x 3508
+            <br />
+            2021
+          </p>
         </div>
         <img
           src={image4}
@@ -673,13 +714,25 @@ const Main = () => {
           ref={ref => messagesInSection1.current.splice(2, 1, ref)}
           className={`${styles["sticky-elem"]} ${styles["main-message"]}`}
         >
-          <p>일곱 번째 메시지</p>
+          <p>
+            離人症
+            <br />
+            642 x 822
+            <br />
+            2022
+          </p>
         </div>
         <div
           ref={ref => messagesInSection1.current.splice(3, 1, ref)}
           className={`${styles["sticky-elem"]} ${styles["main-message"]}`}
         >
-          <p>여덟 번째 메시지</p>
+          <p>
+            DEPERSONALIZATION
+            <br />
+            642 x 822
+            <br />
+            2022
+          </p>
         </div>
       </section>
       <Footer />

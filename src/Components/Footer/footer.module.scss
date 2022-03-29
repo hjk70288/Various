@@ -1,17 +1,21 @@
 .footer {
   height: calc(100vh - 57px);
-  // border-top: 1px solid gray;
   background-color: rgb(15, 15, 15);
-  // color: #000;
   display: flex;
   flex-flow: column;
   justify-content: center;
   align-items: center;
-  font-size: 4rem;
+  font-size: 2.5rem;
   position: relative;
+  z-index: 10;
 
   .footer__people {
     margin: 1em;
+    font-family: "Playfair Display", serif;
+
+    .link {
+      cursor: pointer;
+    }
   }
 
   .footer__copy-right {
@@ -19,13 +23,21 @@
     bottom: 1em;
     left: 50%;
     transform: translate(-50%, 0%);
-    color: gray;
+    color: #808080;
+    font-size: 1rem;
   }
 }
 
-/* PC화면 반응형 */
+/* 반응형 */
 @media (max-width: 750px) {
   .footer {
     font-size: 2rem;
+  }
+}
+@media (max-width: 480px) {
+  .footer {
+    .footer__copy-right {
+      font-size: 0.8rem;
+    }
   }
 }

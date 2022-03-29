@@ -17,15 +17,18 @@
   .header__links {
     display: flex;
     align-items: center;
-    max-width: 1000px;
+    max-width: 1400px;
     height: 100%;
     margin: 0 auto;
 
     .link {
       font-size: 0.8rem;
+      font-family: "Playfair Display", serif;
 
       &:not(:first-child) {
         margin-left: 2em;
+        font-size: 1.2rem;
+        font-weight: bold;
       }
     }
 

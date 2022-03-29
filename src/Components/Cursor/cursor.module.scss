@@ -3,11 +3,19 @@
   height: 500px;
   position: fixed;
   display: none;
-  backdrop-filter: brightness(150%);
+  backdrop-filter: brightness(160%);
   z-index: 1;
   border-radius: 250px;
 
   circle {
     fill: none;
+  }
+}
+
+@media (max-width: 750px) {
+  .cursor_circle {
+    width: 250px;
+    height: 250px;
+    transform: translate(50%, 50%);
   }
 }
