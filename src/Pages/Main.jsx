@@ -10,6 +10,74 @@ import image2 from "Images/사랑인피니티.jpg";
 import image3 from "Images/멜롱멜롱메.jpg";
 import image4 from "Images/이인증...jpg";
 
+// 스크롤 가이드
+const ScrollGuide = props => {
+  const { scrollSectionInfo } = props;
+
+  // 스크롤 섹션의 높이 설정
+  scrollSectionInfo.map(value => {
+    value.sectionHeight = value.heightRatio * window.innerHeight;
+    return null;
+  });
+
+  // 스크롤 섹션들의 높이를 모두 합친 값 구하기
+  let totalSectionHeight = 0;
+  for (let i = 0; i < scrollSectionInfo.length; i++) {
+    totalSectionHeight += scrollSectionInfo[i].sectionHeight;
+  }
+
+  let delayedYOffset = 0; // 점차 증가하는 yOffset
+  let yOffset = totalSectionHeight * 0.1; // 목표 yOffset
+  let rafId; // requestAnimationFrame이 반환하는 값
+  let duration = 0.05; // 증가 지속시간 비율
+
+  // 부드러운 애니메이션 감속을 위한 처리 (requestAnimationFrame 사용)
+  const smoothScrollTo = () => {
+    delayedYOffset = delayedYOffset + (yOffset - delayedYOffset) * duration;
+    rafId = requestAnimationFrame(smoothScrollTo);
+
+    window.scrollTo(0, delayedYOffset); // 스크롤 이동
+    duration += 0.001; // 증가 지속시간 비율을 점차 높여 목표를 빠르게 도달할 수 있게끔 함
+
+    // 목표 스크롤 위치와 delayedYOffset(목표 스크롤 위치까지 점차 증가하는 스크롤)이 거의 동일해지면 애니메이션 중지
+    if (Math.abs(yOffset - delayedYOffset) < 0.1) {
+      cancelAnimationFrame(rafId);
+      duration = 0.05;
+    }
+  };
+
+  return (
+    <svg
+      onClick={() => {
+        requestAnimationFrame(smoothScrollTo);
+      }}
+      className={styles["guide__mouse"]}
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 76 130"
+      preserveAspectRatio="xMidYMid meet"
+    >
+      <g fill="none" fillRule="evenodd">
+        <rect
+          width="70"
+          height="118"
+          x="1.5"
+          y="1.5"
+          stroke="#FFF"
+          strokeWidth="3"
+          rx="36"
+        />
+        <circle
+          className={styles["mouse__scroll"]}
+          cx="36.5"
+          cy="31.5"
+          r="4.5"
+          fill="#FFF"
+        />
+      </g>
+    </svg>
+  );
+};
+
 const Main = () => {
   // Parameter
   const [isLoaded, setIsLoaded] = useState(false); // 리소스 로딩 완료 여부
@@ -588,8 +656,11 @@ const Main = () => {
         cursorRef.current.style.left = `${e.clientX - 250}px`;
         cursorRef.current.style.top = `${e.clientY - 250}px`;
 
-        // 커서가 a태그를 호버하는 중이라면
-        if (e.srcElement.nodeName === "A") {
+        // 커서가 a태그 혹은 스크롤가이드(마우스 모양)를 호버하는 중이라면
+        if (
+          e.srcElement.nodeName === "A" ||
+          e.srcElement.classList.contains(styles["guide__mouse"])
+        ) {
           // 커서에 호버 이펙트 추가
           cursorRef.current.classList.add("cursor-hover");
         }
@@ -614,11 +685,13 @@ const Main = () => {
         id={styles["scroll-section-0"]}
       >
         <p className={styles["title"]}>
-          EXHIBITION
+          EXHIBITION:
           <br />
           ABILITY
         </p>
-        <p className={styles["guide"]}>SCROLL TO BOTTOM</p>
+        <p className={styles["guide"]}>
+          <ScrollGuide scrollSectionInfo={scrollSectionInfo} />
+        </p>
         <img
           src={image2}
           alt=""

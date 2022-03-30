@@ -22,7 +22,6 @@
     margin: 0 auto;
 
     .link {
-      font-size: 0.8rem;
       font-family: "Playfair Display", serif;
 
       &:not(:first-child) {
@@ -39,6 +38,42 @@
       font-size: 1.8rem;
       margin-right: auto;
       font-weight: bold;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    .header__links {
+      .link {
+        &:not(:first-child) {
+          font-size: 1.2rem;
+          margin-left: 1em;
+          line-height: 1.2em;
+        }
+      }
+
+      .title {
+        font-size: 1.4rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 300px) {
+  .header {
+    .header__links {
+      .link {
+        &:not(:first-child) {
+          font-size: 1rem;
+          margin-left: 1em;
+          line-height: 1em;
+        }
+      }
+
+      .title {
+        font-size: 1.2rem;
+      }
     }
   }
 }

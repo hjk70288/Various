@@ -16,7 +16,7 @@ body {
   overflow-x: hidden;
   color: white;
   letter-spacing: -0.05em;
-  background-color: rgb(17, 17, 17);
+  background-color: rgba(18, 18, 18);
 }
 a,
 a:link {
@@ -30,6 +30,6 @@ a:active {
   cursor: url("../Images/cursor_circle.png") 6 6, auto;
 }
 .cursor-hover {
-  transition: background-color 0.9s;
+  transition: background-color 0.4s;
   background-color: rgba(255, 255, 255, 0.25);
 }

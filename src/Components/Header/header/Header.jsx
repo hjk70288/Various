@@ -74,6 +74,15 @@ const Header = props => {
         >
           4
         </Link>
+        <Link
+          to="#"
+          className={styles["link"]}
+          onClick={() => {
+            window.scrollTo(0, totalSectionHeight);
+          }}
+        >
+          0
+        </Link>
         {/* <a
           className={styles["link"]}
           target="_blank"
