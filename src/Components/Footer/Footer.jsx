@@ -5,24 +5,18 @@ const Footer = () => {
   return (
     <footer className={styles["footer"]}>
       <div className={styles["footer__people"]}>
-        <div
-          className={styles["link"]}
-          onClick={() => {
-            window.open("https://www.instagram.com/llllllilllllilllllillllil");
-          }}
+        <a
+          target="_blank"
+          rel="noreferrer"
+          href="https://www.instagram.com/llllllilllllilllllillllil"
         >
           ART BY llllllilllllilllllillllil
-        </div>
+        </a>
       </div>
       <div className={styles["footer__people"]}>
-        <div
-          className={styles["link"]}
-          onClick={() => {
-            window.open("https://github.com/hjk70288");
-          }}
-        >
+        <a target="_blank" rel="noreferrer" href="https://github.com/hjk70288">
           DEVELOPED BY KYM
-        </div>
+        </a>
       </div>
       <div className={styles["footer__copy-right"]}>
         Copyright 2022. (KYM) all rights reserved.

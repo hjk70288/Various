@@ -1,6 +1,6 @@
 .footer {
   height: calc(100vh - 57px);
-  background-color: rgb(15, 15, 15);
+  background-color: rgba(20, 20, 20, 0.1);
   display: flex;
   flex-flow: column;
   justify-content: center;
@@ -12,10 +12,6 @@
   .footer__people {
     margin: 1em;
     font-family: "Playfair Display", serif;
-
-    .link {
-      cursor: pointer;
-    }
   }
 
   .footer__copy-right {

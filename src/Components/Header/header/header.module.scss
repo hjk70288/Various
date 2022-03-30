@@ -8,7 +8,7 @@
   padding: 0 1em;
   z-index: 10;
   background: rgba(255, 255, 255, 0.08);
-  transition: backdrop-filter 0.1s;
+  // transition: backdrop-filter 0.1s;
   backdrop-filter: saturate(180%) blur(15px);
   -webkit-backdrop-filter: saturate(180%) blur(15px);
   -moz-backdrop-filter: saturate(180%) blur(15px);
@@ -26,14 +26,17 @@
       font-family: "Playfair Display", serif;
 
       &:not(:first-child) {
-        margin-left: 2em;
-        font-size: 1.2rem;
+        font-size: 1.4rem;
         font-weight: bold;
+        text-align: center;
+        width: 1em;
+        margin-left: 1em;
+        line-height: 2.8em;
       }
     }
 
     .title {
-      font-size: 1.4rem;
+      font-size: 1.8rem;
       margin-right: auto;
       font-weight: bold;
     }

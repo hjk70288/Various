@@ -1,5 +1,9 @@
 @charset 'utf-8';
 
+html,
+body {
+  cursor: url("../Images/cursor_circle.png") 6 6, auto;
+}
 html {
   font-family: "Noto Sans KR", sans-serif;
   font-size: 14px;
@@ -12,5 +16,20 @@ body {
   overflow-x: hidden;
   color: white;
   letter-spacing: -0.05em;
-  background-color: rgb(12, 12, 12);
+  background-color: rgb(17, 17, 17);
+}
+a,
+a:link {
+  cursor: url("../Images/cursor_circle.png") 6 6, auto;
+}
+a:hover,
+a:focus {
+  cursor: url("../Images/cursor_circle.png") 6 6, auto;
+}
+a:active {
+  cursor: url("../Images/cursor_circle.png") 6 6, auto;
+}
+.cursor-hover {
+  transition: background-color 0.9s;
+  background-color: rgba(255, 255, 255, 0.25);
 }

@@ -587,6 +587,17 @@ const Main = () => {
           cursorRef.current.style.display = "block";
         cursorRef.current.style.left = `${e.clientX - 250}px`;
         cursorRef.current.style.top = `${e.clientY - 250}px`;
+
+        // 커서가 a태그를 호버하는 중이라면
+        if (e.srcElement.nodeName === "A") {
+          // 커서에 호버 이펙트 추가
+          cursorRef.current.classList.add("cursor-hover");
+        }
+        // a태그를 호버하지 않는다면
+        else {
+          // 커서에 호버 이펙트 제거
+          cursorRef.current.classList.remove("cursor-hover");
+        }
       });
     });
   });
@@ -605,7 +616,7 @@ const Main = () => {
         <p className={styles["title"]}>
           EXHIBITION
           <br />
-          llllllilllllilllllillllil
+          ABILITY
         </p>
         <p className={styles["guide"]}>SCROLL TO BOTTOM</p>
         <img
