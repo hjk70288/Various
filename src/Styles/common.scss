@@ -2,7 +2,7 @@
 
 html,
 body {
-  cursor: url("../Images/cursor_circle.png") 6 6, auto;
+  cursor: url("../Images/cursor.svg") 6 6, auto;
 }
 html {
   font-family: "Noto Sans KR", sans-serif;
@@ -20,14 +20,14 @@ body {
 }
 a,
 a:link {
-  cursor: url("../Images/cursor_circle.png") 6 6, auto;
+  cursor: url("../Images/cursor.svg") 6 6, auto;
 }
 a:hover,
 a:focus {
-  cursor: url("../Images/cursor_circle.png") 6 6, auto;
+  cursor: url("../Images/cursor.svg") 6 6, auto;
 }
 a:active {
-  cursor: url("../Images/cursor_circle.png") 6 6, auto;
+  cursor: url("../Images/cursor.svg") 6 6, auto;
 }
 .cursor-hover {
   transition: background-color 0.4s;
