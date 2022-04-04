@@ -3,11 +3,8 @@
 html,
 body {
   cursor: url("../Images/cursor.svg") 6 6, auto;
-  /* iOS only */
-
-  @supports (-webkit-touch-callout: none) {
-    height: -webkit-fill-available;
-  }
+  height: 100vh;
+  height: -webkit-fill-available;
 }
 html {
   font-family: "Noto Sans KR", sans-serif;

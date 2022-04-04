@@ -647,7 +647,19 @@ const Main = () => {
       });
 
       window.addEventListener("resize", () => {
-        window.location.reload();
+        const user = navigator.userAgent;
+        // 컴퓨터 환경일 때만 resize
+        if (user.indexOf("iPhone") === -1 && user.indexOf("Android") === -1) {
+          window.location.reload();
+        }
+      });
+
+      // 휴대폰 가로 세로 방향 변경 시 이벤트 핸들링
+      window.addEventListener("orientationchange", () => {
+        // 방향 변경 시 소요되는 시간을 고려하여 Time Out
+        setTimeout(() => {
+          window.location.reload();
+        }, 500);
       });
 
       window.addEventListener("mousemove", e => {
