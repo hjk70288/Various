@@ -671,7 +671,7 @@ const Main = () => {
       // 모바일 환경일 때 축소, 확대 방지
       if (isMobile) {
         // 두 손가락으로 화면을 클릭 시 이벤트 무시
-        window.addEventListener(
+        document.addEventListener(
           "touchmove",
           e => {
             if (e.scale !== 1) {
@@ -683,7 +683,7 @@ const Main = () => {
 
         // 두번 연속 탭이 0.3초보다 짧다면 무시 (확대 방지)
         let lastTouchEnd = 0;
-        window.addEventListener(
+        document.addEventListener(
           "touchend",
           e => {
             let now = new Date().getTime();
