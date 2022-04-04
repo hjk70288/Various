@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import styles from "./main.module.scss";
 import Cursor from "Components/Cursor/Cursor";
 import Loading from "Components/Loading/Loading";
@@ -80,7 +80,7 @@ const ScrollGuide = props => {
 
 const Main = () => {
   // Parameter
-  const [isLoaded, setIsLoaded] = useState(false); // 리소스 로딩 완료 여부
+  // const [isLoaded, setIsLoaded] = useState(false); // 리소스 로딩 완료 여부
   const cursorRef = useRef(); // 마우스 커서 컴포넌트의 Ref
   const progressRef = useRef(); // 스크롤 진행률 Ref
   const section0 = useRef(); // 0 번째 스크롤 섹션
@@ -636,8 +636,6 @@ const Main = () => {
 
   useEffect(() => {
     window.addEventListener("load", () => {
-      setIsLoaded(true);
-
       // 사용자가 컴퓨터 환경인지 모바일 환경인지 판단
       const userInfo = navigator.userAgent;
       let isMobile = false;
@@ -725,7 +723,7 @@ const Main = () => {
 
   return (
     <div className={styles["content"]}>
-      <Loading isLoaded={isLoaded} />
+      <Loading />
       <Cursor ref={cursorRef}></Cursor>
       <Header scrollSectionInfo={scrollSectionInfo} />
       <Progress ref={progressRef} />
