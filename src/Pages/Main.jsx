@@ -672,9 +672,9 @@ const Main = () => {
       if (isMobile) {
         // 두 손가락으로 화면을 클릭 시 이벤트 무시
         window.addEventListener(
-          "touchstart",
+          "touchmove",
           e => {
-            if (e.touches.length > 1) {
+            if (e.scale !== 1) {
               e.preventDefault();
             }
           },
