@@ -645,6 +645,11 @@ const Main = () => {
         isMobile = true;
       }
 
+      // 모바일 환경에서 새로고침 시 제일 위쪽으로 화면 이동시킴
+      if (isMobile) {
+        window.scrollTo(0, 0);
+      }
+
       // 스크롤 섹션 정보 설정 및 스크롤 섹션 판단
       setScrollSectionInfo();
       handlePageScroll();
