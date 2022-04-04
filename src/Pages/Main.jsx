@@ -620,6 +620,9 @@ const Main = () => {
       }
     }
 
+    // 현재 스크롤 섹션의 리소스만 화면에 표시될 수 있도록 body에 색션 정보 삽입
+    document.body.setAttribute("id", styles[`show-section-${currentSection}`]);
+
     // 애니메이션 동작
     if (!rafState) {
       requestAnimationFrame(loopAnimation);
