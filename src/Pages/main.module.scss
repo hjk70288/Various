@@ -79,8 +79,8 @@
   }
 }
 
-#show-section-0 #scroll-section-0 .sticky-elem,
-#show-section-1 #scroll-section-1 .sticky-elem {
+#scroll-section-0 .sticky-elem,
+#scroll-section-1 .sticky-elem {
   display: block;
   will-change: transform, opacity; /* 성능향상을 위한 구문 */
 }

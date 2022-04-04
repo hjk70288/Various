@@ -80,7 +80,6 @@ const ScrollGuide = props => {
 
 const Main = () => {
   // Parameter
-  // const [isLoaded, setIsLoaded] = useState(false); // 리소스 로딩 완료 여부
   const cursorRef = useRef(); // 마우스 커서 컴포넌트의 Ref
   const progressRef = useRef(); // 스크롤 진행률 Ref
   const section0 = useRef(); // 0 번째 스크롤 섹션
@@ -621,12 +620,6 @@ const Main = () => {
       }
     }
 
-    // Body에 현재 스크롤 섹션 정보 추가
-    document.body.setAttribute(
-      "id",
-      `${styles[`show-section-${currentSection}`]}`
-    );
-
     // 애니메이션 동작
     if (!rafState) {
       requestAnimationFrame(loopAnimation);
@@ -634,97 +627,104 @@ const Main = () => {
     }
   };
 
-  useEffect(() => {
-    window.addEventListener("load", () => {
-      // 사용자가 컴퓨터 환경인지 모바일 환경인지 판단
-      const userInfo = navigator.userAgent;
-      let isMobile = false;
-      if (userInfo.indexOf("iPhone") > -1 || userInfo.indexOf("Android") > -1) {
-        isMobile = true;
-      }
+  // 이벤트 리스너, 섹션 정보 등 초기화 (initializing)
+  const init = () => {
+    // 사용자가 컴퓨터 환경인지 모바일 환경인지 판단
+    const userInfo = navigator.userAgent;
+    let isMobile = false;
+    if (userInfo.indexOf("iPhone") > -1 || userInfo.indexOf("Android") > -1) {
+      isMobile = true;
+    }
 
-      // 스크롤 섹션 정보 설정 및 스크롤 섹션 판단
-      setScrollSectionInfo();
+    // 스크롤 섹션 정보 설정 및 스크롤 섹션 판단
+    setScrollSectionInfo();
+    handlePageScroll();
+
+    window.addEventListener("scroll", () => {
       handlePageScroll();
+    });
 
-      window.addEventListener("scroll", () => {
-        handlePageScroll();
-      });
-
-      window.addEventListener("resize", () => {
-        // 컴퓨터 환경일 때만 resize
-        if (isMobile === false) {
-          window.location.reload();
-        }
-      });
-
-      // 휴대폰 가로 세로 방향 변경 시 이벤트 핸들링
-      window.addEventListener("orientationchange", () => {
-        // 방향 변경 시 소요되는 시간을 고려하여 Time Out
-        setTimeout(() => {
-          window.location.reload();
-        }, 500);
-      });
-
-      // 모바일 환경일 때 축소, 확대 방지
-      if (isMobile) {
-        // 두 손가락으로 화면을 클릭 시 이벤트 무시
-        document.addEventListener(
-          "touchmove",
-          e => {
-            if (e.scale !== 1) {
-              e.preventDefault();
-            }
-          },
-          false
-        );
-
-        // 두번 연속 탭이 0.3초보다 짧다면 무시 (확대 방지)
-        let lastTouchEnd = 0;
-        document.addEventListener(
-          "touchend",
-          e => {
-            let now = new Date().getTime();
-            if (now - lastTouchEnd <= 300) {
-              e.preventDefault();
-            }
-            lastTouchEnd = now;
-          },
-          false
-        );
-      }
-
-      // 컴퓨터 환경일 때만 손전등 효과 추가
+    window.addEventListener("resize", () => {
+      // 컴퓨터 환경일 때만 resize
       if (isMobile === false) {
-        // 커서 손전등 효과 추가
-        window.addEventListener("mousemove", e => {
-          if (cursorRef.current.style.display === "")
-            cursorRef.current.style.display = "block";
-          cursorRef.current.style.left = `${e.clientX - 250}px`;
-          cursorRef.current.style.top = `${e.clientY - 250}px`;
-
-          // 커서가 a태그 혹은 스크롤가이드(마우스 모양)를 호버하는 중이라면
-          if (
-            e.srcElement.nodeName === "A" ||
-            e.srcElement.classList.contains(styles["guide__mouse"])
-          ) {
-            // 커서에 호버 이펙트 추가
-            cursorRef.current.classList.add("cursor-hover");
-          }
-          // a태그를 호버하지 않는다면
-          else {
-            // 커서에 호버 이펙트 제거
-            cursorRef.current.classList.remove("cursor-hover");
-          }
-        });
+        window.location.reload();
       }
     });
+
+    // 휴대폰 가로 세로 방향 변경 시 이벤트 핸들링
+    window.addEventListener("orientationchange", () => {
+      // 방향 변경 시 소요되는 시간을 고려하여 Time Out
+      setTimeout(() => {
+        window.location.reload();
+      }, 500);
+    });
+
+    // 모바일 환경일 때 축소, 확대 방지
+    if (isMobile) {
+      // 두 손가락으로 화면을 클릭 시 이벤트 무시
+      document.addEventListener(
+        "touchmove",
+        e => {
+          if (e.scale !== 1) {
+            e.preventDefault();
+          }
+        },
+        false
+      );
+
+      // 두번 연속 탭이 0.3초보다 짧다면 무시 (확대 방지)
+      let lastTouchEnd = 0;
+      document.addEventListener(
+        "touchend",
+        e => {
+          let now = new Date().getTime();
+          if (now - lastTouchEnd <= 300) {
+            e.preventDefault();
+          }
+          lastTouchEnd = now;
+        },
+        false
+      );
+    }
+
+    // 컴퓨터 환경일 때만 손전등 효과 추가
+    if (isMobile === false) {
+      // 커서 손전등 효과 추가
+      window.addEventListener("mousemove", e => {
+        if (cursorRef.current.style.display === "")
+          cursorRef.current.style.display = "block";
+        cursorRef.current.style.left = `${e.clientX - 250}px`;
+        cursorRef.current.style.top = `${e.clientY - 250}px`;
+
+        // 커서가 a태그 혹은 스크롤가이드(마우스 모양)를 호버하는 중이라면
+        if (
+          e.srcElement.nodeName === "A" ||
+          e.srcElement.classList.contains(styles["guide__mouse"])
+        ) {
+          // 커서에 호버 이펙트 추가
+          cursorRef.current.classList.add("cursor-hover");
+        }
+        // a태그를 호버하지 않는다면
+        else {
+          // 커서에 호버 이펙트 제거
+          cursorRef.current.classList.remove("cursor-hover");
+        }
+      });
+    }
+  };
+
+  useEffect(() => {
+    // 이벤트 리스너, 섹션 정보 등 초기화 작업
+    window.addEventListener("load", () => {
+      init();
+    });
+    init();
   });
 
   return (
     <div className={styles["content"]}>
       <Loading />
-      <Cursor ref={cursorRef}></Cursor>
+      <Cursor ref={cursorRef} />
       <Header scrollSectionInfo={scrollSectionInfo} />
       <Progress ref={progressRef} />
       <section
