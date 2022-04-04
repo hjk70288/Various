@@ -27,8 +27,9 @@ const Loading = props => {
     // 로딩이 3초 이상 안되는 경우 강제로 로딩 제거 (모바일에서의 무한 로딩 오류 제거)
     if (!isLoaded) {
       setTimeout(() => {
-        setAfterLoad(true);
-        removeLoadingDisplay();
+        window.location.reload();
+        // setAfterLoad(true);
+        // removeLoadingDisplay();
       }, 2000);
     }
   }
