@@ -638,6 +638,13 @@ const Main = () => {
     window.addEventListener("load", () => {
       setIsLoaded(true);
 
+      // 사용자가 컴퓨터 환경인지 모바일 환경인지 판단
+      const userInfo = navigator.userAgent;
+      let isMobile = false;
+      if (userInfo.indexOf("iPhone") > -1 || userInfo.indexOf("Android") > -1) {
+        isMobile = true;
+      }
+
       // 스크롤 섹션 정보 설정 및 스크롤 섹션 판단
       setScrollSectionInfo();
       handlePageScroll();
@@ -647,9 +654,8 @@ const Main = () => {
       });
 
       window.addEventListener("resize", () => {
-        const user = navigator.userAgent;
         // 컴퓨터 환경일 때만 resize
-        if (user.indexOf("iPhone") === -1 && user.indexOf("Android") === -1) {
+        if (isMobile === false) {
           window.location.reload();
         }
       });
@@ -662,26 +668,30 @@ const Main = () => {
         }, 500);
       });
 
-      window.addEventListener("mousemove", e => {
-        if (cursorRef.current.style.display === "")
-          cursorRef.current.style.display = "block";
-        cursorRef.current.style.left = `${e.clientX - 250}px`;
-        cursorRef.current.style.top = `${e.clientY - 250}px`;
+      // 컴퓨터 환경일 때만 손전등 효과 추가
+      if (isMobile === false) {
+        // 커서 손전등 효과 추가
+        window.addEventListener("mousemove", e => {
+          if (cursorRef.current.style.display === "")
+            cursorRef.current.style.display = "block";
+          cursorRef.current.style.left = `${e.clientX - 250}px`;
+          cursorRef.current.style.top = `${e.clientY - 250}px`;
 
-        // 커서가 a태그 혹은 스크롤가이드(마우스 모양)를 호버하는 중이라면
-        if (
-          e.srcElement.nodeName === "A" ||
-          e.srcElement.classList.contains(styles["guide__mouse"])
-        ) {
-          // 커서에 호버 이펙트 추가
-          cursorRef.current.classList.add("cursor-hover");
-        }
-        // a태그를 호버하지 않는다면
-        else {
-          // 커서에 호버 이펙트 제거
-          cursorRef.current.classList.remove("cursor-hover");
-        }
-      });
+          // 커서가 a태그 혹은 스크롤가이드(마우스 모양)를 호버하는 중이라면
+          if (
+            e.srcElement.nodeName === "A" ||
+            e.srcElement.classList.contains(styles["guide__mouse"])
+          ) {
+            // 커서에 호버 이펙트 추가
+            cursorRef.current.classList.add("cursor-hover");
+          }
+          // a태그를 호버하지 않는다면
+          else {
+            // 커서에 호버 이펙트 제거
+            cursorRef.current.classList.remove("cursor-hover");
+          }
+        });
+      }
     });
   });
 
