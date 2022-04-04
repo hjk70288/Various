@@ -742,7 +742,7 @@ const Main = () => {
         <p className={styles["title"]}>
           EXHIBITION:
           <br />
-          ABILITY
+          VARIOUS
         </p>
         <p className={styles["guide"]}>
           <ScrollGuide scrollSectionInfo={scrollSectionInfo} />

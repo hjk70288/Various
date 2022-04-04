@@ -27,7 +27,7 @@ const Header = props => {
             window.scrollTo(0, 0);
           }}
         >
-          ABILITY
+          VARIOUS
         </Link>
         <Link
           to="#"
