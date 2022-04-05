@@ -4,7 +4,7 @@ html,
 body {
   cursor: url("../Images/cursor.svg") 6 6, auto;
   height: 100vh;
-  height: calc(var(--vh, 1vh) * 100);
+  // height: calc(var(--vh, 1vh) * 100);
 }
 html {
   font-family: "Noto Sans KR", sans-serif;
