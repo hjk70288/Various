@@ -630,9 +630,9 @@ const Main = () => {
 
   // 이벤트 리스너, 섹션 정보 등 초기화 (initializing)
   const init = () => {
-    // IOS 하단바 영역 제외한 높이로 설정
-    let vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty("--vh", `${vh}px`);
+    // // IOS 하단바 영역 제외한 높이로 설정
+    // let vh = window.innerHeight * 0.01;
+    // document.documentElement.style.setProperty("--vh", `${vh}px`);
     screenHeight = window.innerHeight;
 
     // 사용자가 컴퓨터 환경인지 모바일 환경인지 판단
