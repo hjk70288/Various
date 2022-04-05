@@ -91,6 +91,7 @@ const Main = () => {
   let yOffset = 0; // 현재 스크롤 위치
   let currentSection = 0; // 현재 스크롤 섹션 Index
   let delayedYOffset = 0; // 부드러운 애니메이션에 사용되는 yOffset (점점 커지다가 yOffset과 동일해짐)
+  let screenHeight = window.innerHeight; // 화면 높이
   let rafId; // requestAnimationFrame이 반환하는 값
   let rafState = false; // 부드러운 애니메이션 동작 상태
 
@@ -215,8 +216,6 @@ const Main = () => {
     progressRef.current.style.width = `${
       (delayedYOffset / document.body.scrollHeight) * 105.2
     }%`;
-
-    const screenHeight = window.innerHeight;
 
     switch (currentSection) {
       case 0:
@@ -634,6 +633,7 @@ const Main = () => {
     // IOS 하단바 영역 제외한 높이로 설정
     let vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty("--vh", `${vh}px`);
+    screenHeight = window.innerHeight;
 
     // 사용자가 컴퓨터 환경인지 모바일 환경인지 판단
     const userInfo = navigator.userAgent;
