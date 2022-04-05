@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, memo } from "react";
 import styles from "./main.module.scss";
 import Cursor from "Components/Cursor/Cursor";
 import Loading from "Components/Loading/Loading";
@@ -78,7 +78,7 @@ const ScrollGuide = props => {
   );
 };
 
-const Main = () => {
+const Main = memo(() => {
   // Parameter
   const cursorRef = useRef(); // 마우스 커서 컴포넌트의 Ref
   const progressRef = useRef(); // 스크롤 진행률 Ref
@@ -590,9 +590,10 @@ const Main = () => {
     );
   };
 
+  let duration = 0.1;
   // 부드러운 애니메이션 감속을 위한 처리 (requestAnimationFrame 사용)
   const loopAnimation = () => {
-    delayedYOffset = delayedYOffset + (yOffset - delayedYOffset) * 0.1;
+    delayedYOffset = delayedYOffset + (yOffset - delayedYOffset) * duration;
     rafId = requestAnimationFrame(loopAnimation);
 
     // 해당 섹션에 해당하는 애니메이션 동작
@@ -877,6 +878,6 @@ const Main = () => {
       <Footer />
     </div>
   );
-};
+});
 
 export default Main;

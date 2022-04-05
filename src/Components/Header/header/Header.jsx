@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./header.module.scss";
-import { Link } from "react-router-dom";
 
 const Header = props => {
   const { scrollSectionInfo } = props;
@@ -20,69 +19,62 @@ const Header = props => {
   return (
     <nav className={styles["header"]}>
       <div className={styles["header__links"]}>
-        <Link
-          to="#"
+        <div
           className={`${styles["link"]} ${styles["title"]}`}
           onClick={() => {
-            window.scrollTo(0, 0);
+            window.scrollBy(0, 0 - window.pageYOffset);
           }}
         >
           VARIOUS
-        </Link>
-        <Link
-          to="#"
+        </div>
+        <div
           className={styles["link"]}
           onClick={() => {
-            window.scrollTo(0, 0);
+            window.scrollBy(0, 0 - window.pageYOffset);
           }}
         >
           0
-        </Link>
-        <Link
-          to="#"
+        </div>
+        <div
           className={styles["link"]}
           onClick={() => {
-            window.scrollTo(0, totalSectionHeight * 0.1);
+            window.scrollBy(0, totalSectionHeight * 0.1 - window.pageYOffset);
           }}
         >
           1
-        </Link>
-        <Link
-          to="#"
+        </div>
+        <div
           className={styles["link"]}
           onClick={() => {
-            window.scrollTo(0, totalSectionHeight * 0.3);
+            window.scrollBy(0, totalSectionHeight * 0.3 - window.pageYOffset);
           }}
         >
           2
-        </Link>
-        <Link
-          to="#"
+        </div>
+        <div
           className={styles["link"]}
           onClick={() => {
-            window.scrollTo(0, totalSectionHeight * 0.6);
+            window.scrollBy(0, totalSectionHeight * 0.6 - window.pageYOffset);
           }}
         >
           3
-        </Link>
-        <Link
-          to="#"
+        </div>
+        <div
           className={styles["link"]}
           onClick={() => {
-            window.scrollTo(0, totalSectionHeight * 0.8);
+            window.scrollBy(0, totalSectionHeight * 0.8 - window.pageYOffset);
           }}
         >
           4
-        </Link>
-        <Link
-          to="#"
+        </div>
+        <div
           className={styles["link"]}
           onClick={() => {
-            window.scrollTo(0, totalSectionHeight);
+            window.scrollBy(0, totalSectionHeight - window.pageYOffset);
           }}
         >
           0
-        </Link>
+        </div>
         {/* <a
           className={styles["link"]}
           target="_blank"
