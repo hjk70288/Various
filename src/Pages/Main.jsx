@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import styles from "./main.module.scss";
+import headerStyles from "Components/Header/header/header.module.scss";
 import Cursor from "Components/Cursor/Cursor";
 import Loading from "Components/Loading/Loading";
 import Header from "Components/Header/header/Header";
@@ -701,7 +702,8 @@ const Main = () => {
         // 커서가 a태그 혹은 스크롤가이드(마우스 모양)를 호버하는 중이라면
         if (
           e.srcElement.nodeName === "A" ||
-          e.srcElement.classList.contains(styles["guide__mouse"])
+          e.srcElement.classList.contains(styles["guide__mouse"]) ||
+          e.srcElement.classList.contains(headerStyles["link"])
         ) {
           // 커서에 호버 이펙트 추가
           cursorRef.current.classList.add("cursor-hover");
