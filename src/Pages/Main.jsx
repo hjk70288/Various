@@ -630,9 +630,7 @@ const Main = () => {
 
   // 이벤트 리스너, 섹션 정보 등 초기화 (initializing)
   const init = () => {
-    // // IOS 하단바 영역 제외한 높이로 설정
-    // let vh = window.innerHeight * 0.01;
-    // document.documentElement.style.setProperty("--vh", `${vh}px`);
+    // 화면 높이 설정
     screenHeight = window.innerHeight;
 
     // 사용자가 컴퓨터 환경인지 모바일 환경인지 판단
@@ -669,16 +667,16 @@ const Main = () => {
 
     // 모바일 환경일 때 축소, 확대 방지
     if (isMobile) {
-      // 두 손가락으로 화면을 클릭 시 이벤트 무시
-      // document.addEventListener(
-      //   "touchmove",
-      //   e => {
-      //     if (e.scale !== 1) {
-      //       e.preventDefault();
-      //     }
-      //   },
-      //   false
-      // );
+      // 두 손가락으로 화면을 클릭 시(핀치 줌) 이벤트 무시
+      document.documentElement.addEventListener(
+        "touchstart",
+        e => {
+          if (e.touches.length > 1) {
+            e.preventDefault();
+          }
+        },
+        false
+      );
 
       // 두번 연속 탭이 0.3초보다 짧다면 무시 (확대 방지)
       let lastTouchEnd = 0;
