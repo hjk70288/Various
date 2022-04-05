@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, memo } from "react";
+import React, { useEffect, useRef } from "react";
 import styles from "./main.module.scss";
 import Cursor from "Components/Cursor/Cursor";
 import Loading from "Components/Loading/Loading";
@@ -78,7 +78,7 @@ const ScrollGuide = props => {
   );
 };
 
-const Main = memo(() => {
+const Main = () => {
   // Parameter
   const cursorRef = useRef(); // 마우스 커서 컴포넌트의 Ref
   const progressRef = useRef(); // 스크롤 진행률 Ref
@@ -216,28 +216,28 @@ const Main = memo(() => {
       (delayedYOffset / document.body.scrollHeight) * 105.2
     }%`;
 
+    const screenHeight = window.innerHeight;
+
     switch (currentSection) {
       case 0:
         /* 배경 이미지의 높이가 현재 윈도우 높이보다 큰 경우 처리 */
         if (
           values.imageOut0[1] === -20 &&
-          window.innerHeight / objs.image0.height < 1
+          screenHeight / objs.image0.height < 1
         ) {
           // 이미지를 윈도우 화면 최상단에 고정
           objs.image0.style.top = 0;
           // Translate Y 값을 화면에 표시되지 않은 이미지의 비율만큼 상승시키도록 애니메이션 값 변경
-          values.imageOut0[1] =
-            -(1 - window.innerHeight / objs.image0.height) * 100;
+          values.imageOut0[1] = -(1 - screenHeight / objs.image0.height) * 100;
           // 이미지가 화면 높이보다 작은 경우보다 out 애니메이션을 더욱 빨리 실행시키도록 함
           values.imageOut0[2].start -= 0.18;
         }
         if (
           values.imageOut1[1] === -20 &&
-          window.innerHeight / objs.image1.height < 1
+          screenHeight / objs.image1.height < 1
         ) {
           objs.image1.style.top = 0;
-          values.imageOut1[1] =
-            -(1 - window.innerHeight / objs.image1.height) * 100;
+          values.imageOut1[1] = -(1 - screenHeight / objs.image1.height) * 100;
           values.imageOut1[2].start -= 0.18;
         }
 
@@ -249,14 +249,14 @@ const Main = memo(() => {
           );
 
           // 배경 이미지의 높이가 현재 윈도우 높이보다 큰 경우
-          if (window.innerHeight / objs.image0.height < 1) {
+          if (screenHeight / objs.image0.height < 1) {
             objs.image0.style.transform = `translate3d(-50%, 0%, 0)`;
           }
           // 배경 이미지의 높이가 현재 윈도우 높이보다 작은 경우
           else {
             // 이미지를 윈도우 높이만큼 가득 채움
             objs.image0.style.transform = `translate3d(-50%, -50%, 0) scale(${
-              window.innerHeight / objs.image0.height
+              screenHeight / objs.image0.height
             })`;
           }
         } else {
@@ -264,14 +264,14 @@ const Main = memo(() => {
             values.imageFadeOut0,
             sectionYOffset
           );
-          if (window.innerHeight / objs.image0.height < 1) {
+          if (screenHeight / objs.image0.height < 1) {
             objs.image0.style.transform = `translate3d(-50% , ${calcAnimationValues(
               values.imageOut0,
               sectionYOffset
             )}%, 0)`;
           } else {
             objs.image0.style.transform = `translate3d(-50% , -50%, 0) scale(${
-              window.innerHeight / objs.image0.height
+              screenHeight / objs.image0.height
             })`;
           }
         }
@@ -281,11 +281,11 @@ const Main = memo(() => {
             values.imageFadeIn1,
             sectionYOffset
           );
-          if (window.innerHeight / objs.image1.height < 1) {
+          if (screenHeight / objs.image1.height < 1) {
             objs.image1.style.transform = `translate3d(-50%, 0%, 0)`;
           } else {
             objs.image1.style.transform = `translate3d(-50%, -50%, 0) scale(${
-              window.innerHeight / objs.image1.height
+              screenHeight / objs.image1.height
             })`;
 
             values.imageOut1[1] = -20;
@@ -295,14 +295,14 @@ const Main = memo(() => {
             values.imageFadeOut1,
             sectionYOffset
           );
-          if (window.innerHeight / objs.image1.height < 1) {
+          if (screenHeight / objs.image1.height < 1) {
             objs.image1.style.transform = `translate3d(-50% , ${calcAnimationValues(
               values.imageOut1,
               sectionYOffset
             )}%, 0)`;
           } else {
             objs.image1.style.transform = `translate3d(-50%, -50%, 0) scale(${
-              window.innerHeight / objs.image1.height
+              screenHeight / objs.image1.height
             })`;
           }
         }
@@ -393,23 +393,21 @@ const Main = memo(() => {
         /* 배경 이미지의 높이가 현재 윈도우 높이보다 큰 경우 처리 */
         if (
           values.imageOut0[1] === -20 &&
-          window.innerHeight / objs.image0.height < 1
+          screenHeight / objs.image0.height < 1
         ) {
           // 이미지를 윈도우 화면 최상단에 고정
           objs.image0.style.top = 0;
           // Translate Y 값을 화면에 표시되지 않은 이미지의 비율만큼 상승시키도록 애니메이션 값 변경
-          values.imageOut0[1] =
-            -(1 - window.innerHeight / objs.image0.height) * 100;
+          values.imageOut0[1] = -(1 - screenHeight / objs.image0.height) * 100;
           // 이미지가 화면 높이보다 작은 경우보다 out 애니메이션을 더욱 빨리 실행시키도록 함
           values.imageOut0[2].start -= 0.18;
         }
         if (
           values.imageOut1[1] === -20 &&
-          window.innerHeight / objs.image1.height < 1
+          screenHeight / objs.image1.height < 1
         ) {
           objs.image1.style.top = 0;
-          values.imageOut1[1] =
-            -(1 - window.innerHeight / objs.image1.height) * 100;
+          values.imageOut1[1] = -(1 - screenHeight / objs.image1.height) * 100;
           values.imageOut1[2].start -= 0.18;
         }
 
@@ -421,14 +419,14 @@ const Main = memo(() => {
           );
 
           // 배경 이미지의 높이가 현재 윈도우 높이보다 큰 경우
-          if (window.innerHeight / objs.image0.height < 1) {
+          if (screenHeight / objs.image0.height < 1) {
             objs.image0.style.transform = `translate3d(-50%, 0%, 0)`;
           }
           // 배경 이미지의 높이가 현재 윈도우 높이보다 작은 경우
           else {
             // 이미지를 윈도우 높이만큼 가득 채움
             objs.image0.style.transform = `translate3d(-50%, -50%, 0) scale(${
-              window.innerHeight / objs.image0.height
+              screenHeight / objs.image0.height
             })`;
           }
         } else {
@@ -436,14 +434,14 @@ const Main = memo(() => {
             values.imageFadeOut0,
             sectionYOffset
           );
-          if (window.innerHeight / objs.image0.height < 1) {
+          if (screenHeight / objs.image0.height < 1) {
             objs.image0.style.transform = `translate3d(-50% , ${calcAnimationValues(
               values.imageOut0,
               sectionYOffset
             )}%, 0)`;
           } else {
             objs.image0.style.transform = `translate3d(-50% , -50%, 0) scale(${
-              window.innerHeight / objs.image0.height
+              screenHeight / objs.image0.height
             })`;
           }
         }
@@ -453,11 +451,11 @@ const Main = memo(() => {
             values.imageFadeIn1,
             sectionYOffset
           );
-          if (window.innerHeight / objs.image1.height < 1) {
+          if (screenHeight / objs.image1.height < 1) {
             objs.image1.style.transform = `translate3d(-50%, 0%, 0)`;
           } else {
             objs.image1.style.transform = `translate3d(-50%, -50%, 0) scale(${
-              window.innerHeight / objs.image1.height
+              screenHeight / objs.image1.height
             })`;
 
             values.imageOut1[1] = -20;
@@ -467,14 +465,14 @@ const Main = memo(() => {
             values.imageFadeOut1,
             sectionYOffset
           );
-          if (window.innerHeight / objs.image1.height < 1) {
+          if (screenHeight / objs.image1.height < 1) {
             objs.image1.style.transform = `translate3d(-50% , ${calcAnimationValues(
               values.imageOut1,
               sectionYOffset
             )}%, 0)`;
           } else {
             objs.image1.style.transform = `translate3d(-50%, -50%, 0) scale(${
-              window.innerHeight / objs.image1.height
+              screenHeight / objs.image1.height
             })`;
           }
         }
@@ -670,15 +668,15 @@ const Main = memo(() => {
     // 모바일 환경일 때 축소, 확대 방지
     if (isMobile) {
       // 두 손가락으로 화면을 클릭 시 이벤트 무시
-      document.addEventListener(
-        "touchmove",
-        e => {
-          if (e.scale !== 1) {
-            e.preventDefault();
-          }
-        },
-        false
-      );
+      // document.addEventListener(
+      //   "touchmove",
+      //   e => {
+      //     if (e.scale !== 1) {
+      //       e.preventDefault();
+      //     }
+      //   },
+      //   false
+      // );
 
       // 두번 연속 탭이 0.3초보다 짧다면 무시 (확대 방지)
       let lastTouchEnd = 0;
@@ -878,6 +876,6 @@ const Main = memo(() => {
       <Footer />
     </div>
   );
-});
+};
 
 export default Main;
