@@ -665,29 +665,29 @@ const Main = () => {
       }, 500);
     });
 
-    // 모바일 환경일 때 축소, 확대 방지
-    if (isMobile) {
-      // 두 손가락으로 화면을 클릭 시(핀치 줌) 이벤트 무시
-      document.addEventListener("touchstart", e => {
-        if (e.touches.length > 1) {
-          window.location.reload();
-        }
-      });
+    // // 모바일 환경일 때 축소, 확대 방지
+    // if (isMobile) {
+    //   // 두 손가락으로 화면을 클릭 시(핀치 줌) 이벤트 무시
+    //   document.addEventListener("touchstart", e => {
+    //     if (e.touches.length > 1) {
+    //       window.location.reload();
+    //     }
+    //   });
 
-      // 두번 연속 탭이 0.3초보다 짧다면 무시 (확대 방지)
-      let lastTouchEnd = 0;
-      document.addEventListener(
-        "touchend",
-        e => {
-          let now = new Date().getTime();
-          if (now - lastTouchEnd <= 300) {
-            e.preventDefault();
-          }
-          lastTouchEnd = now;
-        },
-        false
-      );
-    }
+    //   // 두번 연속 탭이 0.3초보다 짧다면 무시 (확대 방지)
+    //   let lastTouchEnd = 0;
+    //   document.addEventListener(
+    //     "touchend",
+    //     e => {
+    //       let now = new Date().getTime();
+    //       if (now - lastTouchEnd <= 300) {
+    //         e.preventDefault();
+    //       }
+    //       lastTouchEnd = now;
+    //     },
+    //     false
+    //   );
+    // }
 
     // 컴퓨터 환경일 때만 손전등 효과 추가
     if (isMobile === false) {

@@ -8,6 +8,8 @@ body {
 html {
   font-family: "Noto Sans KR", sans-serif;
   font-size: 14px;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
   ::-webkit-scrollbar {
     display: none;
   }
