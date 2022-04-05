@@ -654,6 +654,8 @@ const Main = () => {
       // 컴퓨터 환경일 때만 resize
       if (isMobile === false) {
         window.location.reload();
+      } else {
+        screenHeight = window.innerHeight;
       }
     });
 
