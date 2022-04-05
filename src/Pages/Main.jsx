@@ -668,7 +668,7 @@ const Main = () => {
     // 모바일 환경일 때 축소, 확대 방지
     if (isMobile) {
       // 두 손가락으로 화면을 클릭 시(핀치 줌) 이벤트 무시
-      document.documentElement.addEventListener(
+      document.addEventListener(
         "touchstart",
         e => {
           if (e.touches.length > 1) {

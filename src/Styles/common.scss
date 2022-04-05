@@ -3,6 +3,7 @@
 html,
 body {
   cursor: url("../Images/cursor.svg") 6 6, auto;
+  touch-action: pan-y; // 핀치 줌 불가능하도록
   // height: 100vh;
   // height: calc(var(--vh, 1vh) * 100);
 }
