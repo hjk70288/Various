@@ -1,9 +1,7 @@
 @charset 'utf-8';
-
 html,
 body {
   cursor: url("../Images/cursor.svg") 6 6, auto;
-  touch-action: pan-y; // 핀치 줌 불가능하도록
   // height: 100vh;
   // height: calc(var(--vh, 1vh) * 100);
 }
@@ -20,6 +18,7 @@ body {
   color: white;
   letter-spacing: -0.05em;
   background-color: rgba(18, 18, 18);
+  touch-action: pan-y; // 핀치 줌 불가능하도록
 }
 
 a,
