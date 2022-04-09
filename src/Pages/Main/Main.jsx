@@ -756,11 +756,7 @@ const Main = ({ history }) => {
           className={`${styles["sticky-elem"]} ${styles["main-message"]}`}
           style={{ zIndex: "999" }}
         >
-          <p
-            onClick={() => {
-              history.push(`/art1`);
-            }}
-          >
+          <p>
             사랑인피니티
             <br />
             596 x 842
