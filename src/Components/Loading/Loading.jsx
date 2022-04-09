@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styles from "./loading.module.scss";
 
 const Loading = props => {
@@ -6,18 +6,30 @@ const Loading = props => {
   const loadingRef = useRef();
   const [afterLoad, setAfterLoad] = useState(false);
 
-  // 로딩 컴포넌트의 display을 0.5초 뒤에 none으로 변경
-  const removeLoadingDisplay = () => {
-    setTimeout(() => {
-      loadingRef.current.style.display = "none";
-    }, 500);
-  };
+  useEffect(() => {
+    let isComponentMount = true;
 
-  // 0.5초동안 로딩 컴포넌트 띄우기
-  setTimeout(() => {
-    setAfterLoad(true);
-    removeLoadingDisplay();
-  }, 500);
+    // 로딩 컴포넌트의 display을 0.5초 뒤에 none으로 변경
+    const removeLoadingDisplay = () => {
+      setTimeout(() => {
+        if (loadingRef.current) {
+          loadingRef.current.style.display = "none";
+        }
+      }, 500);
+    };
+
+    // 0.5초동안 로딩 컴포넌트 띄우기
+    setTimeout(() => {
+      if (isComponentMount) {
+        setAfterLoad(true);
+        removeLoadingDisplay();
+      }
+    }, 500);
+
+    return () => {
+      isComponentMount = false;
+    };
+  });
 
   return (
     <div

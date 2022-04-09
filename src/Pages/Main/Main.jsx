@@ -79,7 +79,7 @@ const ScrollGuide = props => {
   );
 };
 
-const Main = () => {
+const Main = ({ history }) => {
   // Parameter
   const cursorRef = useRef(); // 마우스 커서 컴포넌트의 Ref
   const progressRef = useRef(); // 스크롤 진행률 Ref
@@ -214,9 +214,11 @@ const Main = () => {
     const scrollRatio = sectionYOffset / scrollHeight; // 현재 섹션 안에서의 스크롤이 진행된 비율
 
     // 스크롤 진행률 표시
-    progressRef.current.style.width = `${
-      (delayedYOffset / document.body.scrollHeight) * 105.2
-    }%`;
+    if (progressRef.current) {
+      progressRef.current.style.width = `${
+        (delayedYOffset / document.body.scrollHeight) * 105.2
+      }%`;
+    }
 
     switch (currentSection) {
       case 0:
@@ -629,11 +631,8 @@ const Main = () => {
     }
   };
 
-  // 이벤트 리스너, 섹션 정보 등 초기화 (initializing)
-  const init = () => {
-    // 화면 높이 설정
-    screenHeight = window.innerHeight;
-
+  // 화면 크기 변경 시 이벤트 핸들링
+  const handleResizeWindow = () => {
     // 사용자가 컴퓨터 환경인지 모바일 환경인지 판단
     const userInfo = navigator.userAgent;
     let isMobile = false;
@@ -641,88 +640,90 @@ const Main = () => {
       isMobile = true;
     }
 
+    // 컴퓨터 환경일 때만 resize
+    if (isMobile === false) {
+      window.location.reload();
+    } else {
+      screenHeight = window.innerHeight;
+    }
+  };
+
+  // 휴대폰 가로 세로 방향 변경 시 이벤트 핸들링
+  const handleChangeOrientation = () => {
+    // 방향 변경 시 소요되는 시간을 고려하여 Time Out
+    setTimeout(() => {
+      window.location.reload();
+    }, 500);
+  };
+
+  // 마우스 이동 시 이벤트 핸들링
+  const handleMoveMouse = e => {
+    // 사용자가 컴퓨터 환경인지 모바일 환경인지 판단
+    const userInfo = navigator.userAgent;
+    let isMobile = false;
+    if (userInfo.indexOf("iPhone") > -1 || userInfo.indexOf("Android") > -1) {
+      isMobile = true;
+    }
+
+    // 컴퓨터 환경일 때만 손전등 효과 추가
+    if (isMobile === false) {
+      if (cursorRef.current.style.display === "")
+        cursorRef.current.style.display = "block";
+      cursorRef.current.style.left = `${e.clientX - 250}px`;
+      cursorRef.current.style.top = `${e.clientY - 250}px`;
+
+      // 커서가 a태그 혹은 스크롤가이드(마우스 모양)를 호버하는 중이라면
+      if (
+        e.srcElement.nodeName === "A" ||
+        e.srcElement.classList.contains(styles["guide__mouse"]) ||
+        e.srcElement.classList.contains(headerStyles["link"])
+      ) {
+        // 커서에 호버 이펙트 추가
+        cursorRef.current.classList.add("cursor-hover");
+      }
+      // a태그를 호버하지 않는다면
+      else {
+        // 커서에 호버 이펙트 제거
+        cursorRef.current.classList.remove("cursor-hover");
+      }
+    }
+  };
+
+  // 이벤트 리스너, 섹션 정보 등 초기화 (initializing)
+  const init = () => {
+    // 화면 높이 설정
+    screenHeight = window.innerHeight;
+
     // 스크롤 섹션 정보 설정 및 스크롤 섹션 판단
     setScrollSectionInfo();
     handlePageScroll();
 
-    window.addEventListener("scroll", () => {
-      handlePageScroll();
-    });
+    // 페이지 스크롤 시 이벤트 핸들링
+    window.addEventListener("scroll", handlePageScroll);
 
-    window.addEventListener("resize", () => {
-      // 컴퓨터 환경일 때만 resize
-      if (isMobile === false) {
-        window.location.reload();
-      } else {
-        screenHeight = window.innerHeight;
-      }
-    });
+    // 화면 크기 변경 시 이벤트 핸들링
+    window.addEventListener("resize", handleResizeWindow);
 
     // 휴대폰 가로 세로 방향 변경 시 이벤트 핸들링
-    window.addEventListener("orientationchange", () => {
-      // 방향 변경 시 소요되는 시간을 고려하여 Time Out
-      setTimeout(() => {
-        window.location.reload();
-      }, 500);
-    });
+    window.addEventListener("orientationchange", handleChangeOrientation);
 
-    // // 모바일 환경일 때 축소, 확대 방지
-    // if (isMobile) {
-    //   // 두 손가락으로 화면을 클릭 시(핀치 줌) 이벤트 무시
-    //   document.addEventListener("touchstart", e => {
-    //     if (e.touches.length > 1) {
-    //       window.location.reload();
-    //     }
-    //   });
-
-    //   // 두번 연속 탭이 0.3초보다 짧다면 무시 (확대 방지)
-    //   let lastTouchEnd = 0;
-    //   document.addEventListener(
-    //     "touchend",
-    //     e => {
-    //       let now = new Date().getTime();
-    //       if (now - lastTouchEnd <= 300) {
-    //         e.preventDefault();
-    //       }
-    //       lastTouchEnd = now;
-    //     },
-    //     false
-    //   );
-    // }
-
-    // 컴퓨터 환경일 때만 손전등 효과 추가
-    if (isMobile === false) {
-      // 커서 손전등 효과 추가
-      window.addEventListener("mousemove", e => {
-        if (cursorRef.current.style.display === "")
-          cursorRef.current.style.display = "block";
-        cursorRef.current.style.left = `${e.clientX - 250}px`;
-        cursorRef.current.style.top = `${e.clientY - 250}px`;
-
-        // 커서가 a태그 혹은 스크롤가이드(마우스 모양)를 호버하는 중이라면
-        if (
-          e.srcElement.nodeName === "A" ||
-          e.srcElement.classList.contains(styles["guide__mouse"]) ||
-          e.srcElement.classList.contains(headerStyles["link"])
-        ) {
-          // 커서에 호버 이펙트 추가
-          cursorRef.current.classList.add("cursor-hover");
-        }
-        // a태그를 호버하지 않는다면
-        else {
-          // 커서에 호버 이펙트 제거
-          cursorRef.current.classList.remove("cursor-hover");
-        }
-      });
-    }
+    // 마우스 이동 시 이벤트 핸들링 (커서 손전등 효과 추가)
+    window.addEventListener("mousemove", handleMoveMouse);
   };
 
   useEffect(() => {
     // 이벤트 리스너, 섹션 정보 등 초기화 작업
-    window.addEventListener("load", () => {
-      init();
-    });
+    window.addEventListener("load", init);
     init();
+
+    return () => {
+      // 컴포넌트 UnMount 시 등록했던 모든 이벤트 리스너 제거
+      window.removeEventListener("load", init);
+      window.removeEventListener("scroll", handlePageScroll);
+      window.removeEventListener("resize", handleResizeWindow);
+      window.removeEventListener("orientationchange", handleChangeOrientation);
+      window.removeEventListener("mousemove", handleMoveMouse);
+    };
   });
 
   return (
@@ -753,8 +754,13 @@ const Main = () => {
         <div
           ref={ref => messagesInSection0.current.splice(0, 1, ref)}
           className={`${styles["sticky-elem"]} ${styles["main-message"]}`}
+          style={{ zIndex: "999" }}
         >
-          <p>
+          <p
+            onClick={() => {
+              history.push(`/art1`);
+            }}
+          >
             사랑인피니티
             <br />
             596 x 842
@@ -821,7 +827,7 @@ const Main = () => {
           className={`${styles["sticky-elem"]} ${styles["main-message"]}`}
         >
           <p>
-            멜롱멜롱메
+            멜롱
             <br />
             2480 x 3508
             <br />
