@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import renderComponent from "Hooks/renderComponent";
 import styles from "./main.module.scss";
 import headerStyles from "Components/Header/header/header.module.scss";
 import Cursor from "Components/Cursor/Cursor";
@@ -804,19 +805,6 @@ const Main = ({ history }) => {
           <br />
           VARIOUS
         </p>
-        <p
-          onClick={() => {
-            history.push("/art1");
-          }}
-          style={{
-            textAlign: "center",
-            fontSize: "2rem",
-            zIndex: "999",
-            position: "relative",
-          }}
-        >
-          클릭하면 페이지 이동
-        </p>
         <p className={styles["guide"]}>
           <ScrollGuide scrollSectionInfo={scrollSectionInfo} />
         </p>
@@ -829,6 +817,10 @@ const Main = ({ history }) => {
         <div
           ref={ref => messagesInSection0.current.splice(0, 1, ref)}
           className={`${styles["sticky-elem"]} ${styles["main-message"]}`}
+          style={{ zIndex: "99" }}
+          onClick={() => {
+            renderComponent(history, "/art1");
+          }}
         >
           <p>
             사랑인피니티

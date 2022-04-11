@@ -23,6 +23,7 @@ body {
   touch-action: pan-y; // 핀치 줌 불가능하도록
 }
 
+/* 커서 모양 변경 */
 a,
 a:link {
   cursor: url("../Images/cursor.svg") 6 6, auto;
@@ -37,4 +38,28 @@ a:active {
 .cursor-hover {
   transition: background-color 0.4s;
   background-color: rgba(255, 255, 255, 0.25);
+}
+
+/* 페이지 이동 시 렌더링 애니메이션 */
+.render {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  animation: render-animation 1s;
+  z-index: 999;
+  opacity: 0;
+
+  @keyframes render-animation {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 }
