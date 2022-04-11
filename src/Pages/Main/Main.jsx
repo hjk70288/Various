@@ -754,7 +754,6 @@ const Main = ({ history }) => {
         <div
           ref={ref => messagesInSection0.current.splice(0, 1, ref)}
           className={`${styles["sticky-elem"]} ${styles["main-message"]}`}
-          style={{ zIndex: "999" }}
         >
           <p>
             사랑인피니티
