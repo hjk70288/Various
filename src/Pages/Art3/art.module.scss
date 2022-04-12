@@ -1,5 +1,6 @@
 .content {
   overflow-x: hidden;
+  height: 100vh;
 
   .intro {
     height: 100vh;
@@ -118,7 +119,6 @@
 
 .before-load {
   overflow: hidden;
-  height: 100vh;
 }
 
 @media (max-width: 480px) {
