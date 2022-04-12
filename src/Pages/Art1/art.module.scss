@@ -124,12 +124,26 @@
 @media (max-width: 480px) {
   .content {
     .intro {
+      .intro__background {
+        position: relative;
+
+        .background__image {
+          background-attachment: unset;
+          background-repeat: unset;
+        }
+      }
       .intro__desc {
         bottom: 3vh;
         left: 3vh;
       }
     }
     .next {
+      .next__background {
+        background-attachment: unset;
+        background-repeat: unset;
+
+        position: relative;
+      }
       .next__button {
         bottom: 3vh;
         left: 3vh;
