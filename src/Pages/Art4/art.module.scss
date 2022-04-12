@@ -1,6 +1,5 @@
 .content {
   overflow-x: hidden;
-  height: 100vh;
 
   .intro {
     height: 100vh;
@@ -125,12 +124,28 @@
 @media (max-width: 480px) {
   .content {
     .intro {
+      margin-top: 52px;
+      height: calc(100vh - 52px);
+      .intro__background {
+        position: relative;
+
+        .background__image {
+          background-attachment: unset;
+          background-repeat: unset;
+        }
+      }
       .intro__desc {
         bottom: 3vh;
         left: 3vh;
       }
     }
     .next {
+      .next__background {
+        background-attachment: unset;
+        background-repeat: unset;
+
+        position: relative;
+      }
       .next__button {
         bottom: 3vh;
         left: 3vh;
