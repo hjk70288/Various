@@ -7,10 +7,10 @@ import Loading from "Components/Loading/Loading";
 import Header from "Components/Header/header/Header";
 import Progress from "Components/Header/progress/Progress";
 import Footer from "Components/Footer/Footer";
-import image1 from "Images/유리땅.jpg";
-import image2 from "Images/사랑인피니티.jpg";
-import image3 from "Images/멜롱멜롱메.jpg";
-import image4 from "Images/이인증...jpg";
+import art1 from "Images/art1.jpg";
+import art2 from "Images/art2.jpg";
+import art3 from "Images/art3.jpg";
+import art4 from "Images/art4.jpg";
 
 // 스크롤 가이드
 const ScrollGuide = props => {
@@ -916,7 +916,7 @@ const Main = ({ history }) => {
           <ScrollGuide scrollSectionInfo={scrollSectionInfo} />
         </p>
         <img
-          src={image2}
+          src={art1}
           alt=""
           ref={ref => imagesInSection0.current.splice(0, 1, ref)}
           className={`${styles["sticky-elem"]} ${styles["main-image"]}`}
@@ -961,7 +961,7 @@ const Main = ({ history }) => {
         id={styles["scroll-section-1"]}
       >
         <img
-          src={image1}
+          src={art2}
           alt=""
           ref={ref => imagesInSection1.current.splice(0, 1, ref)}
           className={`${styles["sticky-elem"]} ${styles["main-image"]}`}
@@ -1006,7 +1006,7 @@ const Main = ({ history }) => {
         id={styles["scroll-section-2"]}
       >
         <img
-          src={image3}
+          src={art3}
           alt=""
           ref={ref => imagesInSection2.current.splice(0, 1, ref)}
           className={`${styles["sticky-elem"]} ${styles["main-image"]}`}
@@ -1051,7 +1051,7 @@ const Main = ({ history }) => {
         id={styles["scroll-section-3"]}
       >
         <img
-          src={image4}
+          src={art4}
           alt=""
           ref={ref => imagesInSection3.current.splice(0, 1, ref)}
           className={`${styles["sticky-elem"]} ${styles["main-image"]}`}
