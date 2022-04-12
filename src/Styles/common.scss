@@ -37,8 +37,17 @@ a:active {
 }
 .cursor-hover {
   transition: background-color 0.4s;
-  background-color: rgba(255, 255, 255, 0.25);
+  // background-color: rgba(255, 255, 255, 0.25);
+  background-color: rgba(255, 255, 0, 0.3);
 }
+.cursor-none {
+  transition: background-color 0.4s;
+  background-color: unset;
+}
+// .cursor-hover--yellow {
+//   transition: background-color 0.4s;
+//   background-color: rgba(255, 255, 0, 0.25);
+// }
 
 /* 페이지 이동 시 렌더링 애니메이션 */
 .render {

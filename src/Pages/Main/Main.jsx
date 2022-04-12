@@ -301,13 +301,31 @@ const Main = ({ history }) => {
           }
         }
 
+        /* 상세보기 메시지 클릭 가능하도록 z-index 처리 */
+        if (scrollRatio >= 0.35 && scrollRatio <= 0.9) {
+          objs.message2.style.zIndex = `999`;
+        } else {
+          objs.message2.style.zIndex = `0`;
+        }
+
         /* 텍스트(메시지) 애니메이션 */
         if (scrollRatio < 0.4) {
+          // 작품 메인 메시지
           objs.message0.style.opacity = calcAnimationValues(
             values.messageFadeIn0,
             sectionYOffset
           );
           objs.message0.style.transform = `translate3d(0, ${calcAnimationValues(
+            values.messageIn0,
+            sectionYOffset
+          )}%, 0)`;
+
+          // 상세보기 메시지
+          objs.message2.style.opacity = calcAnimationValues(
+            values.messageFadeIn0,
+            sectionYOffset
+          );
+          objs.message2.style.transform = `translate3d(0, ${calcAnimationValues(
             values.messageIn0,
             sectionYOffset
           )}%, 0)`;
@@ -332,11 +350,22 @@ const Main = ({ history }) => {
             sectionYOffset
           )}%, 0)`;
         } else {
+          // 작품 메인 메시지
           objs.message1.style.opacity = calcAnimationValues(
             values.messageFadeOut1,
             sectionYOffset
           );
           objs.message1.style.transform = `translate3d(0, ${calcAnimationValues(
+            values.messageOut1,
+            sectionYOffset
+          )}%, 0)`;
+
+          // 상세보기 메시지
+          objs.message2.style.opacity = calcAnimationValues(
+            values.messageFadeOut1,
+            sectionYOffset
+          );
+          objs.message2.style.transform = `translate3d(0, ${calcAnimationValues(
             values.messageOut1,
             sectionYOffset
           )}%, 0)`;
@@ -391,6 +420,13 @@ const Main = ({ history }) => {
           }
         }
 
+        /* 상세보기 메시지 클릭 가능하도록 z-index 처리 */
+        if (scrollRatio >= 0.25 && scrollRatio <= 0.8) {
+          objs.message2.style.zIndex = `999`;
+        } else {
+          objs.message2.style.zIndex = `0`;
+        }
+
         /* 텍스트(메시지) 애니메이션 */
         if (scrollRatio < 0.3) {
           objs.message0.style.opacity = calcAnimationValues(
@@ -398,6 +434,15 @@ const Main = ({ history }) => {
             sectionYOffset
           );
           objs.message0.style.transform = `translate3d(0, ${calcAnimationValues(
+            values.messageIn0,
+            sectionYOffset
+          )}%, 0)`;
+
+          objs.message2.style.opacity = calcAnimationValues(
+            values.messageFadeIn0,
+            sectionYOffset
+          );
+          objs.message2.style.transform = `translate3d(0, ${calcAnimationValues(
             values.messageIn0,
             sectionYOffset
           )}%, 0)`;
@@ -427,6 +472,15 @@ const Main = ({ history }) => {
             sectionYOffset
           );
           objs.message1.style.transform = `translate3d(0, ${calcAnimationValues(
+            values.messageOut1,
+            sectionYOffset
+          )}%, 0)`;
+
+          objs.message2.style.opacity = calcAnimationValues(
+            values.messageFadeOut1,
+            sectionYOffset
+          );
+          objs.message2.style.transform = `translate3d(0, ${calcAnimationValues(
             values.messageOut1,
             sectionYOffset
           )}%, 0)`;
@@ -481,6 +535,13 @@ const Main = ({ history }) => {
           }
         }
 
+        /* 상세보기 메시지 클릭 가능하도록 z-index 처리 */
+        if (scrollRatio >= 0.25 && scrollRatio <= 0.8) {
+          objs.message2.style.zIndex = `999`;
+        } else {
+          objs.message2.style.zIndex = `0`;
+        }
+
         /* 텍스트(메시지) 애니메이션 */
         if (scrollRatio < 0.3) {
           objs.message0.style.opacity = calcAnimationValues(
@@ -488,6 +549,15 @@ const Main = ({ history }) => {
             sectionYOffset
           );
           objs.message0.style.transform = `translate3d(0, ${calcAnimationValues(
+            values.messageIn0,
+            sectionYOffset
+          )}%, 0)`;
+
+          objs.message2.style.opacity = calcAnimationValues(
+            values.messageFadeIn0,
+            sectionYOffset
+          );
+          objs.message2.style.transform = `translate3d(0, ${calcAnimationValues(
             values.messageIn0,
             sectionYOffset
           )}%, 0)`;
@@ -517,6 +587,15 @@ const Main = ({ history }) => {
             sectionYOffset
           );
           objs.message1.style.transform = `translate3d(0, ${calcAnimationValues(
+            values.messageOut1,
+            sectionYOffset
+          )}%, 0)`;
+
+          objs.message2.style.opacity = calcAnimationValues(
+            values.messageFadeOut1,
+            sectionYOffset
+          );
+          objs.message2.style.transform = `translate3d(0, ${calcAnimationValues(
             values.messageOut1,
             sectionYOffset
           )}%, 0)`;
@@ -571,6 +650,13 @@ const Main = ({ history }) => {
           }
         }
 
+        /* 상세보기 메시지 클릭 가능하도록 z-index 처리 */
+        if (scrollRatio >= 0.25 && scrollRatio <= 0.8) {
+          objs.message2.style.zIndex = `999`;
+        } else {
+          objs.message2.style.zIndex = `0`;
+        }
+
         /* 텍스트(메시지) 애니메이션 */
         if (scrollRatio < 0.3) {
           objs.message0.style.opacity = calcAnimationValues(
@@ -578,6 +664,15 @@ const Main = ({ history }) => {
             sectionYOffset
           );
           objs.message0.style.transform = `translate3d(0, ${calcAnimationValues(
+            values.messageIn0,
+            sectionYOffset
+          )}%, 0)`;
+
+          objs.message2.style.opacity = calcAnimationValues(
+            values.messageFadeIn0,
+            sectionYOffset
+          );
+          objs.message2.style.transform = `translate3d(0, ${calcAnimationValues(
             values.messageIn0,
             sectionYOffset
           )}%, 0)`;
@@ -607,6 +702,15 @@ const Main = ({ history }) => {
             sectionYOffset
           );
           objs.message1.style.transform = `translate3d(0, ${calcAnimationValues(
+            values.messageOut1,
+            sectionYOffset
+          )}%, 0)`;
+
+          objs.message2.style.opacity = calcAnimationValues(
+            values.messageFadeOut1,
+            sectionYOffset
+          );
+          objs.message2.style.transform = `translate3d(0, ${calcAnimationValues(
             values.messageOut1,
             sectionYOffset
           )}%, 0)`;
@@ -729,7 +833,7 @@ const Main = ({ history }) => {
     }
 
     // 컴퓨터 환경일 때만 손전등 효과 추가
-    if (isMobile === false) {
+    if (isMobile === false && cursorRef.current) {
       if (cursorRef.current.style.display === "")
         cursorRef.current.style.display = "block";
       cursorRef.current.style.left = `${e.clientX - 250}px`;
@@ -739,15 +843,18 @@ const Main = ({ history }) => {
       if (
         e.srcElement.nodeName === "A" ||
         e.srcElement.classList.contains(styles["guide__mouse"]) ||
-        e.srcElement.classList.contains(headerStyles["link"])
+        e.srcElement.classList.contains(headerStyles["link"]) ||
+        e.srcElement.classList.contains(styles["detail-message__link"])
       ) {
         // 커서에 호버 이펙트 추가
+        cursorRef.current.classList.remove("cursor-none");
         cursorRef.current.classList.add("cursor-hover");
       }
       // a태그를 호버하지 않는다면
       else {
         // 커서에 호버 이펙트 제거
         cursorRef.current.classList.remove("cursor-hover");
+        cursorRef.current.classList.add("cursor-none");
       }
     }
   };
@@ -817,10 +924,6 @@ const Main = ({ history }) => {
         <div
           ref={ref => messagesInSection0.current.splice(0, 1, ref)}
           className={`${styles["sticky-elem"]} ${styles["main-message"]}`}
-          style={{ zIndex: "99" }}
-          onClick={() => {
-            renderComponent(history, "/art1");
-          }}
         >
           <p>
             사랑인피니티
@@ -841,6 +944,15 @@ const Main = ({ history }) => {
             <br />
             2021
           </p>
+        </div>
+        <div
+          ref={ref => messagesInSection0.current.splice(2, 1, ref)}
+          className={`${styles["sticky-elem"]} ${styles["detail-message"]}`}
+          onClick={() => {
+            renderComponent(history, "/art1");
+          }}
+        >
+          <p className={styles["detail-message__link"]}>D</p>
         </div>
       </section>
       <section
@@ -878,6 +990,15 @@ const Main = ({ history }) => {
             2022
           </p>
         </div>
+        <div
+          ref={ref => messagesInSection1.current.splice(2, 1, ref)}
+          className={`${styles["sticky-elem"]} ${styles["detail-message"]}`}
+          onClick={() => {
+            renderComponent(history, "/art2");
+          }}
+        >
+          <p className={styles["detail-message__link"]}>D</p>
+        </div>
       </section>
       <section
         ref={section2}
@@ -914,6 +1035,15 @@ const Main = ({ history }) => {
             2021
           </p>
         </div>
+        <div
+          ref={ref => messagesInSection2.current.splice(2, 1, ref)}
+          className={`${styles["sticky-elem"]} ${styles["detail-message"]}`}
+          onClick={() => {
+            renderComponent(history, "/art3");
+          }}
+        >
+          <p className={styles["detail-message__link"]}>D</p>
+        </div>
       </section>
       <section
         ref={section3}
@@ -949,6 +1079,15 @@ const Main = ({ history }) => {
             <br />
             2022
           </p>
+        </div>
+        <div
+          ref={ref => messagesInSection3.current.splice(2, 1, ref)}
+          className={`${styles["sticky-elem"]} ${styles["detail-message"]}`}
+          onClick={() => {
+            renderComponent(history, "/art4");
+          }}
+        >
+          <p className={styles["detail-message__link"]}>D</p>
         </div>
       </section>
       <Footer />

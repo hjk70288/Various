@@ -1,0 +1,61 @@
+.content {
+  overflow-x: hidden;
+
+  .art-detail {
+    opacity: 0;
+    transition: opacity 0.8s;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+
+    .art-detail__art {
+      height: 50vh;
+    }
+
+    .art-detail__desc {
+      width: 15em;
+      font-size: 2rem;
+      margin-left: 1em;
+
+      .desc__title {
+        font-size: 4rem;
+        margin-bottom: 0.3em;
+      }
+    }
+  }
+
+  .art-detail--render {
+    opacity: 1;
+
+    animation: render-animation 0.8s;
+
+    @keyframes render-animation {
+      0% {
+        transform: translate3d(0, 10%, 0);
+      }
+      100% {
+        transform: translate3d(0, 0%, 0);
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .content {
+    .art-detail {
+      flex-direction: column;
+
+      .art-detail__desc {
+        margin-left: 0;
+        margin-top: 1em;
+        font-size: 1.5rem;
+
+        .desc__title {
+          font-size: 2rem;
+          margin-bottom: 0.2em;
+        }
+      }
+    }
+  }
+}

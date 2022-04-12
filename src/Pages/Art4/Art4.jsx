@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import styles from "./art.module.scss";
 import Header from "Components/Header/header/DetailHeader";
-import art from "Images/사랑인피니티.jpg";
+import art from "Images/이인증...jpg";
 
-const Art1 = ({ history }) => {
+const Art4 = ({ history }) => {
   const [isRender, setIsRender] = useState(false);
 
   useEffect(() => {
@@ -35,4 +35,4 @@ const Art1 = ({ history }) => {
   );
 };
 
-export default Art1;
+export default Art4;
