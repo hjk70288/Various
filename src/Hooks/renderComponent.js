@@ -2,6 +2,7 @@
 const renderComponent = (history, url) => {
   document.body.classList.add("render");
   setTimeout(() => {
+    window.scrollTo(0, 0);
     history.push(url);
     setTimeout(() => {
       document.body.classList.remove("render");

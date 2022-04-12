@@ -952,7 +952,7 @@ const Main = ({ history }) => {
             renderComponent(history, "/art1");
           }}
         >
-          <p className={styles["detail-message__link"]}>D</p>
+          <p className={styles["detail-message__link"]}>DP</p>
         </div>
       </section>
       <section
@@ -997,7 +997,7 @@ const Main = ({ history }) => {
             renderComponent(history, "/art2");
           }}
         >
-          <p className={styles["detail-message__link"]}>D</p>
+          <p className={styles["detail-message__link"]}>DP</p>
         </div>
       </section>
       <section
@@ -1042,7 +1042,7 @@ const Main = ({ history }) => {
             renderComponent(history, "/art3");
           }}
         >
-          <p className={styles["detail-message__link"]}>D</p>
+          <p className={styles["detail-message__link"]}>DP</p>
         </div>
       </section>
       <section
@@ -1087,7 +1087,7 @@ const Main = ({ history }) => {
             renderComponent(history, "/art4");
           }}
         >
-          <p className={styles["detail-message__link"]}>D</p>
+          <p className={styles["detail-message__link"]}>DP</p>
         </div>
       </section>
       <Footer />
