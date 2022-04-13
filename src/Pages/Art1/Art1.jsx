@@ -58,9 +58,8 @@ const Art1 = ({ history }) => {
 
   useEffect(() => {
     setTimeout(() => {
-      if (introRef.current) introRef.current.style.opacity = 1;
       setStartRender(true);
-    }, 300);
+    }, 800);
     setTimeout(() => {
       window.addEventListener("scroll", handlePageScroll);
       setIsRender(true);
