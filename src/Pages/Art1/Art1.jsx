@@ -57,9 +57,10 @@ const Art1 = ({ history }) => {
   };
 
   useEffect(() => {
-    setTimeout(() => {
-      setStartRender(true);
-    }, 800);
+    setStartRender(true);
+    // setTimeout(() => {
+    //   setStartRender(true);
+    // }, 1800);
     setTimeout(() => {
       window.addEventListener("scroll", handlePageScroll);
       setIsRender(true);
@@ -68,7 +69,7 @@ const Art1 = ({ history }) => {
     return () => {
       window.removeEventListener("scroll", handlePageScroll);
     };
-  });
+  }, [setStartRender]);
 
   return (
     <div
