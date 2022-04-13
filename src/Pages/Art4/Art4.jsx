@@ -82,7 +82,7 @@ const Art4 = ({ history }) => {
             renderComponent(history, "/art1");
           }}
         >
-          NEXT
+          NEXT?
         </div>
       </section>
     </div>
