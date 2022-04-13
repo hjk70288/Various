@@ -58,6 +58,7 @@ const Art1 = ({ history }) => {
 
   useEffect(() => {
     setTimeout(() => {
+      if (introRef.current) introRef.current.style.opacity = 1;
       setStartRender(true);
     }, 300);
     setTimeout(() => {
