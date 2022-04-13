@@ -5,6 +5,7 @@ import calcAnimationValues from "Hooks/calcAnimationValues";
 import renderComponent from "Hooks/renderComponent";
 
 const Art1 = ({ history }) => {
+  const introRef = useRef();
   const backgroundRef = useRef();
   const nextButtonRef = useRef();
   const [startRender, setStartRender] = useState(false);
@@ -14,8 +15,26 @@ const Art1 = ({ history }) => {
     const scrollRatio = window.pageYOffset / document.body.offsetHeight;
     const animationStartRatio =
       (document.body.offsetHeight - window.innerHeight * 2) /
-      document.body.offsetHeight;
+      document.body.offsetHeight; // Next 영역의 애니메이션이 시작되는 시점
 
+    // 인트로를 모두 스크롤 했다면
+    if (window.pageYOffset > window.innerHeight) {
+      // 인트로를 보이지 않도록 함
+      if (introRef.current) {
+        introRef.current.style.opacity = 0;
+        introRef.current.style.zIndex = 0;
+      }
+    }
+    // 인트로를 모두 스크롤하지 않았다면
+    else {
+      // 인트로를 보이도록 함
+      if (introRef.current) {
+        introRef.current.style.opacity = 1;
+        introRef.current.style.zIndex = 2;
+      }
+    }
+
+    // Next 영역 Opacity 애니메이션 처리
     if (scrollRatio > animationStartRatio) {
       if (backgroundRef.current) {
         backgroundRef.current.style.opacity = calcAnimationValues(
@@ -58,7 +77,7 @@ const Art1 = ({ history }) => {
       }`}
     >
       <Header history={history} />
-      <section className={styles["intro"]}>
+      <section ref={introRef} className={styles["intro"]}>
         <div className={styles["intro__background"]}>
           <div
             className={`${styles["background__image"]} ${
@@ -76,6 +95,7 @@ const Art1 = ({ history }) => {
         </div>
       </section>
       <section className={styles["info"]}>대충 작품 설명하는 내용</section>
+      <section className={styles["transparent-area"]}></section>
       <section className={styles["next"]}>
         <div ref={backgroundRef} className={styles["next__background"]}></div>
         <div
