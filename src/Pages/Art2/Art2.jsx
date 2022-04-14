@@ -4,6 +4,7 @@ import Header from "Components/Header/header/DetailHeader";
 import Progress from "Components/Header/progress/Progress";
 import calcAnimationValues from "Hooks/calcAnimationValues";
 import renderComponent from "Hooks/renderComponent";
+import art from "Images/art2.jpg";
 
 const Art2 = ({ history }) => {
   const artRef = useRef(); // Info 영역의 작품 Ref
@@ -115,14 +116,28 @@ const Art2 = ({ history }) => {
         </div>
       </section>
       <section className={styles["info"]}>
-        <div className={styles["info__art"]}>
-          <div ref={artRef} className={styles["art"]}>
-            <div className={styles["art__image"]}></div>
-            <div className={styles["art__title"]}>유리땅</div>
-            <div className={styles["art__desc"]}>유리!</div>
+        <div className={styles["info__top"]}>
+          <div className={styles["info__art"]}>
+            <div className={styles["art"]} ref={artRef}>
+              <img className={styles["art__image"]} src={art} alt=""></img>
+            </div>
+          </div>
+          <div className={styles["info__desc"]}>
+            대충 설명하는 내용
+            <div
+              style={{
+                fontWeight: "normal",
+                fontSize: "1.5rem",
+                marginTop: "2em",
+              }}
+            >
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
+              nihil reprehenderit tempore deleniti rem molestias velit suscipit.
+              Beatae quaerat distinctio libero, consequuntur eum autem optio, in
+              sed perspiciatis rem repudiandae?
+            </div>
           </div>
         </div>
-        <div className={styles["info__desc"]}>대충 설명하는 내용</div>
       </section>
       <section className={styles["transparent-area"]}></section>
       <section className={styles["next"]}>

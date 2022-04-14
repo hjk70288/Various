@@ -87,49 +87,37 @@
     font-size: 4rem;
     text-align: center;
 
-    .info__art {
-      perspective: 500px;
-      .art {
-        width: 90vw;
-        height: 90vh;
-        margin: auto;
-        box-shadow: 1px 1px 60px 6px pink;
-        transform-style: preserve-3d;
-        transition: transform 0.05s;
-        border-radius: 15px;
-        background-size: cover;
-
-        .art__image {
-          background-image: url(../../Images/art1.jpg);
-          background-size: cover;
-          background-position: center;
-          height: 100%;
-          width: 100%;
-          border-radius: 15px;
-        }
-
-        .art__title {
-          position: absolute;
-          top: 0;
-          left: 80px;
-          font-size: 2.3rem;
-          font-weight: bold;
-          transform: translateZ(80px);
-        }
-
-        .art__desc {
-          position: absolute;
-          bottom: 40px;
-          right: 80px;
-          font-size: 2rem;
-          font-weight: bold;
-          transform: translateZ(80px);
+    .info__top {
+      display: flex;
+      .info__art {
+        perspective: 500px;
+        width: 50vw;
+        .art {
+          transform-style: preserve-3d;
+          .art__image {
+            width: 50vw;
+            box-shadow: 1px 1px 60px 6px pink;
+            transition: transform 0.05s;
+            border-radius: 15px;
+            background-size: cover;
+          }
+          .art__title {
+            position: absolute;
+            top: 7vh;
+            left: 7vh;
+            font-size: 2.3rem;
+            font-weight: bold;
+            transform: translateZ(80px);
+          }
         }
       }
-    }
 
-    .info__desc {
-      padding-top: 80vh;
+      .info__desc {
+        font-size: 2.5rem;
+        width: 50vw;
+        font-weight: bold;
+        padding: 0 2em;
+      }
     }
   }
 
@@ -210,6 +198,20 @@
       .intro__desc {
         bottom: 3vh;
         left: 3vh;
+      }
+    }
+    .info {
+      .info__top {
+        display: unset;
+
+        .info__art {
+          width: 100vw;
+        }
+        .info__desc {
+          font-size: 2rem;
+          margin-top: 2em;
+          width: 100vw;
+        }
       }
     }
     .next {
