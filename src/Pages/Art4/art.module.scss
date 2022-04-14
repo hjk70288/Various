@@ -200,6 +200,20 @@
         left: 3vh;
       }
     }
+    .info {
+      .info__top {
+        display: unset;
+
+        .info__art {
+          width: 100vw;
+        }
+        .info__desc {
+          font-size: 2rem;
+          margin-top: 2em;
+          width: 100vw;
+        }
+      }
+    }
     .next {
       .next__button {
         bottom: 3vh;
