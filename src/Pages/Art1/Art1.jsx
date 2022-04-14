@@ -40,6 +40,11 @@ const Art1 = ({ history }) => {
           window.innerHeight,
           window.pageYOffset - document.body.offsetHeight * animationStartRatio
         );
+        nextButtonRef.current.style.transform = `translate3d(0, ${calcAnimationValues(
+          [20, 0, { start: 0.5, end: 1 }],
+          window.innerHeight,
+          window.pageYOffset - document.body.offsetHeight * animationStartRatio
+        )}%, 0)`;
       }
     }
   };
@@ -108,7 +113,7 @@ const Art1 = ({ history }) => {
             renderComponent(history, "/art2");
           }}
         >
-          NEXT
+          <div className={styles["next__button--text"]}>NEXT</div>
         </div>
       </section>
     </div>

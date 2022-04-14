@@ -62,14 +62,15 @@
     }
 
     .intro__desc--render {
-      opacity: 1;
-      animation: render-desc 1s;
+      animation: render-desc 1s forwards;
 
       @keyframes render-desc {
         0% {
+          opacity: 0;
           transform: translate3d(0, 20%, 0);
         }
         100% {
+          opacity: 1;
           transform: translate3d(0, 0%, 0);
         }
       }
@@ -123,6 +124,31 @@
       font-weight: bold;
       line-height: 1.2em;
       font-family: "Playfair Display", serif;
+
+      .next__button--text:before,
+      .next__button--text:after {
+        content: "";
+        border-bottom: solid 5px white;
+        position: absolute;
+        bottom: 0;
+        width: 0;
+      }
+      .next__button--text:before {
+        left: 0;
+        border-radius: 3px 0 0 3px;
+      }
+      .next__button--text:after {
+        right: 0;
+        border-radius: 0 3px 3px 0;
+      }
+      .next__button--text:hover:before,
+      .next__button--text:hover:after {
+        width: 50%;
+      }
+      .next__button--text:before,
+      .next__button--text:after {
+        transition: all 0.8s;
+      }
     }
   }
 }

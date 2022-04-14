@@ -1028,7 +1028,7 @@ const Main = ({ history }) => {
           className={`${styles["sticky-elem"]} ${styles["main-message"]}`}
         >
           <p>
-            :-P
+            :P
             <br />
             2480 x 3508
             <br />
