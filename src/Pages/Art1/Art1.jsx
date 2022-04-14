@@ -5,36 +5,18 @@ import calcAnimationValues from "Hooks/calcAnimationValues";
 import renderComponent from "Hooks/renderComponent";
 
 const Art1 = ({ history }) => {
-  const introRef = useRef();
   const backgroundRef = useRef();
   const nextButtonRef = useRef();
   const [startRender, setStartRender] = useState(false);
   const [isRender, setIsRender] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   const handlePageScroll = () => {
     const scrollRatio = window.pageYOffset / document.body.offsetHeight;
     const animationStartRatio =
       (document.body.offsetHeight - window.innerHeight * 2) /
-      document.body.offsetHeight; // Next 영역의 애니메이션이 시작되는 시점
+      document.body.offsetHeight;
 
-    // 인트로를 모두 스크롤 했다면
-    if (window.pageYOffset > window.innerHeight) {
-      // 인트로를 보이지 않도록 함
-      if (introRef.current) {
-        introRef.current.style.opacity = 0;
-        introRef.current.style.zIndex = 0;
-      }
-    }
-    // 인트로를 모두 스크롤하지 않았다면
-    else {
-      // 인트로를 보이도록 함
-      if (introRef.current) {
-        introRef.current.style.opacity = 1;
-        introRef.current.style.zIndex = 2;
-      }
-    }
-
-    // Next 영역 Opacity 애니메이션 처리
     if (scrollRatio > animationStartRatio) {
       if (backgroundRef.current) {
         backgroundRef.current.style.opacity = calcAnimationValues(
@@ -50,17 +32,20 @@ const Art1 = ({ history }) => {
           window.pageYOffset - document.body.offsetHeight * animationStartRatio
         );
       }
-    } else {
-      if (backgroundRef.current) backgroundRef.current.style.opacity = 0.1;
-      if (nextButtonRef.current) nextButtonRef.current.style.opacity = 0;
     }
   };
 
   useEffect(() => {
+    // 사용자가 컴퓨터 환경인지 모바일 환경인지 판단
+    const userInfo = navigator.userAgent;
+    if (userInfo.indexOf("iPhone") > -1 || userInfo.indexOf("Android") > -1) {
+      setIsMobile(true);
+    }
+
+    // 렌더링 애니메이션
     setStartRender(true);
-    // setTimeout(() => {
-    //   setStartRender(true);
-    // }, 1800);
+
+    // 렌더링 애니메이션이 완전히 끝나기 전 까지 스크롤을 할 수 없도록 설정
     setTimeout(() => {
       window.addEventListener("scroll", handlePageScroll);
       setIsRender(true);
@@ -69,7 +54,7 @@ const Art1 = ({ history }) => {
     return () => {
       window.removeEventListener("scroll", handlePageScroll);
     };
-  }, [setStartRender]);
+  }, [setIsMobile]);
 
   return (
     <div
@@ -78,12 +63,16 @@ const Art1 = ({ history }) => {
       }`}
     >
       <Header history={history} />
-      <section ref={introRef} className={styles["intro"]}>
-        <div className={styles["intro__background"]}>
+      <section className={styles["intro"]}>
+        <div
+          className={styles["intro__background"]}
+          style={isMobile ? { position: "relative" } : null}
+        >
           <div
             className={`${styles["background__image"]} ${
               startRender && styles["background__image--render"]
             }`}
+            style={isMobile ? { backgroundAttachment: "unset" } : null}
           ></div>
         </div>
         <div
@@ -92,7 +81,7 @@ const Art1 = ({ history }) => {
           }`}
         >
           <div className={styles["desc__title"]}>사랑</div>
-          <div>사랑사랑사랑사랑사랑사랑</div>
+          <div>무한한사랑</div>
         </div>
       </section>
       <section className={styles["info"]}>대충 작품 설명하는 내용</section>
