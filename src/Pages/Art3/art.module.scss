@@ -80,11 +80,57 @@
   .info {
     z-index: 2;
     position: relative;
-    background-color: #606060;
-    height: 200vh;
-    padding-top: 60vh;
+    // background-color: #606060;
+    background-color: rgba(18, 18, 18);
+    height: 400vh;
+    padding-top: 80vh;
     font-size: 4rem;
     text-align: center;
+
+    .info__art {
+      perspective: 500px;
+      .art {
+        width: 90vw;
+        height: 90vh;
+        margin: auto;
+        box-shadow: 1px 1px 60px 6px skyblue;
+        transform-style: preserve-3d;
+        transition: transform 0.05s;
+        border-radius: 15px;
+        background-size: cover;
+
+        .art__image {
+          background-image: url(../../Images/art3.jpg);
+          background-size: cover;
+          background-position: center;
+          height: 100%;
+          width: 100%;
+          border-radius: 15px;
+        }
+
+        .art__title {
+          position: absolute;
+          top: 0;
+          left: 80px;
+          font-size: 2.3rem;
+          font-weight: bold;
+          transform: translateZ(80px);
+        }
+
+        .art__desc {
+          position: absolute;
+          bottom: 40px;
+          right: 80px;
+          font-size: 2rem;
+          font-weight: bold;
+          transform: translateZ(80px);
+        }
+      }
+    }
+
+    .info__desc {
+      padding-top: 80vh;
+    }
   }
 
   /* Parallax Scrolling을 위한 투명한 영역 */

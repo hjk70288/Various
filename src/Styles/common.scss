@@ -1,7 +1,7 @@
 @charset 'utf-8';
 html,
 body {
-  cursor: url("../Images/cursor.svg") 6 6, auto;
+  cursor: url("../Images/cursor.svg") 20 20, auto;
   // height: 100vh;
   // height: calc(var(--vh, 1vh) * 100);
 }
@@ -70,5 +70,43 @@ a:active {
     100% {
       opacity: 1;
     }
+  }
+}
+
+.perspective {
+  perspective: 500px;
+}
+
+.card {
+  width: 270px;
+  height: 413px;
+  margin: auto;
+  box-shadow: 1px 1px 60px 6px pink;
+  transform-style: preserve-3d;
+  transition: transform 0.05s;
+
+  .thumb {
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    border-radius: 15px;
+  }
+
+  h2 {
+    position: absolute;
+    top: 0;
+    left: -60px;
+    font-size: 40px;
+    font-weight: 100;
+    transform: translateZ(80px);
+  }
+
+  span {
+    position: absolute;
+    bottom: 40px;
+    right: -280px;
+    font-size: 37px;
+    font-weight: 600;
+    transform: translateZ(35px);
   }
 }

@@ -6,6 +6,7 @@ import calcAnimationValues from "Hooks/calcAnimationValues";
 import renderComponent from "Hooks/renderComponent";
 
 const Art1 = ({ history }) => {
+  const artRef = useRef(); // Info 영역의 작품 Ref
   const progressRef = useRef(); // 스크롤 진행률 Ref
   const nextBackgroundRef = useRef(); // Next 영역의 배경 Ref
   const nextButtonRef = useRef(); // Next 영역의 버튼(메시지) Ref
@@ -22,7 +23,7 @@ const Art1 = ({ history }) => {
 
     // 스크롤 진행률 표시
     if (progressRef.current) {
-      progressRef.current.style.width = `${scrollRatio * 134}%`;
+      progressRef.current.style.width = `${scrollRatio * 120}%`;
     }
 
     // Next 영역 Opacity 애니메이션
@@ -49,6 +50,16 @@ const Art1 = ({ history }) => {
     }
   };
 
+  // 마우스 이동 시 이벤트 핸들링
+  const handleMoveMouse = e => {
+    const xDeg = ((window.innerWidth / 2 - e.clientX) / 30) * -1;
+    const yDeg = (window.innerHeight / 2 - e.clientY) / 30;
+
+    if (artRef.current) {
+      artRef.current.style.transform = `rotateY(${xDeg}deg) rotateX(${yDeg}deg)`;
+    }
+  };
+
   useEffect(() => {
     // 사용자가 컴퓨터 환경인지 모바일 환경인지 판단
     const userInfo = navigator.userAgent;
@@ -65,8 +76,12 @@ const Art1 = ({ history }) => {
       setIsRender(true);
     }, 1500);
 
+    // Intro 영역의 작품 Rotate 효과 추가
+    window.addEventListener("mousemove", handleMoveMouse);
+
     return () => {
       window.removeEventListener("scroll", handlePageScroll);
+      window.removeEventListener("mousemove", handleMoveMouse);
     };
   }, [setIsMobile]);
 
@@ -99,7 +114,16 @@ const Art1 = ({ history }) => {
           <div>무한한사랑</div>
         </div>
       </section>
-      <section className={styles["info"]}>대충 작품 설명하는 내용</section>
+      <section className={styles["info"]}>
+        <div className={styles["info__art"]}>
+          <div ref={artRef} className={styles["art"]}>
+            <div className={styles["art__image"]}></div>
+            <div className={styles["art__title"]}>사랑인피니티</div>
+            <div className={styles["art__desc"]}>사랑!</div>
+          </div>
+        </div>
+        <div className={styles["info__desc"]}>대충 설명하는 내용</div>
+      </section>
       <section className={styles["transparent-area"]}></section>
       <section className={styles["next"]}>
         <div
