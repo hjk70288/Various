@@ -87,36 +87,34 @@
     font-size: 4rem;
     text-align: center;
 
-    .info__top {
-      display: flex;
-      .info__art {
-        perspective: 500px;
-        width: 50vw;
-        .art {
-          transform-style: preserve-3d;
-          .art__image {
-            width: 50vw;
-            box-shadow: 1px 1px 60px 6px white;
-            transition: transform 0.05s;
-            border-radius: 15px;
-            background-size: cover;
-          }
-          .art__title {
-            position: absolute;
-            top: 7vh;
-            left: 7vh;
-            font-size: 2.3rem;
-            font-weight: bold;
-            transform: translateZ(80px);
-          }
-        }
+    .art {
+      position: relative;
+      width: 50vw;
+      margin: 0 auto;
+      overflow: hidden;
+
+      .art__image {
+        width: 100%;
       }
 
-      .info__desc {
-        font-size: 2.5rem;
-        width: 50vw;
-        font-weight: bold;
-        padding: 0 2em;
+      .art__glitch {
+        position: absolute;
+      }
+    }
+    .none {
+      .art__glitch {
+        // backdrop-filter: invert(0) !important;
+        // transition: backdrop-filter 1s;
+        animation: render-background 1s forwards;
+
+        @keyframes render-background {
+          0% {
+            backdrop-filter: invert(1);
+          }
+          100% {
+            backdrop-filter: invert(0);
+          }
+        }
       }
     }
   }

@@ -6,11 +6,28 @@ import calcAnimationValues from "Hooks/calcAnimationValues";
 import renderComponent from "Hooks/renderComponent";
 import art from "Images/art4.jpg";
 
+const GlitchBox = props => {
+  const { x, y, width, height } = props;
+  return (
+    <div
+      className={styles["art__glitch"]}
+      style={{
+        top: `${y}px`,
+        left: `${x}px`,
+        backdropFilter: `invert(1)`,
+        width: `${width}px`,
+        height: `${height}px`,
+      }}
+    ></div>
+  );
+};
+
 const Art4 = ({ history }) => {
   const artRef = useRef(); // Info 영역의 작품 Ref
   const progressRef = useRef(); // 스크롤 진행률 Ref
   const nextBackgroundRef = useRef(); // Next 영역의 배경 Ref
   const nextButtonRef = useRef(); // Next 영역의 버튼(메시지) Ref
+  const [glitchBox, setGlitchBox] = useState([]);
   const [startRender, setStartRender] = useState(false); // 애니메이션 시작 여부
   const [isRender, setIsRender] = useState(false); // 애니메이션 완료 여부
   const [isMobile, setIsMobile] = useState(false); // 사용자의 기기가 모바일인지에 대한 여부
@@ -51,14 +68,19 @@ const Art4 = ({ history }) => {
     }
   };
 
-  // 마우스 이동 시 이벤트 핸들링
-  const handleMoveMouse = e => {
-    const xDeg = ((window.innerWidth / 2 - e.clientX) / 30) * -1;
-    const yDeg = (window.innerHeight / 2 - e.clientY) / 30;
-
-    if (artRef.current) {
-      artRef.current.style.transform = `rotateY(${xDeg}deg) rotateX(${yDeg}deg)`;
+  // 중복되지 않는 난수 배열 생성
+  const makeRandomNumberArray = (maxNumber, count) => {
+    const randomNumberArray = [];
+    for (let i = 0; i < count; i++) {
+      //check if there is any duplicate index
+      const randomNum = Math.floor(Math.random() * maxNumber);
+      if (randomNumberArray.indexOf(randomNum) === -1) {
+        randomNumberArray.push(randomNum);
+      } else {
+        i--;
+      }
     }
+    return randomNumberArray;
   };
 
   useEffect(() => {
@@ -77,12 +99,56 @@ const Art4 = ({ history }) => {
       setIsRender(true);
     }, 1500);
 
-    // Intro 영역의 작품 Rotate 효과 추가
-    window.addEventListener("mousemove", handleMoveMouse);
+    window.addEventListener("mousemove", e => {
+      if (
+        e.srcElement.classList.contains(styles["art__image"]) ||
+        e.srcElement.classList.contains(styles["art__glitch"])
+      ) {
+        artRef.current.classList.remove(styles["none"]);
+        artRef.current.style.height = `${artRef.current.children[0].height}px`;
+        const children = [];
+        if (artRef.current) {
+          const xs = makeRandomNumberArray(
+            artRef.current.children[0].width,
+            10
+          );
+          const ys = makeRandomNumberArray(
+            artRef.current.children[0].height,
+            10
+          );
+          const widths = makeRandomNumberArray(200, 10);
+          const heights = makeRandomNumberArray(100, 10);
+          Math.floor(Math.random() * 2);
+          const test = [
+            [5000, 50, 0, 100],
+            [50, 5000, 100, 0],
+          ];
+          const ran = Math.floor(Math.random() * 2);
+          for (let i = 0; i < 10; i++) {
+            children.push(
+              <GlitchBox
+                key={i}
+                // width={widths[i]}
+                // height={heights[i]}
+                // x={xs[i]}
+                // y={ys[i]}
+                width={test[ran][0]}
+                height={test[ran][1]}
+                x={test[ran][2] * i}
+                y={test[ran][3] * i}
+              />
+            );
+          }
+          setGlitchBox(children);
+        }
+      } else {
+        artRef.current.classList.add(styles["none"]);
+      }
+    });
 
     return () => {
       window.removeEventListener("scroll", handlePageScroll);
-      window.removeEventListener("mousemove", handleMoveMouse);
+      // window.removeEventListener("mousemove", handleMoveMouse);
     };
   }, [setIsMobile]);
 
@@ -116,7 +182,11 @@ const Art4 = ({ history }) => {
         </div>
       </section>
       <section className={styles["info"]}>
-        <div className={styles["info__top"]}>
+        <div className={styles["art"]} ref={artRef}>
+          <img className={styles["art__image"]} src={art} alt=""></img>
+          {glitchBox}
+        </div>
+        {/* <div className={styles["info__top"]}>
           <div className={styles["info__art"]}>
             <div className={styles["art"]} ref={artRef}>
               <img className={styles["art__image"]} src={art} alt=""></img>
@@ -137,7 +207,7 @@ const Art4 = ({ history }) => {
               sed perspiciatis rem repudiandae?
             </div>
           </div>
-        </div>
+        </div> */}
       </section>
       <section className={styles["transparent-area"]}></section>
       <section className={styles["next"]}>

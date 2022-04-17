@@ -84,7 +84,6 @@
     background-color: rgba(18, 18, 18);
     height: 400vh;
     padding-top: 80vh;
-    font-size: 4rem;
     text-align: center;
 
     .info__top {
@@ -92,6 +91,7 @@
       .info__art {
         perspective: 500px;
         width: 50vw;
+        padding-left: 3rem;
         .art {
           transform-style: preserve-3d;
           .art__image {
@@ -206,6 +206,7 @@
 
         .info__art {
           width: 100vw;
+          padding: 0;
         }
         .info__desc {
           font-size: 2rem;
