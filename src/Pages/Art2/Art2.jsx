@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
-import styles from "./art.module.scss";
+import styles from "./art2.module.scss";
 import Header from "Components/Header/header/DetailHeader";
 import Progress from "Components/Header/progress/Progress";
 import calcAnimationValues from "Hooks/calcAnimationValues";
 import renderComponent from "Hooks/renderComponent";
 import art from "Images/art2.jpg";
 
+/* 3D Rotate 효과 적용 */
 const Art2 = ({ history }) => {
   const artRef = useRef(); // Info 영역의 작품 Ref
   const progressRef = useRef(); // 스크롤 진행률 Ref
