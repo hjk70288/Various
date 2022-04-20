@@ -54,11 +54,32 @@ const Art2 = ({ history }) => {
 
   // 마우스 이동 시 이벤트 핸들링
   const handleMoveMouse = e => {
-    const xDeg = ((window.innerWidth / 2 - e.clientX) / 30) * -1;
-    const yDeg = (window.innerHeight / 2 - e.clientY) / 30;
+    // 사용자가 컴퓨터 환경인지 모바일 환경인지 판단
+    const userInfo = navigator.userAgent;
+    let isMobile = false;
+    if (userInfo.indexOf("iPhone") > -1 || userInfo.indexOf("Android") > -1) {
+      isMobile = true;
+    }
 
-    if (artRef.current) {
-      artRef.current.style.transform = `rotateY(${xDeg}deg) rotateX(${yDeg}deg)`;
+    if (!isMobile) {
+      const xDeg = ((window.innerWidth / 2 - e.clientX) / 30) * -1;
+      const yDeg = (window.innerHeight / 2 - e.clientY) / 30;
+
+      if (artRef.current) {
+        artRef.current.style.transform = `rotateY(${xDeg}deg) rotateX(${yDeg}deg)`;
+      }
+    } else {
+      // TODO: 상하좌우 판단하는 코드 작성
+      // if (e.srcElement.nodeName === "IMG") {
+      //   if (artRef.current.classList.length === 1) {
+      //     artRef.current.classList.add(styles["art--rotate-top"]);
+      //     setTimeout(() => {
+      //       artRef.current.classList.remove(styles["art--rotate-top"]);
+      //     }, 2000);
+      //   }
+      //   // // console.log(e.clientX, e.clientY);
+      //   console.log(e.srcElement.getBoundingClientRect());
+      // }
     }
   };
 

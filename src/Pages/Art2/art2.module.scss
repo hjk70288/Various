@@ -91,6 +91,56 @@
 
       .art {
         transform-style: preserve-3d;
+
+        &.art--rotate-top {
+          animation: rotate-top 2s;
+
+          @keyframes rotate-top {
+            0% {
+              transform: rotateX(0deg);
+            }
+            100% {
+              transform: rotateX(360deg);
+            }
+          }
+        }
+        &.art--rotate-bottom {
+          animation: rotate-bottom 2s;
+
+          @keyframes rotate-bottom {
+            0% {
+              transform: rotateX(0deg);
+            }
+            100% {
+              transform: rotateX(-360deg);
+            }
+          }
+        }
+        &.art--rotate-left {
+          animation: rotate-left 2s;
+
+          @keyframes rotate-left {
+            0% {
+              transform: rotateY(0deg);
+            }
+            100% {
+              transform: rotateY(-360deg);
+            }
+          }
+        }
+        &.art--rotate-right {
+          animation: rotate-right 2s;
+
+          @keyframes rotate-right {
+            0% {
+              transform: rotateY(0deg);
+            }
+            100% {
+              transform: rotateY(360deg);
+            }
+          }
+        }
+
         .art__image {
           width: 70vw;
           box-shadow: 1px 1px 60px 6px #3d3274;
