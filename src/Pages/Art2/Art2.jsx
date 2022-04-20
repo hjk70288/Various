@@ -62,6 +62,21 @@ const Art2 = ({ history }) => {
     }
   };
 
+  // 화면 크기 변경 시 이벤트 핸들링
+  const handleResizeWindow = () => {
+    // 사용자가 컴퓨터 환경인지 모바일 환경인지 판단
+    const userInfo = navigator.userAgent;
+    let isMobile = false;
+    if (userInfo.indexOf("iPhone") > -1 || userInfo.indexOf("Android") > -1) {
+      isMobile = true;
+    }
+
+    // 컴퓨터 환경일 때만 resize
+    if (isMobile === false) {
+      window.location.reload();
+    }
+  };
+
   useEffect(() => {
     // 사용자가 컴퓨터 환경인지 모바일 환경인지 판단
     const userInfo = navigator.userAgent;
@@ -76,14 +91,34 @@ const Art2 = ({ history }) => {
     setTimeout(() => {
       window.addEventListener("scroll", handlePageScroll);
       setIsRender(true);
+
+      // 작품의 높이가 현재 창 크기보다 큰 경우
+      if (
+        artRef.current &&
+        window.innerHeight < artRef.current.children[0].height + 50
+      ) {
+        // 높이 조정
+        artRef.current.children[0].style.height = "80vh";
+        artRef.current.children[0].style.width = "unset";
+      }
+      // 작품의 높이가 현재 창 크기보다 작은 경우
+      else {
+        // 넓이 조정
+        artRef.current.children[0].style.height = "unset";
+        artRef.current.children[0].style.width = "70vw";
+      }
     }, 1500);
 
     // Intro 영역의 작품 Rotate 효과 추가
     window.addEventListener("mousemove", handleMoveMouse);
 
+    // 화면 크기 변경 시 이벤트 핸들링
+    window.addEventListener("resize", handleResizeWindow);
+
     return () => {
       window.removeEventListener("scroll", handlePageScroll);
       window.removeEventListener("mousemove", handleMoveMouse);
+      window.removeEventListener("resize", handleResizeWindow);
     };
   }, [setIsMobile]);
 
@@ -117,26 +152,24 @@ const Art2 = ({ history }) => {
         </div>
       </section>
       <section className={styles["info"]}>
-        <div className={styles["info__top"]}>
-          <div className={styles["info__art"]}>
-            <div className={styles["art"]} ref={artRef}>
-              <img className={styles["art__image"]} src={art} alt=""></img>
-            </div>
+        <div className={styles["info__art"]}>
+          <div className={styles["art"]} ref={artRef}>
+            <img className={styles["art__image"]} src={art} alt=""></img>
           </div>
-          <div className={styles["info__desc"]}>
-            대충 설명하는 내용
-            <div
-              style={{
-                fontWeight: "normal",
-                fontSize: "1.5rem",
-                marginTop: "2em",
-              }}
-            >
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
-              nihil reprehenderit tempore deleniti rem molestias velit suscipit.
-              Beatae quaerat distinctio libero, consequuntur eum autem optio, in
-              sed perspiciatis rem repudiandae?
-            </div>
+        </div>
+        <div className={styles["info__desc"]}>
+          대충 설명하는 내용
+          <div
+            style={{
+              fontWeight: "normal",
+              fontSize: "1.5rem",
+              marginTop: "1em",
+            }}
+          >
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
+            nihil reprehenderit tempore deleniti rem molestias velit suscipit.
+            Beatae quaerat distinctio libero, consequuntur eum autem optio, in
+            sed perspiciatis rem repudiandae?
           </div>
         </div>
       </section>

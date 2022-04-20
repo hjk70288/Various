@@ -164,7 +164,7 @@ const Art4 = ({ history }) => {
             style={{
               fontWeight: "normal",
               fontSize: "1.5rem",
-              marginTop: "2em",
+              marginTop: "1em",
             }}
           >
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
