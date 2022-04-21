@@ -42,13 +42,13 @@
 
       .title__word {
         display: inline-block;
-        transform: perspective(1000px) rotate3d(0, 1, 0, 0deg);
+        transform: rotateY(0deg);
         transition: transform 0.5s, color 0.5s;
       }
 
       &:hover .title__word {
         // color: yellow;
-        transform: perspective(1000px) rotate3d(0, 1, 0, 360deg);
+        transform: rotateY(360deg);
       }
 
       & .title__word:nth-child(7),

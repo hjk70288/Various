@@ -19,15 +19,11 @@
       transition: color 0.5s;
     }
 
-    a:hover {
-      color: white;
-    }
-
     a .hidden-message {
+      display: inline;
       font-size: 0.7em;
       position: absolute;
       right: 0;
-      // color: rgb(237, 237, 158);
       color: #fee715;
       font-weight: bold;
       bottom: -1.2em;
@@ -36,9 +32,15 @@
       transition: transform 0.5s, opacity 0.5s;
     }
 
-    a:hover .hidden-message {
-      opacity: 1;
-      transform: translate3d(0, 0, 0);
+    @media (hover: hover) {
+      a:hover {
+        color: white;
+      }
+
+      a:hover .hidden-message {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+      }
     }
   }
 
