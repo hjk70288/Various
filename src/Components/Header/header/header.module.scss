@@ -39,6 +39,46 @@
       margin-right: auto;
       font-weight: bold;
       letter-spacing: 0.07em;
+
+      .title__word {
+        display: inline-block;
+        transform: perspective(1000px) rotate3d(0, 1, 0, 0deg);
+        transition: transform 0.5s, color 0.5s;
+      }
+
+      &:hover .title__word {
+        // color: yellow;
+        transform: perspective(1000px) rotate3d(0, 1, 0, 360deg);
+      }
+
+      & .title__word:nth-child(7),
+      &:hover .title__word:nth-child(1) {
+        transition-delay: 0s;
+      }
+      & .title__word:nth-child(6),
+      &:hover .title__word:nth-child(2) {
+        transition-delay: 0.1s;
+      }
+      & .title__word:nth-child(5),
+      &:hover .title__word:nth-child(3) {
+        transition-delay: 0.15s;
+      }
+      & .title__word:nth-child(4),
+      &:hover .title__word:nth-child(4) {
+        transition-delay: 0.2s;
+      }
+      & .title__word:nth-child(3),
+      &:hover .title__word:nth-child(5) {
+        transition-delay: 0.25s;
+      }
+      & .title__word:nth-child(2),
+      &:hover .title__word:nth-child(6) {
+        transition-delay: 0.3s;
+      }
+      & .title__word:nth-child(1),
+      &:hover .title__word:nth-child(7) {
+        transition-delay: 0.35s;
+      }
     }
   }
 }

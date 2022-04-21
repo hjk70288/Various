@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import renderComponent from "Hooks/renderComponent";
 import styles from "./main.module.scss";
 import headerStyles from "Components/Header/header/header.module.scss";
+import footerStyles from "Components/Footer/footer.module.scss";
 import Cursor from "Components/Cursor/Cursor";
 import Loading from "Components/Loading/Loading";
 import Header from "Components/Header/header/Header";
@@ -845,7 +846,9 @@ const Main = ({ history }) => {
         e.srcElement.nodeName === "A" ||
         e.srcElement.classList.contains(styles["guide__mouse"]) ||
         e.srcElement.classList.contains(headerStyles["link"]) ||
-        e.srcElement.classList.contains(styles["detail-message__link"])
+        e.srcElement.classList.contains(headerStyles["title__word"]) ||
+        e.srcElement.classList.contains(styles["detail-message__link"]) ||
+        e.srcElement.classList.contains(footerStyles["hidden-message"])
       ) {
         // 커서에 호버 이펙트 추가
         cursorRef.current.classList.remove("cursor-none");

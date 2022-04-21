@@ -13,6 +13,33 @@
   .footer__people {
     margin: 1em;
     font-family: "Playfair Display", serif;
+    position: relative;
+
+    a {
+      transition: color 0.5s;
+    }
+
+    a:hover {
+      color: white;
+    }
+
+    a .hidden-message {
+      font-size: 0.7em;
+      position: absolute;
+      right: 0;
+      // color: rgb(237, 237, 158);
+      color: #fee715;
+      font-weight: bold;
+      bottom: -1.2em;
+      opacity: 0;
+      transform: translate3d(-1.2em, -1.2em, 0);
+      transition: transform 0.5s, opacity 0.5s;
+    }
+
+    a:hover .hidden-message {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
   }
 
   .footer__copy-right {
