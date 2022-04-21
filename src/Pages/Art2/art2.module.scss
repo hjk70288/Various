@@ -93,6 +93,7 @@
         transform-style: preserve-3d;
 
         &.art--rotate-top {
+          display: inline-block;
           animation: rotate-top 2s;
 
           @keyframes rotate-top {
@@ -105,6 +106,7 @@
           }
         }
         &.art--rotate-bottom {
+          display: inline-block;
           animation: rotate-bottom 2s;
 
           @keyframes rotate-bottom {
@@ -117,6 +119,7 @@
           }
         }
         &.art--rotate-left {
+          display: inline-block;
           animation: rotate-left 2s;
 
           @keyframes rotate-left {
@@ -129,6 +132,7 @@
           }
         }
         &.art--rotate-right {
+          display: inline-block;
           animation: rotate-right 2s;
 
           @keyframes rotate-right {
