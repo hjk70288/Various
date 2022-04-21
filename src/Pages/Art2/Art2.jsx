@@ -61,25 +61,57 @@ const Art2 = ({ history }) => {
       isMobile = true;
     }
 
+    // 컴퓨터 환경인 경우
     if (!isMobile) {
+      // 마우스 방향으로 기울기 애니메이션 추가
       const xDeg = ((window.innerWidth / 2 - e.clientX) / 30) * -1;
       const yDeg = (window.innerHeight / 2 - e.clientY) / 30;
 
       if (artRef.current) {
         artRef.current.style.transform = `rotateY(${xDeg}deg) rotateX(${yDeg}deg)`;
       }
-    } else {
-      // TODO: 상하좌우 판단하는 코드 작성
-      // if (e.srcElement.nodeName === "IMG") {
-      //   if (artRef.current.classList.length === 1) {
-      //     artRef.current.classList.add(styles["art--rotate-top"]);
-      //     setTimeout(() => {
-      //       artRef.current.classList.remove(styles["art--rotate-top"]);
-      //     }, 2000);
-      //   }
-      //   // // console.log(e.clientX, e.clientY);
-      //   console.log(e.srcElement.getBoundingClientRect());
-      // }
+    }
+    // 모바일 환경인 경우
+    else {
+      // 상, 하, 좌, 우 중 클릭한 방향으로 360도 회전 애니메이션 추가
+      if (e.srcElement.nodeName === "IMG") {
+        // 이미 애니메이션이 동작 중 이라면 실행하지 않음
+        if (artRef.current.classList.length === 1) {
+          // 작품 내에서 클릭한 위치의 좌표 및 작품 너비와 높이 구하기
+          const x = e.clientX - e.srcElement.getBoundingClientRect().left;
+          const y = e.clientY - e.srcElement.getBoundingClientRect().top;
+          const w = e.srcElement.getBoundingClientRect().width;
+          const h = e.srcElement.getBoundingClientRect().height;
+          let removedClassName = ""; // 애니메이션이 끝나고 제거될 클래스 이름
+
+          // 상 하 좌 우 판단을 위한 방정식
+          const fx = (w, h, x) => {
+            return x * (h / w);
+          };
+          const gx = (w, h, x) => {
+            return -(x * (h / w)) + h;
+          };
+
+          // 클릭한 좌요가 상, 하, 좌, 우 중 어디에 속하는지 계산
+          if (y < h / 2 && y < fx(w, h, x) && y < gx(w, h, x)) {
+            artRef.current.classList.add(styles["art--rotate-top"]);
+            removedClassName = "art--rotate-top";
+          } else if (y > h / 2 && y > fx(w, h, x) && y > gx(w, h, x)) {
+            artRef.current.classList.add(styles["art--rotate-bottom"]);
+            removedClassName = "art--rotate-bottom";
+          } else if (x < w / 2 && y > fx(w, h, x) && y < gx(w, h, x)) {
+            artRef.current.classList.add(styles["art--rotate-left"]);
+            removedClassName = "art--rotate-left";
+          } else if (x > w / 2 && y < fx(w, h, x) && y > gx(w, h, x)) {
+            artRef.current.classList.add(styles["art--rotate-right"]);
+            removedClassName = "art--rotate-right";
+          }
+          // 애니메이션이 끝나면 클래스 제거
+          setTimeout(() => {
+            artRef.current.classList.remove(styles[removedClassName]);
+          }, 2000);
+        }
+      }
     }
   };
 

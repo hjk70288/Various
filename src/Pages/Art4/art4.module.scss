@@ -105,19 +105,19 @@
           animation-iteration-count: infinite;
         }
         &:nth-child(2) {
-          animation-name: glitch-anim-1;
+          animation-name: glitch-1;
         }
         &:nth-child(3) {
-          animation-name: glitch-anim-2;
+          animation-name: glitch-2;
         }
         &:nth-child(4) {
-          animation-name: glitch-anim-3;
+          animation-name: glitch-3;
         }
         &:nth-child(5) {
-          animation-name: glitch-anim-flash;
+          animation-name: glitch-flash;
         }
 
-        @keyframes glitch-anim-1 {
+        @keyframes glitch-1 {
           0% {
             opacity: 1;
             transform: translate3d(3px, 0, 0);
@@ -165,7 +165,7 @@
           }
         }
 
-        @keyframes glitch-anim-2 {
+        @keyframes glitch-2 {
           0% {
             opacity: 1;
             transform: translate3d(calc(-1 * 3px), 0, 0);
@@ -212,7 +212,7 @@
             clip-path: polygon(0 0, 0 0, 0 0, 0 0);
           }
         }
-        @keyframes glitch-anim-3 {
+        @keyframes glitch-3 {
           0% {
             opacity: 1;
             transform: translate3d(0, calc(-1 * 3px), 0) scale3d(-1, -1, 1);
@@ -284,7 +284,7 @@
           }
         }
 
-        @keyframes glitch-anim-flash {
+        @keyframes glitch-flash {
           0%,
           5% {
             opacity: 0.2;
