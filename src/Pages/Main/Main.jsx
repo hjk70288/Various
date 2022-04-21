@@ -247,7 +247,8 @@ const Main = ({ history }) => {
     // 스크롤 진행률 표시
     if (progressRef.current) {
       progressRef.current.style.width = `${
-        (delayedYOffset / document.body.scrollHeight) * 104.7
+        (delayedYOffset / (document.body.offsetHeight - window.innerHeight)) *
+        100
       }%`;
     }
 

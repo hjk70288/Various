@@ -18,14 +18,15 @@ const Art3 = ({ history }) => {
 
   // 스크롤 시 이벤트 핸들링
   const handlePageScroll = () => {
-    const scrollRatio = window.pageYOffset / document.body.offsetHeight; // 스크롤 비율
+    const scrollRatio =
+      window.pageYOffset / (document.body.offsetHeight - window.innerHeight); // 스크롤 비율
     const animationStartRatio =
       (document.body.offsetHeight - window.innerHeight * 2) /
       document.body.offsetHeight; // Next 영역 Opacity 애니메이션 시작 시점
 
     // 스크롤 진행률 표시
     if (progressRef.current) {
-      progressRef.current.style.width = `${scrollRatio * 120}%`;
+      progressRef.current.style.width = `${scrollRatio * 100}%`;
     }
 
     // Next 영역 Opacity 애니메이션

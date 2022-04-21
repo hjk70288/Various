@@ -18,14 +18,15 @@ const Art2 = ({ history }) => {
 
   // 스크롤 시 이벤트 핸들링
   const handlePageScroll = () => {
-    const scrollRatio = window.pageYOffset / document.body.offsetHeight; // 스크롤 비율
+    const scrollRatio =
+      window.pageYOffset / (document.body.offsetHeight - window.innerHeight); // 스크롤 비율
     const animationStartRatio =
       (document.body.offsetHeight - window.innerHeight * 2) /
       document.body.offsetHeight; // Next 영역 Opacity 애니메이션 시작 시점
 
     // 스크롤 진행률 표시
     if (progressRef.current) {
-      progressRef.current.style.width = `${scrollRatio * 120}%`;
+      progressRef.current.style.width = `${scrollRatio * 100}%`;
     }
 
     // Next 영역 Opacity 애니메이션
@@ -148,10 +149,10 @@ const Art2 = ({ history }) => {
       // 작품의 높이가 현재 창 크기보다 큰 경우
       if (
         artRef.current &&
-        window.innerHeight < artRef.current.children[0].height + 50
+        window.innerHeight < artRef.current.children[0].height + 100
       ) {
         // 높이 조정
-        artRef.current.children[0].style.height = "80vh";
+        artRef.current.children[0].style.height = "70vh";
         artRef.current.children[0].style.width = "unset";
       }
       // 작품의 높이가 현재 창 크기보다 작은 경우
