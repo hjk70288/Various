@@ -1,0 +1,14 @@
+<svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    svg{
+      background-color: #000000;
+    }
+    svg text { 
+      font: 13px "Playfair Display", serif;
+      fill: #FFFFFF;
+    }
+  </style>
+
+  <text x="3" y="12.5">V</text>
+  
+</svg>
