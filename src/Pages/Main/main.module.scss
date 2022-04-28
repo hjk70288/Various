@@ -1,22 +1,61 @@
+.background--dark {
+  .content {
+    .content-background {
+      background: #000000;
+    }
+  }
+}
+
 .content {
   overflow-x: hidden;
+
+  .content-background {
+    background: linear-gradient(217deg, skyblue, pink 70.71%);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+  }
 
   .scroll-section {
     position: relative;
     padding-top: 50vh;
 
     img {
-      filter: brightness(40%);
+      filter: brightness(60%);
     }
 
-    .title {
-      position: relative;
-      font-size: 4rem;
-      text-align: center;
-      top: -10vh;
-      font-family: "Playfair Display", serif;
-      line-height: 1.3em;
-      letter-spacing: 0.04em;
+    .title-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background-color: white;
+      border-radius: 500px;
+      top: 50vh;
+      left: 50vw;
+      transform: translate3d(-50%, -50%, 0);
+
+      background: radial-gradient(
+          circle at 50% 0,
+          skyblue,
+          rgba(255, 0, 0, 0) 70.71%
+        ),
+        radial-gradient(circle at 6.7% 75%, #e7bceb, rgba(0, 0, 255, 0) 70.71%),
+        radial-gradient(circle at 93.3% 75%, pink, rgba(0, 255, 0, 0) 70.71%)
+          beige;
+
+      .title {
+        font-size: 4rem;
+        font-weight: bold;
+        text-align: center;
+        font-family: "Playfair Display", serif;
+        line-height: 1.3em;
+        letter-spacing: 0.04em;
+      }
     }
 
     .guide {
@@ -149,6 +188,16 @@
 @media (max-width: 480px) {
   .content {
     .scroll-section {
+      .title-wrap {
+        top: 44vh;
+        width: 350px;
+        height: 350px;
+
+        .title {
+          font-size: 3rem;
+        }
+      }
+
       .main-message {
         font-size: 1.8rem;
 
@@ -172,12 +221,18 @@
 @media (max-width: 300px) {
   .content {
     .scroll-section {
-      .main-message {
-        font-size: 1.3rem;
+      .title-wrap {
+        top: 46vh;
+        width: 240px;
+        height: 240px;
+
+        .title {
+          font-size: 2rem;
+        }
       }
 
-      .title {
-        font-size: 3rem;
+      .main-message {
+        font-size: 1.3rem;
       }
     }
   }

@@ -3,7 +3,7 @@ import renderComponent from "Hooks/renderComponent";
 import styles from "./main.module.scss";
 import headerStyles from "Components/Header/header/header.module.scss";
 import footerStyles from "Components/Footer/footer.module.scss";
-import Cursor from "Components/Cursor/Cursor";
+// import Cursor from "Components/Cursor/Cursor";
 import Loading from "Components/Loading/Loading";
 import Header from "Components/Header/header/Header";
 import Progress from "Components/Header/progress/Progress";
@@ -244,13 +244,19 @@ const Main = ({ history }) => {
     const sectionYOffset = delayedYOffset - prevSectionHeight; // 현재 섹션 안에서의 스크롤 위치
 
     const scrollRatio = sectionYOffset / scrollHeight; // 현재 섹션 안에서의 스크롤이 진행된 비율
-
+    const totalScrollRatio =
+      (delayedYOffset / (document.body.offsetHeight - window.innerHeight)) *
+      100;
     // 스크롤 진행률 표시
     if (progressRef.current) {
-      progressRef.current.style.width = `${
-        (delayedYOffset / (document.body.offsetHeight - window.innerHeight)) *
-        100
-      }%`;
+      progressRef.current.style.width = `${totalScrollRatio}%`;
+    }
+
+    // 작품 사이사이에 검정색 배경 추가
+    if (totalScrollRatio < 10 || totalScrollRatio > 90) {
+      document.body.classList.remove(styles["background--dark"]);
+    } else {
+      document.body.classList.add(styles["background--dark"]);
     }
 
     switch (currentSection) {
@@ -283,7 +289,7 @@ const Main = ({ history }) => {
           else {
             // 이미지를 윈도우 높이만큼 가득 채움
             objs.image0.style.transform = `translate3d(-50%, -50%, 0) scale(${
-              screenHeight / objs.image0.height
+              screenHeight / objs.image0.height + 0.1
             })`;
           }
         } else {
@@ -298,7 +304,7 @@ const Main = ({ history }) => {
             )}%, 0)`;
           } else {
             objs.image0.style.transform = `translate3d(-50% , -50%, 0) scale(${
-              screenHeight / objs.image0.height
+              screenHeight / objs.image0.height + 0.1
             })`;
           }
         }
@@ -402,7 +408,7 @@ const Main = ({ history }) => {
           else {
             // 이미지를 윈도우 높이만큼 가득 채움
             objs.image0.style.transform = `translate3d(-50%, -50%, 0) scale(${
-              screenHeight / objs.image0.height
+              screenHeight / objs.image0.height + 0.1
             })`;
           }
         } else {
@@ -417,7 +423,7 @@ const Main = ({ history }) => {
             )}%, 0)`;
           } else {
             objs.image0.style.transform = `translate3d(-50% , -50%, 0) scale(${
-              screenHeight / objs.image0.height
+              screenHeight / objs.image0.height + 0.1
             })`;
           }
         }
@@ -517,7 +523,7 @@ const Main = ({ history }) => {
           else {
             // 이미지를 윈도우 높이만큼 가득 채움
             objs.image0.style.transform = `translate3d(-50%, -50%, 0) scale(${
-              screenHeight / objs.image0.height
+              screenHeight / objs.image0.height + 0.1
             })`;
           }
         } else {
@@ -532,7 +538,7 @@ const Main = ({ history }) => {
             )}%, 0)`;
           } else {
             objs.image0.style.transform = `translate3d(-50% , -50%, 0) scale(${
-              screenHeight / objs.image0.height
+              screenHeight / objs.image0.height + 0.1
             })`;
           }
         }
@@ -632,7 +638,7 @@ const Main = ({ history }) => {
           else {
             // 이미지를 윈도우 높이만큼 가득 채움
             objs.image0.style.transform = `translate3d(-50%, -50%, 0) scale(${
-              screenHeight / objs.image0.height
+              screenHeight / objs.image0.height + 0.1
             })`;
           }
         } else {
@@ -647,7 +653,7 @@ const Main = ({ history }) => {
             )}%, 0)`;
           } else {
             objs.image0.style.transform = `translate3d(-50% , -50%, 0) scale(${
-              screenHeight / objs.image0.height
+              screenHeight / objs.image0.height + 0.1
             })`;
           }
         }
@@ -903,19 +909,22 @@ const Main = ({ history }) => {
   return (
     <div className={styles["content"]}>
       <Loading />
-      <Cursor ref={cursorRef} />
+      {/* <Cursor ref={cursorRef} /> */}
       <Header scrollSectionInfo={scrollSectionInfo} />
       <Progress ref={progressRef} />
+      <div className={styles["content-background"]}></div>
       <section
         ref={section0}
         className={styles["scroll-section"]}
         id={styles["scroll-section-0"]}
       >
-        <p className={styles["title"]}>
-          EXHIBITION:
-          <br />
-          VARIOUS
-        </p>
+        <div className={styles["title-wrap"]}>
+          <p className={styles["title"]}>
+            EXHIBITION:
+            <br />
+            VARIOUS
+          </p>
+        </div>
         <p className={styles["guide"]}>
           <ScrollGuide scrollSectionInfo={scrollSectionInfo} />
         </p>

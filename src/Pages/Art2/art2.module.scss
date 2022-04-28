@@ -80,11 +80,14 @@
   .info {
     z-index: 2;
     position: relative;
-    background-color: rgba(18, 18, 18);
+    // background-color: rgba(18, 18, 18);
     height: 300vh;
     padding-top: 80vh;
     font-size: 4rem;
     text-align: center;
+    background: linear-gradient(217deg, skyblue, pink 70.71%),
+      linear-gradient(127deg, skyblue, plum 70.71%),
+      linear-gradient(336deg, pink, plum 70.71%);
 
     .info__art {
       perspective: 500px;
