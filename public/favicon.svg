@@ -1,7 +1,15 @@
 <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
   <style>
     svg{
-      background-color: #000000;
+      <!-- background-color: #000000; -->
+      background: radial-gradient(
+          circle at 50% 0,
+          skyblue,
+          rgba(255, 0, 0, 0) 70.71%
+        ),
+        radial-gradient(circle at 6.7% 75%, #e7bceb, rgba(0, 0, 255, 0) 70.71%),
+        radial-gradient(circle at 93.3% 75%, pink, rgba(0, 255, 0, 0) 70.71%)
+          beige;
     }
     svg text { 
       font: 13px "Playfair Display", serif;
