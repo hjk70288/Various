@@ -244,12 +244,14 @@ const Main = ({ history }) => {
     const sectionYOffset = delayedYOffset - prevSectionHeight; // 현재 섹션 안에서의 스크롤 위치
 
     const scrollRatio = sectionYOffset / scrollHeight; // 현재 섹션 안에서의 스크롤이 진행된 비율
-    const totalScrollRatio =
+    const delayedTotalScrollRatio =
       (delayedYOffset / (document.body.offsetHeight - window.innerHeight)) *
       100;
+    const totalScrollRatio =
+      (yOffset / (document.body.offsetHeight - window.innerHeight)) * 100;
     // 스크롤 진행률 표시
     if (progressRef.current) {
-      progressRef.current.style.width = `${totalScrollRatio}%`;
+      progressRef.current.style.width = `${delayedTotalScrollRatio}%`;
     }
 
     // 작품 사이사이에 검정색 배경 추가
