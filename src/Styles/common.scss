@@ -19,8 +19,12 @@ body {
   overflow-x: hidden;
   color: white;
   letter-spacing: -0.05em;
-  background-color: rgba(18, 18, 18);
+  // background-color: rgba(18, 18, 18);
   touch-action: pan-y; // 핀치 줌 불가능하도록
+  transition: background-color 1s;
+}
+body.dark-mode {
+  background-color: rgba(18, 18, 18);
 }
 
 /* 커서 모양 변경 */

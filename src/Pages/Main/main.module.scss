@@ -10,12 +10,21 @@
   overflow-x: hidden;
 
   .content-background {
-    background: linear-gradient(217deg, skyblue, pink 70.71%);
+    background: linear-gradient(45deg, #dda0dd, rgba(0, 0, 0, 0) 60%),
+      linear-gradient(135deg, #87ceeb, rgba(0, 0, 0, 0) 60%),
+      linear-gradient(225deg, #e4e785, rgba(0, 0, 0, 0) 60%),
+      linear-gradient(315deg, #e07a5e, rgba(0, 0, 0, 0) 60%);
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
+    transition: opacity 1s;
+    opacity: 1;
+
+    &.content-background--dark {
+      opacity: 0;
+    }
   }
 
   .scroll-section {
@@ -33,12 +42,10 @@
       position: absolute;
       width: 500px;
       height: 500px;
-      background-color: white;
       border-radius: 500px;
       top: 50vh;
       left: 50vw;
       transform: translate3d(-50%, -50%, 0);
-
       background: radial-gradient(
           circle at 50% 0,
           skyblue,
@@ -47,6 +54,8 @@
         radial-gradient(circle at 6.7% 75%, #e7bceb, rgba(0, 0, 255, 0) 70.71%),
         radial-gradient(circle at 93.3% 75%, pink, rgba(0, 255, 0, 0) 70.71%)
           beige;
+      transition: opacity 1s;
+      opacity: 1;
 
       .title {
         font-size: 4rem;
@@ -55,6 +64,10 @@
         font-family: "Playfair Display", serif;
         line-height: 1.3em;
         letter-spacing: 0.04em;
+      }
+
+      &.title-wrap--dark {
+        opacity: 0;
       }
     }
 
@@ -123,7 +136,7 @@
         transition: color 0.8s;
 
         &:hover {
-          color: rgba(18, 18, 18);
+          color: unset;
         }
 
         &:before,
@@ -144,7 +157,7 @@
         }
         &:hover:before,
         &:hover:after {
-          border-color: rgba(18, 18, 18);
+          // border-color: rgba(18, 18, 18);
           width: 50%;
         }
         &:before,
@@ -157,6 +170,30 @@
     .sticky-elem {
       display: none;
       position: fixed;
+    }
+  }
+}
+
+:global .dark-mode {
+  :local {
+    .content {
+      .scroll-section {
+        img {
+          filter: brightness(40%);
+        }
+
+        .detail-message {
+          .detail-message__link {
+            &:hover {
+              color: rgba(18, 18, 18);
+            }
+            &:hover:before,
+            &:hover:after {
+              border-color: rgba(18, 18, 18);
+            }
+          }
+        }
+      }
     }
   }
 }

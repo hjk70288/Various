@@ -80,9 +80,10 @@
   .info {
     z-index: 2;
     position: relative;
-    background: linear-gradient(217deg, skyblue, pink 70.71%),
-      linear-gradient(127deg, skyblue, plum 70.71%),
-      linear-gradient(336deg, pink, plum 70.71%);
+    background: linear-gradient(45deg, #dda0dd, rgba(0, 0, 0, 0) 60%),
+      linear-gradient(135deg, #87ceeb, rgba(0, 0, 0, 0) 60%),
+      linear-gradient(225deg, #e4e785, rgba(0, 0, 0, 0) 60%),
+      linear-gradient(315deg, #e07a5e, rgba(0, 0, 0, 0) 60%);
     // background-color: rgba(18, 18, 18);
     height: 300vh;
     padding-top: 80vh;
@@ -371,6 +372,16 @@
       .next__button--text:before,
       .next__button--text:after {
         transition: all 0.8s;
+      }
+    }
+  }
+}
+
+:global .dark-mode {
+  :local {
+    .content {
+      .info {
+        background: #000000;
       }
     }
   }

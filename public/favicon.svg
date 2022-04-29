@@ -2,14 +2,10 @@
   <style>
     svg{
       <!-- background-color: #000000; -->
-      background: radial-gradient(
-          circle at 50% 0,
-          skyblue,
-          rgba(255, 0, 0, 0) 70.71%
-        ),
-        radial-gradient(circle at 6.7% 75%, #e7bceb, rgba(0, 0, 255, 0) 70.71%),
-        radial-gradient(circle at 93.3% 75%, pink, rgba(0, 255, 0, 0) 70.71%)
-          beige;
+      background: linear-gradient(45deg, #dda0dd, rgba(0, 0, 0, 0) 60%),
+        linear-gradient(135deg, #87ceeb, rgba(0, 0, 0, 0) 60%),
+        linear-gradient(225deg, #e4e785, rgba(0, 0, 0, 0) 60%),
+        linear-gradient(315deg, #e07a5e, rgba(0, 0, 0, 0) 60%);
     }
     svg text { 
       font: 13px "Playfair Display", serif;

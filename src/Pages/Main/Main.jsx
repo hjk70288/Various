@@ -1,13 +1,15 @@
 import React, { useEffect, useRef } from "react";
+import useLocalStorage from "Hooks/useLocalStorage";
 import renderComponent from "Hooks/renderComponent";
 import styles from "./main.module.scss";
 import headerStyles from "Components/Header/header/header.module.scss";
 import footerStyles from "Components/Footer/footer.module.scss";
-// import Cursor from "Components/Cursor/Cursor";
+import Cursor from "Components/Cursor/Cursor";
 import Loading from "Components/Loading/Loading";
 import Header from "Components/Header/header/Header";
 import Progress from "Components/Header/progress/Progress";
 import Footer from "Components/Footer/Footer";
+import ThemeButton from "Components/Button/themeButton/ThemeButton";
 import art1 from "Images/art1.jpg";
 import art2 from "Images/art2.jpg";
 import art3 from "Images/art3.jpg";
@@ -97,6 +99,7 @@ const Main = ({ history }) => {
   const imagesInSection2 = useRef([]);
   const messagesInSection3 = useRef([]); // 3 번째 스크롤 섹션 내의 메시지 목록
   const imagesInSection3 = useRef([]);
+  const [darkMode, setDarkMode] = useLocalStorage("darkMode", false);
   let yOffset = 0; // 현재 스크롤 위치
   let currentSection = 0; // 현재 스크롤 섹션 Index
   let delayedYOffset = 0; // 부드러운 애니메이션에 사용되는 yOffset (점점 커지다가 yOffset과 동일해짐)
@@ -911,16 +914,25 @@ const Main = ({ history }) => {
   return (
     <div className={styles["content"]}>
       <Loading />
-      {/* <Cursor ref={cursorRef} /> */}
+      {darkMode ? <Cursor ref={cursorRef} /> : null}
       <Header scrollSectionInfo={scrollSectionInfo} />
       <Progress ref={progressRef} />
-      <div className={styles["content-background"]}></div>
+      <ThemeButton setDarkMode={setDarkMode} />
+      <div
+        className={`${styles["content-background"]} ${
+          darkMode ? styles["content-background--dark"] : null
+        }`}
+      ></div>
       <section
         ref={section0}
         className={styles["scroll-section"]}
         id={styles["scroll-section-0"]}
       >
-        <div className={styles["title-wrap"]}>
+        <div
+          className={` ${styles["title-wrap"]} ${
+            darkMode ? styles["title-wrap--dark"] : null
+          }`}
+        >
           <p className={styles["title"]}>
             EXHIBITION:
             <br />
