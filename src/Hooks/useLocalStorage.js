@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 
-function useLocalStorage(key, initial_state) {
+/* State를 Local Storage에 저장하여 사용 */
+function useLocalStorage(key, initialState) {
   const [state, setState] = useState(
-    () => JSON.parse(window.localStorage.getItem(key)) || initial_state
+    () => JSON.parse(window.localStorage.getItem(key)) || initialState
   );
 
   useEffect(() => {

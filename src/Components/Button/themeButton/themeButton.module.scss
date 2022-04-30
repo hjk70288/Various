@@ -1,19 +1,22 @@
 .change-button {
   position: absolute;
   top: 10vh;
-  left: 10vh;
-  z-index: 999;
+  right: 5vh;
+  z-index: 19;
+  color: #000000;
   background-color: white;
   font-weight: bold;
   font-size: 1rem;
   width: 9em;
   height: 3em;
   border: none;
-  border-radius: 1em;
-  box-shadow: 1px 1px 1px 1px gray;
+  border-radius: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   &:hover {
-    background-color: black;
+    background-color: #000000;
     color: white;
   }
 }

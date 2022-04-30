@@ -258,10 +258,12 @@ const Main = ({ history }) => {
     }
 
     // 작품 사이사이에 검정색 배경 추가
-    if (totalScrollRatio < 10 || totalScrollRatio > 90) {
-      document.body.classList.remove(styles["background--dark"]);
-    } else if (totalScrollRatio) {
-      document.body.classList.add(styles["background--dark"]);
+    if (!darkMode) {
+      if (totalScrollRatio < 10 || totalScrollRatio > 90) {
+        document.body.classList.remove(styles["background--dark"]);
+      } else if (totalScrollRatio) {
+        document.body.classList.add(styles["background--dark"]);
+      }
     }
 
     switch (currentSection) {
@@ -855,6 +857,7 @@ const Main = ({ history }) => {
       // 커서가 a태그 혹은 스크롤가이드(마우스 모양)를 호버하는 중이라면
       if (
         e.srcElement.nodeName === "A" ||
+        e.srcElement.nodeName === "BUTTON" ||
         e.srcElement.classList.contains(styles["guide__mouse"]) ||
         e.srcElement.classList.contains(headerStyles["link"]) ||
         e.srcElement.classList.contains(headerStyles["title__word"]) ||
@@ -876,6 +879,9 @@ const Main = ({ history }) => {
 
   // 이벤트 리스너, 섹션 정보 등 초기화 (initializing)
   const init = () => {
+    // 남아있는 (작품 사이사이 검정색) 효과 제거
+    document.body.classList.remove(styles["background--dark"]);
+
     // 화면 높이 설정
     screenHeight = window.innerHeight;
 
@@ -917,7 +923,7 @@ const Main = ({ history }) => {
       {darkMode ? <Cursor ref={cursorRef} /> : null}
       <Header scrollSectionInfo={scrollSectionInfo} />
       <Progress ref={progressRef} />
-      <ThemeButton setDarkMode={setDarkMode} />
+      <ThemeButton darkMode={darkMode} setDarkMode={setDarkMode} />
       <div
         className={`${styles["content-background"]} ${
           darkMode ? styles["content-background--dark"] : null

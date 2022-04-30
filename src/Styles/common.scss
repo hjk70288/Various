@@ -30,14 +30,18 @@ body.dark-mode {
 /* 커서 모양 변경 */
 a,
 a:link {
-  cursor: url("../Images/cursor.svg") 6 6, auto;
+  cursor: url("../Images/cursor.svg") 16 16, auto;
 }
 a:hover,
 a:focus {
-  cursor: url("../Images/cursor.svg") 6 6, auto;
+  cursor: url("../Images/cursor.svg") 16 16, auto;
 }
 a:active {
-  cursor: url("../Images/cursor.svg") 6 6, auto;
+  cursor: url("../Images/cursor.svg") 16 16, auto;
+}
+button:hover,
+button:focus {
+  cursor: url("../Images/cursor.svg") 16 16, auto;
 }
 .cursor-hover {
   transition: background-color 0.4s;

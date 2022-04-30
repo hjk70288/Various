@@ -1,9 +1,11 @@
 import React from "react";
 import styles from "./themeButton.module.scss";
 
+// 테마 변경 버튼 (라이트, 다크)
 const ThemeButton = props => {
-  const { setDarkMode } = props;
+  const { darkMode, setDarkMode } = props;
 
+  // 테마 변경하기
   const changeTheme = () => {
     if (document.body.classList.contains("dark-mode")) {
       document.body.classList.remove("dark-mode");
@@ -14,9 +16,9 @@ const ThemeButton = props => {
     }
   };
   return (
-    <button onClick={changeTheme} className={styles["change-button"]}>
-      TURN LIGHT
-    </button>
+    <div onClick={changeTheme} className={styles["change-button"]}>
+      {darkMode ? "LIGHT ON" : "LIGHT OFF"}
+    </div>
   );
 };
 
