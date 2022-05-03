@@ -14,6 +14,7 @@ import art1 from "Images/art1.jpg";
 import art2 from "Images/art2.jpg";
 import art3 from "Images/art3.jpg";
 import art4 from "Images/art4.jpg";
+import frame from "Images/frame.png";
 
 // 스크롤 가이드
 const ScrollGuide = props => {
@@ -848,7 +849,11 @@ const Main = ({ history }) => {
     }
 
     // 컴퓨터 환경일 때만 손전등 효과 추가
-    if (isMobile === false && cursorRef.current) {
+    if (
+      isMobile === false &&
+      cursorRef.current &&
+      document.body.classList.contains("dark-mode--fin")
+    ) {
       if (cursorRef.current.style.display === "")
         cursorRef.current.style.display = "block";
       cursorRef.current.style.left = `${e.clientX - 250}px`;
@@ -934,17 +939,33 @@ const Main = ({ history }) => {
         className={styles["scroll-section"]}
         id={styles["scroll-section-0"]}
       >
-        <div
+        <div className={styles["scroll-section__border-wrap"]}>
+          <div className={styles["scroll-section__border"]} />
+        </div>
+        {/* <div
           className={` ${styles["title-wrap"]} ${
             darkMode ? styles["title-wrap--dark"] : null
           }`}
         >
+          <img src={frame}></img>
           <p className={styles["title"]}>
             EXHIBITION:
             <br />
             VARIOUS
           </p>
-        </div>
+        </div> */}
+        <img
+          className={` ${styles["title-wrap"]} ${
+            darkMode ? styles["title-wrap--dark"] : null
+          }`}
+          src={frame}
+          alt=""
+        ></img>
+        <p className={styles["title"]}>
+          EXHIBITION:
+          <br />
+          VARIOUS
+        </p>
         <p className={styles["guide"]}>
           <ScrollGuide scrollSectionInfo={scrollSectionInfo} />
         </p>

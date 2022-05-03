@@ -89,6 +89,7 @@
     padding-top: 80vh;
     font-size: 4rem;
     text-align: center;
+    backdrop-filter: brightness(10);
 
     .info__art {
       position: relative;
@@ -314,6 +315,7 @@
   /* Parallax Scrolling을 위한 투명한 영역 */
   .transparent-area {
     height: 100vh;
+    background-color: #000000;
   }
 
   .next {

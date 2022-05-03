@@ -33,7 +33,7 @@ const Art4 = ({ history }) => {
     if (scrollRatio > animationStartRatio) {
       if (nextBackgroundRef.current) {
         nextBackgroundRef.current.style.opacity = calcAnimationValues(
-          [0.1, 0.6, { start: 0, end: 1 }],
+          [0, 0.6, { start: 0, end: 1 }],
           window.innerHeight,
           window.pageYOffset - document.body.offsetHeight * animationStartRatio
         );

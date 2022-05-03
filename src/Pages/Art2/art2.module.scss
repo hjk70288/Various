@@ -81,14 +81,15 @@
     z-index: 2;
     position: relative;
     // background-color: rgba(18, 18, 18);
-    height: 300vh;
-    padding-top: 80vh;
-    font-size: 4rem;
-    text-align: center;
     background: linear-gradient(45deg, #dda0dd, rgba(0, 0, 0, 0) 60%),
       linear-gradient(135deg, #87ceeb, rgba(0, 0, 0, 0) 60%),
       linear-gradient(225deg, #e4e785, rgba(0, 0, 0, 0) 60%),
       linear-gradient(315deg, #e07a5e, rgba(0, 0, 0, 0) 60%);
+    height: 300vh;
+    padding-top: 80vh;
+    font-size: 4rem;
+    text-align: center;
+    backdrop-filter: brightness(10);
 
     .info__art {
       perspective: 500px;
@@ -177,6 +178,7 @@
   /* Parallax Scrolling을 위한 투명한 영역 */
   .transparent-area {
     height: 100vh;
+    background-color: #000000;
   }
 
   .next {

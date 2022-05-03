@@ -9,10 +9,15 @@ const ThemeButton = props => {
   const changeTheme = () => {
     if (document.body.classList.contains("dark-mode")) {
       document.body.classList.remove("dark-mode");
+      document.body.classList.remove("dark-mode--fin");
       setDarkMode(false);
     } else {
       document.body.classList.add("dark-mode");
       setDarkMode(true);
+
+      setTimeout(() => {
+        document.body.classList.add("dark-mode--fin");
+      }, 1000);
     }
   };
   return (

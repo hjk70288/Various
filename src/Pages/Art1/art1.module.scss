@@ -85,6 +85,7 @@
     height: 400vh;
     padding-top: 80vh;
     text-align: center;
+    backdrop-filter: brightness(10);
 
     .info__top {
       display: flex;
@@ -124,6 +125,7 @@
   /* Parallax Scrolling을 위한 투명한 영역 */
   .transparent-area {
     height: 100vh;
+    background-color: #000000;
   }
 
   .next {
