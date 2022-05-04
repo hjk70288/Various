@@ -9,7 +9,7 @@ import Loading from "Components/Loading/Loading";
 import Header from "Components/Header/header/Header";
 import Progress from "Components/Header/progress/Progress";
 import Footer from "Components/Footer/Footer";
-import ThemeButton from "Components/Button/themeButton/ThemeButton";
+// import ThemeButton from "Components/Button/themeButton/ThemeButton";
 import art1 from "Images/art1.jpg";
 import art2 from "Images/art2.jpg";
 import art3 from "Images/art3.jpg";
@@ -926,9 +926,9 @@ const Main = ({ history }) => {
     <div className={styles["content"]}>
       <Loading />
       {darkMode ? <Cursor ref={cursorRef} /> : null}
-      <Header scrollSectionInfo={scrollSectionInfo} />
+      <Header setDarkMode={setDarkMode} scrollSectionInfo={scrollSectionInfo} />
       <Progress ref={progressRef} />
-      <ThemeButton darkMode={darkMode} setDarkMode={setDarkMode} />
+      {/* <ThemeButton darkMode={darkMode} setDarkMode={setDarkMode} /> */}
       <div
         className={`${styles["content-background"]} ${
           darkMode ? styles["content-background--dark"] : null
@@ -939,9 +939,9 @@ const Main = ({ history }) => {
         className={styles["scroll-section"]}
         id={styles["scroll-section-0"]}
       >
-        <div className={styles["scroll-section__border-wrap"]}>
+        {/* <div className={styles["scroll-section__border-wrap"]}>
           <div className={styles["scroll-section__border"]} />
-        </div>
+        </div> */}
         {/* <div
           className={` ${styles["title-wrap"]} ${
             darkMode ? styles["title-wrap--dark"] : null
@@ -962,9 +962,9 @@ const Main = ({ history }) => {
           alt=""
         ></img>
         <p className={styles["title"]}>
-          EXHIBITION:
+          EXHIBITION
           <br />
-          VARIOUS
+          :VARIOUS
         </p>
         <p className={styles["guide"]}>
           <ScrollGuide scrollSectionInfo={scrollSectionInfo} />
