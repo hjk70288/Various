@@ -39,23 +39,25 @@
       position: absolute;
       filter: unset;
       animation: render-content 1s forwards;
-      animation-delay: 1s;
       opacity: 0;
 
       &:nth-child(1) {
         top: -23vh;
         right: -15%;
         width: 500px;
+        animation-delay: 1s;
       }
       &:nth-child(2) {
         top: 34vh;
         right: 19vw;
         width: 400px;
+        animation-delay: 1.5s;
       }
       &:nth-child(3) {
         top: 35vh;
         right: 55vw;
         width: 1000px;
+        animation-delay: 2s;
       }
     }
 
@@ -67,7 +69,7 @@
       top: 10vh;
       left: 5vw;
       animation: render-content 1s forwards;
-      animation-delay: 1s;
+      animation-delay: 2.5s;
       opacity: 0;
 
       p {
@@ -87,7 +89,7 @@
       top: 50vh;
       right: 5vw;
       animation: render-content 1s forwards;
-      animation-delay: 1s;
+      animation-delay: 2.5s;
       opacity: 0;
 
       p {
