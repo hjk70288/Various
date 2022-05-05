@@ -1,7 +1,7 @@
 @charset 'utf-8';
 html,
 body {
-  cursor: url("../Images/cursor.svg") 16 16, auto;
+  cursor: none;
   // height: 100vh;
   // height: calc(var(--vh, 1vh) * 100);
 }
@@ -25,37 +25,54 @@ body {
 }
 body.dark-mode {
   background-color: rgba(18, 18, 18);
+  /* 커서 모양 변경 */
+  cursor: url("../Images/cursor.svg") 16 16, auto;
+  a,
+  a:link {
+    cursor: url("../Images/cursor.svg") 16 16, auto;
+  }
+  a:hover,
+  a:focus {
+    cursor: url("../Images/cursor.svg") 16 16, auto;
+  }
+  a:active {
+    cursor: url("../Images/cursor.svg") 16 16, auto;
+  }
+  button:hover,
+  button:focus {
+    cursor: url("../Images/cursor.svg") 16 16, auto;
+  }
+  .cursor-hover {
+    transition: background-color 0.4s;
+    // background-color: rgba(255, 255, 255, 0.25);
+    background-color: rgba(255, 255, 0, 0.3);
+  }
+  .cursor-none {
+    transition: background-color 0.4s;
+    background-color: unset;
+  }
 }
-
-/* 커서 모양 변경 */
+.cursor-hover--light {
+  transform: scale(0.7) !important;
+  // background-color: rgba(0, 0, 255, 0.3) !important;
+  background-color: rgba(255, 192, 203, 0.7) !important;
+  border: none !important;
+}
 a,
 a:link {
-  cursor: url("../Images/cursor.svg") 16 16, auto;
+  cursor: none;
 }
 a:hover,
 a:focus {
-  cursor: url("../Images/cursor.svg") 16 16, auto;
+  cursor: none;
 }
 a:active {
-  cursor: url("../Images/cursor.svg") 16 16, auto;
+  cursor: none;
 }
 button:hover,
 button:focus {
-  cursor: url("../Images/cursor.svg") 16 16, auto;
+  cursor: none;
 }
-.cursor-hover {
-  transition: background-color 0.4s;
-  // background-color: rgba(255, 255, 255, 0.25);
-  background-color: rgba(255, 255, 0, 0.3);
-}
-.cursor-none {
-  transition: background-color 0.4s;
-  background-color: unset;
-}
-// .cursor-hover--yellow {
-//   transition: background-color 0.4s;
-//   background-color: rgba(255, 255, 0, 0.25);
-// }
 
 /* 페이지 이동 시 렌더링 애니메이션 */
 .render {

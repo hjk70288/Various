@@ -849,35 +849,60 @@ const Main = ({ history }) => {
     }
 
     // 컴퓨터 환경일 때만 손전등 효과 추가
-    if (
-      isMobile === false &&
-      cursorRef.current &&
-      document.body.classList.contains("dark-mode--fin")
-    ) {
-      if (cursorRef.current.style.display === "")
-        cursorRef.current.style.display = "block";
-      cursorRef.current.style.left = `${e.clientX - 250}px`;
-      cursorRef.current.style.top = `${e.clientY - 250}px`;
+    if (isMobile === false && cursorRef.current) {
+      // 다크모드인 경우
+      if (document.body.classList.contains("dark-mode--fin")) {
+        if (cursorRef.current.style.display === "")
+          cursorRef.current.style.display = "block";
+        cursorRef.current.style.left = `${e.clientX - 250}px`;
+        cursorRef.current.style.top = `${e.clientY - 250}px`;
 
-      // 커서가 a태그 혹은 스크롤가이드(마우스 모양)를 호버하는 중이라면
-      if (
-        e.srcElement.nodeName === "A" ||
-        e.srcElement.nodeName === "BUTTON" ||
-        e.srcElement.classList.contains(styles["guide__mouse"]) ||
-        e.srcElement.classList.contains(headerStyles["link"]) ||
-        e.srcElement.classList.contains(headerStyles["title__word"]) ||
-        e.srcElement.classList.contains(styles["detail-message__link"]) ||
-        e.srcElement.classList.contains(footerStyles["hidden-message"])
-      ) {
-        // 커서에 호버 이펙트 추가
-        cursorRef.current.classList.remove("cursor-none");
-        cursorRef.current.classList.add("cursor-hover");
+        // 커서가 a태그 혹은 스크롤가이드(마우스 모양)를 호버하는 중이라면
+        if (
+          e.srcElement.nodeName === "A" ||
+          e.srcElement.nodeName === "BUTTON" ||
+          e.srcElement.classList.contains(styles["guide__mouse"]) ||
+          e.srcElement.classList.contains(headerStyles["link"]) ||
+          e.srcElement.classList.contains(headerStyles["title__word"]) ||
+          e.srcElement.classList.contains(styles["detail-message__link"]) ||
+          e.srcElement.classList.contains(footerStyles["hidden-message"])
+        ) {
+          // 커서에 호버 이펙트 추가
+          cursorRef.current.classList.remove("cursor-none");
+          cursorRef.current.classList.add("cursor-hover");
+        }
+        // a태그를 호버하지 않는다면
+        else {
+          // 커서에 호버 이펙트 제거
+          cursorRef.current.classList.remove("cursor-hover");
+          cursorRef.current.classList.add("cursor-none");
+        }
       }
-      // a태그를 호버하지 않는다면
-      else {
-        // 커서에 호버 이펙트 제거
-        cursorRef.current.classList.remove("cursor-hover");
-        cursorRef.current.classList.add("cursor-none");
+      // 다크모드가 아닌 경우
+      else if (!document.body.classList.contains("dark-mode")) {
+        if (cursorRef.current.style.display === "")
+          cursorRef.current.style.display = "block";
+        cursorRef.current.style.left = `${e.clientX}px`;
+        cursorRef.current.style.top = `${e.clientY}px`;
+
+        // 커서가 a태그 혹은 스크롤가이드(마우스 모양)를 호버하는 중이라면
+        if (
+          e.srcElement.nodeName === "A" ||
+          e.srcElement.nodeName === "BUTTON" ||
+          e.srcElement.classList.contains(styles["guide__mouse"]) ||
+          e.srcElement.classList.contains(headerStyles["link"]) ||
+          e.srcElement.classList.contains(headerStyles["title__word"]) ||
+          e.srcElement.classList.contains(styles["detail-message__link"]) ||
+          e.srcElement.classList.contains(footerStyles["hidden-message"])
+        ) {
+          // 커서에 호버 이펙트 추가
+          cursorRef.current.classList.add("cursor-hover--light");
+        }
+        // a태그를 호버하지 않는다면
+        else {
+          // 커서에 호버 이펙트 제거
+          cursorRef.current.classList.remove("cursor-hover--light");
+        }
       }
     }
   };
@@ -925,7 +950,8 @@ const Main = ({ history }) => {
   return (
     <div className={styles["content"]}>
       <Loading />
-      {darkMode ? <Cursor ref={cursorRef} /> : null}
+      <Cursor ref={cursorRef} darkMode={darkMode} />
+      {/* {darkMode ? <Cursor ref={cursorRef} /> : null} */}
       <Header setDarkMode={setDarkMode} scrollSectionInfo={scrollSectionInfo} />
       <Progress ref={progressRef} />
       {/* <ThemeButton darkMode={darkMode} setDarkMode={setDarkMode} /> */}
@@ -939,30 +965,6 @@ const Main = ({ history }) => {
         className={styles["scroll-section"]}
         id={styles["scroll-section-0"]}
       >
-        {/* <div
-          className={` ${styles["title-wrap"]} ${
-            darkMode ? styles["title-wrap--dark"] : null
-          }`}
-        >
-          <img src={frame}></img>
-          <p className={styles["title"]}>
-            EXHIBITION:
-            <br />
-            VARIOUS
-          </p>
-        </div> */}
-        {/* <img
-          className={` ${styles["title-wrap"]} ${
-            darkMode ? styles["title-wrap--dark"] : null
-          }`}
-          src={frame}
-          alt=""
-        ></img>
-        <p className={styles["title"]}>
-          EXHIBITION
-          <br />
-          :VARIOUS
-        </p> */}
         {!darkMode ? (
           <>
             <img className={styles["main-circle"]} src={frame} alt=""></img>

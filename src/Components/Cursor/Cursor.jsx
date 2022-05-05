@@ -2,10 +2,16 @@ import React, { forwardRef } from "react";
 import styles from "./cursor.module.scss";
 
 const Cursor = forwardRef((props, ref) => {
-  return (
+  const { darkMode } = props;
+
+  console.log(darkMode);
+
+  return darkMode ? (
     <svg ref={ref} className={styles["cursor-circle"]}>
       <circle cx="50%" cy="50%" r="250"></circle>
     </svg>
+  ) : (
+    <div ref={ref} className={styles["cursor"]}></div>
   );
 });
 
