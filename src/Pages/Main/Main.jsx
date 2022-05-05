@@ -898,7 +898,7 @@ const Main = ({ history }) => {
     window.addEventListener("scroll", handlePageScroll);
 
     // 화면 크기 변경 시 이벤트 핸들링
-    window.addEventListener("resize", handleResizeWindow);
+    // window.addEventListener("resize", handleResizeWindow);
 
     // 휴대폰 가로 세로 방향 변경 시 이벤트 핸들링
     window.addEventListener("orientationchange", handleChangeOrientation);
@@ -939,9 +939,6 @@ const Main = ({ history }) => {
         className={styles["scroll-section"]}
         id={styles["scroll-section-0"]}
       >
-        {/* <div className={styles["scroll-section__border-wrap"]}>
-          <div className={styles["scroll-section__border"]} />
-        </div> */}
         {/* <div
           className={` ${styles["title-wrap"]} ${
             darkMode ? styles["title-wrap--dark"] : null
@@ -954,7 +951,7 @@ const Main = ({ history }) => {
             VARIOUS
           </p>
         </div> */}
-        <img
+        {/* <img
           className={` ${styles["title-wrap"]} ${
             darkMode ? styles["title-wrap--dark"] : null
           }`}
@@ -965,7 +962,39 @@ const Main = ({ history }) => {
           EXHIBITION
           <br />
           :VARIOUS
-        </p>
+        </p> */}
+        {!darkMode ? (
+          <>
+            <img className={styles["main-circle"]} src={frame} alt=""></img>
+            <img className={styles["main-circle"]} src={frame} alt=""></img>
+            <img className={styles["main-circle"]} src={frame} alt=""></img>
+            <div className={styles["title"]}>
+              <p>
+                EXHIBITION
+                <br />
+                :VARIOUS
+              </p>
+            </div>
+            <div className={styles["sub-title"]}>
+              <p>
+                1. LOREM
+                <br />
+                2. IFSUM
+                <br />
+                3. DOLOR
+                <br />
+                4. SIT
+              </p>
+            </div>
+          </>
+        ) : (
+          <p className={styles["title--dark"]}>
+            EXHIBITION
+            <br />
+            :VARIOUS
+          </p>
+        )}
+
         <p className={styles["guide"]}>
           <ScrollGuide scrollSectionInfo={scrollSectionInfo} />
         </p>
