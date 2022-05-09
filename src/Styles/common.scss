@@ -1,9 +1,23 @@
 @charset 'utf-8';
 html,
 body {
-  cursor: none;
-  // height: 100vh;
-  // height: calc(var(--vh, 1vh) * 100);
+  /* 커서 모양 변경 */
+  cursor: url("../Images/cursor.svg") 16 16, auto;
+  a,
+  a:link {
+    cursor: url("../Images/cursor.svg") 16 16, auto;
+  }
+  a:hover,
+  a:focus {
+    cursor: url("../Images/cursor.svg") 16 16, auto;
+  }
+  a:active {
+    cursor: url("../Images/cursor.svg") 16 16, auto;
+  }
+  button:hover,
+  button:focus {
+    cursor: url("../Images/cursor.svg") 16 16, auto;
+  }
 }
 html {
   font-family: "Noto Sans KR", sans-serif;
@@ -23,8 +37,12 @@ body {
   touch-action: pan-y; // 핀치 줌 불가능하도록
   transition: background-color 1s;
 }
+body.main {
+  cursor: none;
+}
 body.dark-mode {
   background-color: rgba(18, 18, 18);
+
   /* 커서 모양 변경 */
   cursor: url("../Images/cursor.svg") 16 16, auto;
   a,
@@ -42,6 +60,7 @@ body.dark-mode {
   button:focus {
     cursor: url("../Images/cursor.svg") 16 16, auto;
   }
+
   .cursor-hover {
     transition: background-color 0.4s;
     background-color: rgba(255, 255, 0, 0.3);

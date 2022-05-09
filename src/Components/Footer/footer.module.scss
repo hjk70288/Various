@@ -34,10 +34,6 @@
     }
 
     @media (hover: hover) {
-      a:hover {
-        color: white;
-      }
-
       a:hover .hidden-message {
         opacity: 1;
         transform: translate3d(0, 0, 0);
@@ -60,6 +56,11 @@
 :global .dark-mode {
   :local {
     .footer {
+      .footer__people {
+        a .hidden-message {
+          color: #ffff00;
+        }
+      }
       .footer__copy-right {
         color: grey;
       }

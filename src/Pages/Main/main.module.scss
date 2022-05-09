@@ -10,10 +10,14 @@
   overflow-x: hidden;
 
   .content-background {
-    background: linear-gradient(45deg, #dda0dd, rgba(0, 0, 0, 0) 60%),
+    background: linear-gradient(45deg, #b987eb, rgba(0, 0, 0, 0) 60%),
       linear-gradient(135deg, #87ceeb, rgba(0, 0, 0, 0) 60%),
-      linear-gradient(225deg, #e4e785, rgba(0, 0, 0, 0) 60%),
-      linear-gradient(315deg, #e07a5e, rgba(0, 0, 0, 0) 60%);
+      linear-gradient(225deg, #eb87b7, rgba(0, 0, 0, 0) 60%),
+      linear-gradient(315deg, #ffff00, rgba(0, 0, 0, 0) 60%);
+    // background: linear-gradient(45deg, #dda0dd, rgba(0, 0, 0, 0) 60%),
+    //   linear-gradient(135deg, #87ceeb, rgba(0, 0, 0, 0) 60%),
+    //   linear-gradient(225deg, #e4e785, rgba(0, 0, 0, 0) 60%),
+    //   linear-gradient(315deg, #e07a5e, rgba(0, 0, 0, 0) 60%);
     position: fixed;
     top: 0;
     left: 0;
@@ -46,6 +50,7 @@
         right: -15%;
         width: 500px;
         animation-delay: 1s;
+        transform: rotate(130deg);
       }
       &:nth-child(2) {
         top: 34vh;
@@ -58,6 +63,7 @@
         right: 55vw;
         width: 1000px;
         animation-delay: 2s;
+        transform: rotate(300deg);
       }
     }
 
@@ -97,7 +103,7 @@
         margin-top: 0.3em;
         margin-right: 0.5em;
         float: right;
-        font-size: 2.5rem;
+        font-size: 2rem;
         color: #000000;
         line-height: 1.5em;
       }

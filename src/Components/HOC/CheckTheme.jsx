@@ -3,6 +3,11 @@ import React from "react";
 // 다크모드인지 판단하는 고차 컴포넌트
 export default function CheckTheme(Component) {
   function setTheme(props) {
+    if (props.location.pathname === "/") {
+      document.body.classList.add("main");
+    } else {
+      document.body.classList.remove("main");
+    }
     // 이전에 다크모드로 설정되어 있던 경우 다크모드로 설정
     if (window.localStorage.darkMode === "true") {
       document.body.classList.add("dark-mode");
