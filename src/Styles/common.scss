@@ -39,6 +39,21 @@ body {
 }
 body.main {
   cursor: none;
+  a,
+  a:link {
+    cursor: none;
+  }
+  a:hover,
+  a:focus {
+    cursor: none;
+  }
+  a:active {
+    cursor: none;
+  }
+  button:hover,
+  button:focus {
+    cursor: none;
+  }
 }
 body.dark-mode {
   background-color: rgba(18, 18, 18);
