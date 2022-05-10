@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./header.module.scss";
 
 const Header = props => {
-  const { scrollSectionInfo, setDarkMode } = props;
+  const { scrollSectionInfo } = props;
 
   // 스크롤 섹션의 높이 설정
   scrollSectionInfo.map(value => {
@@ -15,22 +15,6 @@ const Header = props => {
   for (let i = 0; i < scrollSectionInfo.length; i++) {
     totalSectionHeight += scrollSectionInfo[i].sectionHeight;
   }
-
-  // 테마 변경하기
-  const changeTheme = () => {
-    if (document.body.classList.contains("dark-mode")) {
-      document.body.classList.remove("dark-mode");
-      document.body.classList.remove("dark-mode--fin");
-      setDarkMode(false);
-    } else {
-      document.body.classList.add("dark-mode");
-      setDarkMode(true);
-
-      setTimeout(() => {
-        document.body.classList.add("dark-mode--fin");
-      }, 550);
-    }
-  };
 
   return (
     <nav className={styles["header"]}>
@@ -49,9 +33,6 @@ const Header = props => {
           <span className={styles["title__word"]}>O</span>
           <span className={styles["title__word"]}>U</span>
           <span className={styles["title__word"]}>S</span>
-        </div>
-        <div className={styles["link"]} onClick={changeTheme}>
-          D
         </div>
         <div
           className={styles["link"]}

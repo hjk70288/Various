@@ -132,8 +132,8 @@
       z-index: 9;
       position: absolute;
       top: 90vh;
-      left: 50%;
-      transform: translateX(-50%);
+      left: 46%;
+      transform: translateX(-46%);
       width: 2.5rem;
 
       .guide__mouse {
@@ -155,6 +155,36 @@
           100% {
             transform: translateY(36px) scaleY(2);
             opacity: 0;
+          }
+        }
+      }
+    }
+    .theme-button {
+      z-index: 9;
+      position: absolute;
+      top: 90vh;
+      left: 54%;
+      transform: translateX(-54%);
+      width: 2.5rem;
+
+      .theme-button__icon {
+        .line {
+          animation: line 1.5s infinite;
+
+          @keyframes line {
+            0% {
+              opacity: 0;
+              stroke-dasharray: 5px;
+            }
+            50% {
+              opacity: 1;
+              stroke-dasharray: 15px;
+            }
+
+            100% {
+              opacity: 0;
+              stroke-dasharray: 5px;
+            }
           }
         }
       }
@@ -332,6 +362,13 @@
 
       .guide {
         width: 2rem;
+        left: 40%;
+        transform: translateX(-40%);
+      }
+      .theme-button {
+        top: 89vh;
+        left: 60%;
+        transform: translateX(-60%);
       }
     }
   }
@@ -368,9 +405,6 @@
 }
 
 /* Main Circle */
-// 900
-// 600
-// 1500
 @media (max-width: 920px) {
   .content {
     .scroll-section {

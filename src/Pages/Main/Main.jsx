@@ -86,6 +86,91 @@ const ScrollGuide = props => {
   );
 };
 
+const ThemeButton = props => {
+  const { setDarkMode } = props;
+
+  // 테마 변경하기
+  const changeTheme = () => {
+    if (document.body.classList.contains("dark-mode")) {
+      document.body.classList.remove("dark-mode");
+      document.body.classList.remove("dark-mode--fin");
+      setDarkMode(false);
+    } else {
+      document.body.classList.add("dark-mode");
+      setDarkMode(true);
+
+      setTimeout(() => {
+        document.body.classList.add("dark-mode--fin");
+      }, 550);
+    }
+  };
+
+  return (
+    <svg
+      className={styles["theme-button__icon"]}
+      onClick={changeTheme}
+      width="59"
+      height="52"
+      viewBox="0 0 59 52"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <mask id="path-1-inside-1_12_20" fill="white">
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M37.5 43.8595C41.9835 41.093 45 35.9223 45 30C45 21.1634 38.2843 14 30 14C21.7157 14 15 21.1634 15 30C15 36.3262 18.4421 41.7949 23.4375 44.3915V52H37.5V43.8595Z"
+        />
+      </mask>
+      <path
+        d="M37.5 43.8595L36.9749 43.0085L36.5 43.3015V43.8595H37.5ZM23.4375 44.3915H24.4375V43.7843L23.8987 43.5042L23.4375 44.3915ZM23.4375 52H22.4375V53H23.4375V52ZM37.5 52V53H38.5V52H37.5ZM44 30C44 35.5817 41.1579 40.4274 36.9749 43.0085L38.0251 44.7105C42.8091 41.7586 46 36.2628 46 30H44ZM30 15C37.6722 15 44 21.654 44 30H46C46 20.6729 38.8964 13 30 13V15ZM16 30C16 21.654 22.3278 15 30 15V13C21.1036 13 14 20.6729 14 30H16ZM23.8987 43.5042C19.2435 41.0845 16 35.9636 16 30H14C14 36.6889 17.6406 42.5054 22.9763 45.2788L23.8987 43.5042ZM24.4375 52V44.3915H22.4375V52H24.4375ZM37.5 51H23.4375V53H37.5V51ZM36.5 43.8595V52H38.5V43.8595H36.5Z"
+        fill="white"
+        mask="url(#path-1-inside-1_12_20)"
+      />
+      <line x1="24" y1="48.5" x2="37" y2="48.5" stroke="white" />
+      <line
+        className={styles["line"]}
+        x1="49"
+        y1="29"
+        x2="59"
+        y2="29"
+        stroke="white"
+        strokeWidth="2"
+      />
+      <line
+        className={styles["line"]}
+        x1="44.2929"
+        y1="16.2929"
+        x2="51.364"
+        y2="9.22183"
+        stroke="white"
+        strokeWidth="2"
+      />
+      <path
+        className={styles["line"]}
+        d="M30 10V-2.38418e-07"
+        stroke="white"
+        strokeWidth="2"
+      />
+      <line
+        className={styles["line"]}
+        x1="14.3639"
+        y1="15.7071"
+        x2="7.29287"
+        y2="8.63604"
+        stroke="white"
+        strokeWidth="2"
+      />
+      <path
+        className={styles["line"]}
+        d="M10 29H0"
+        stroke="white"
+        strokeWidth="2"
+      />
+    </svg>
+  );
+};
+
 const Main = ({ history }) => {
   // Parameter
   const cursorRef = useRef(); // 마우스 커서 컴포넌트의 Ref
@@ -859,11 +944,13 @@ const Main = ({ history }) => {
         cursorRef.current.style.left = `${e.clientX - 250}px`;
         cursorRef.current.style.top = `${e.clientY - 250}px`;
 
+        // console.log(e.srcElement);
         // 커서가 a태그 혹은 스크롤가이드(마우스 모양)를 호버하는 중이라면
         if (
           e.srcElement.nodeName === "A" ||
           e.srcElement.nodeName === "BUTTON" ||
           e.srcElement.classList.contains(styles["guide__mouse"]) ||
+          e.srcElement.classList.contains(styles["theme-button__icon"]) ||
           e.srcElement.classList.contains(headerStyles["link"]) ||
           e.srcElement.classList.contains(headerStyles["title__word"]) ||
           e.srcElement.classList.contains(styles["detail-message__link"]) ||
@@ -892,6 +979,7 @@ const Main = ({ history }) => {
           e.srcElement.nodeName === "A" ||
           e.srcElement.nodeName === "BUTTON" ||
           e.srcElement.classList.contains(styles["guide__mouse"]) ||
+          e.srcElement.classList.contains(styles["theme-button__icon"]) ||
           e.srcElement.classList.contains(headerStyles["link"]) ||
           e.srcElement.classList.contains(headerStyles["title__word"]) ||
           e.srcElement.classList.contains(styles["detail-message__link"]) ||
@@ -953,8 +1041,7 @@ const Main = ({ history }) => {
     <div className={styles["content"]}>
       <Loading />
       <Cursor ref={cursorRef} darkMode={darkMode} />
-      {/* {darkMode ? <Cursor ref={cursorRef} /> : null} */}
-      <Header setDarkMode={setDarkMode} scrollSectionInfo={scrollSectionInfo} />
+      <Header scrollSectionInfo={scrollSectionInfo} />
       <Progress ref={progressRef} />
       {/* <ThemeButton darkMode={darkMode} setDarkMode={setDarkMode} /> */}
       <div
@@ -1011,9 +1098,12 @@ const Main = ({ history }) => {
           </p>
         )}
 
-        <p className={styles["guide"]}>
+        <div className={styles["guide"]}>
           <ScrollGuide scrollSectionInfo={scrollSectionInfo} />
-        </p>
+        </div>
+        <div className={styles["theme-button"]}>
+          <ThemeButton setDarkMode={setDarkMode} />
+        </div>
         <img
           src={art1}
           alt=""
