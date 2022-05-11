@@ -16,11 +16,13 @@
     font-family: "Playfair Display", serif;
     position: relative;
 
-    a {
+    a,
+    div {
       transition: color 0.5s;
     }
 
-    a .hidden-message {
+    a .hidden-message,
+    div .hidden-message {
       display: inline;
       font-size: 0.5em;
       position: absolute;
@@ -34,7 +36,8 @@
     }
 
     @media (hover: hover) {
-      a:hover .hidden-message {
+      a:hover .hidden-message,
+      div:hover .hidden-message {
         opacity: 1;
         transform: translate3d(0, 0, 0);
       }
@@ -57,7 +60,8 @@
   :local {
     .footer {
       .footer__people {
-        a .hidden-message {
+        a .hidden-message,
+        div .hidden-message {
           color: #ffff00;
         }
       }
