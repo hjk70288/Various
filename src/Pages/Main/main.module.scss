@@ -10,10 +10,10 @@
   overflow-x: hidden;
 
   .content-background {
-    background: linear-gradient(45deg, #b987eb, rgba(255, 255, 255, 0) 60%),
-      linear-gradient(135deg, #87ceeb, rgba(255, 255, 255, 0) 60%),
-      linear-gradient(225deg, #eb87b7, rgba(255, 255, 255, 0) 60%),
-      linear-gradient(315deg, #ffff00, rgba(255, 255, 255, 0) 60%);
+    background: linear-gradient(45deg, #b987eb, #b987eb00 60%),
+      linear-gradient(135deg, #87ceeb, #87ceeb00 60%),
+      linear-gradient(225deg, #eb87b7, #eb87b700 60%),
+      linear-gradient(315deg, #ffff00, #ffff0000 60%);
     // background: linear-gradient(45deg, #dda0dd, rgba(0, 0, 0, 0) 60%),
     //   linear-gradient(135deg, #87ceeb, rgba(0, 0, 0, 0) 60%),
     //   linear-gradient(225deg, #e4e785, rgba(0, 0, 0, 0) 60%),
