@@ -927,7 +927,7 @@ const Main = ({ history }) => {
     window.addEventListener("scroll", handlePageScroll);
 
     // 화면 크기 변경 시 이벤트 핸들링
-    // window.addEventListener("resize", handleResizeWindow);
+    window.addEventListener("resize", handleResizeWindow);
 
     // 휴대폰 가로 세로 방향 변경 시 이벤트 핸들링
     window.addEventListener("orientationchange", handleChangeOrientation);
