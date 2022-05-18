@@ -45,7 +45,7 @@ const Header = props => {
         <div
           className={styles["link"]}
           onClick={() => {
-            window.scrollBy(0, totalSectionHeight * 0.09 - window.pageYOffset);
+            window.scrollBy(0, totalSectionHeight * 0.13 - window.pageYOffset);
           }}
         >
           1
@@ -53,7 +53,7 @@ const Header = props => {
         <div
           className={styles["link"]}
           onClick={() => {
-            window.scrollBy(0, totalSectionHeight * 0.32 - window.pageYOffset);
+            window.scrollBy(0, totalSectionHeight * 0.43 - window.pageYOffset);
           }}
         >
           2
@@ -61,18 +61,10 @@ const Header = props => {
         <div
           className={styles["link"]}
           onClick={() => {
-            window.scrollBy(0, totalSectionHeight * 0.57 - window.pageYOffset);
+            window.scrollBy(0, totalSectionHeight * 0.77 - window.pageYOffset);
           }}
         >
           3
-        </div>
-        <div
-          className={styles["link"]}
-          onClick={() => {
-            window.scrollBy(0, totalSectionHeight * 0.82 - window.pageYOffset);
-          }}
-        >
-          4
         </div>
         <div
           className={styles["link"]}
