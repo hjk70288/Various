@@ -46,12 +46,16 @@
       opacity: 0;
 
       &:nth-child(1) {
-        top: -45vh;
-        right: -10%;
-        width: 900px;
-        animation-delay: 1s;
-        // transform: rotate(130deg);
-        transform: translateX(10%);
+        // top: -45vh;
+        // right: -10%;
+        // width: 900px;
+        // animation-delay: 1s;
+        // transform: translateX(10%);
+
+        top: 16vh;
+        right: 5%;
+        width: 600px;
+        // filter: blur(10px);
       }
       &:nth-child(2) {
         top: 25vh;
@@ -71,22 +75,51 @@
     }
 
     .title {
+      // position: absolute;
+      // width: 300px;
+      // height: 75vh;
+      // border: 4px solid #ffffff;
+      // top: 10vh;
+      // left: 5vw;
+      // animation: render-content 1s forwards;
+      // animation-delay: 2.5s;
+      // opacity: 0;
+
       position: absolute;
-      width: 300px;
+      width: 90vw;
       height: 75vh;
-      border: 4px solid #ffffff;
-      top: 10vh;
+      top: 12vh;
       left: 5vw;
-      animation: render-content 1s forwards;
-      animation-delay: 2.5s;
-      opacity: 0;
+
+      // background-color: rgba(255, 255, 255, 0.15);
+      // backdrop-filter: blur(10px);
+      // box-shadow: 1px 1px 51px 0px #8f8f8f;
+      // border-radius: 0 0 200px 200px;
 
       p {
-        font-family: "Playfair Display", serif;
-        margin: 0.5em;
-        font-size: 5rem;
-        color: #000000;
-        font-weight: bold;
+        // font-family: "Playfair Display", serif;
+        // margin: 0.5em;
+        // font-size: 5rem;
+        // color: #000000;
+        // font-weight: bold;
+        // margin-top: 10vh;
+
+        font-family: "bodoni", serif;
+        font-size: 7rem;
+        color: #33293a;
+        // color: #45374f;
+        margin-top: 20vh;
+        margin-left: 10vw;
+        // font-weight: bold;
+      }
+      h1 {
+        width: 20em;
+        font-size: 2rem;
+        color: #33293a;
+        // color: #45374f;
+        margin-top: 6vh;
+        margin-left: 10vw;
+        line-height: 1.2em;
       }
     }
 
@@ -100,6 +133,10 @@
       animation: render-content 1s forwards;
       animation-delay: 2.5s;
       opacity: 0;
+      // background-color: rgba(255, 255, 255, 0.15);
+      // backdrop-filter: blur(10px);
+      // box-shadow: 1px 1px 51px 0px #8f8f8f;
+      // border-radius: 5px;
 
       p {
         white-space: nowrap;

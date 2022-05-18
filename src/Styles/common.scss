@@ -1,4 +1,12 @@
 @charset 'utf-8';
+@font-face {
+  font-family: "bodoni";
+  src: url("../Images/bodoni.ttf") format("truetype");
+}
+@font-face {
+  font-family: "gara";
+  src: url("../Images/gara.ttf") format("truetype");
+}
 html,
 body {
   /* 커서 모양 변경 */

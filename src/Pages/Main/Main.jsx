@@ -927,7 +927,7 @@ const Main = ({ history }) => {
     window.addEventListener("scroll", handlePageScroll);
 
     // 화면 크기 변경 시 이벤트 핸들링
-    window.addEventListener("resize", handleResizeWindow);
+    // window.addEventListener("resize", handleResizeWindow);
 
     // 휴대폰 가로 세로 방향 변경 시 이벤트 핸들링
     window.addEventListener("orientationchange", handleChangeOrientation);
@@ -949,7 +949,8 @@ const Main = ({ history }) => {
       window.removeEventListener("orientationchange", handleChangeOrientation);
       window.removeEventListener("mousemove", handleMoveMouse);
     };
-  });
+    /* eslint-disable-next-line */
+  }, []);
 
   return (
     <div className={styles["content"]}>
@@ -975,7 +976,7 @@ const Main = ({ history }) => {
               src={mainCircle1}
               alt=""
             ></img>
-            <img
+            {/* <img
               className={styles["main-circle"]}
               src={mainCircle2}
               alt=""
@@ -984,15 +985,20 @@ const Main = ({ history }) => {
               className={styles["main-circle"]}
               src={mainCircle3}
               alt=""
-            ></img>
+            ></img> */}
             <div className={styles["title"]}>
               <p>
                 EXHIBITION
                 <br />
                 :VARIOUS
               </p>
+              <h1>
+                Exhibits the expression of various emotions.
+                <br />
+                Love, Anxious, None, Painful.
+              </h1>
             </div>
-            <div className={styles["sub-title"]}>
+            {/* <div className={styles["sub-title"]}>
               <p>
                 1. LOVE
                 <br />
@@ -1002,7 +1008,7 @@ const Main = ({ history }) => {
                 <br />
                 4. NONE-REAL
               </p>
-            </div>
+            </div> */}
           </>
         ) : (
           <p className={styles["title--dark"]}>
@@ -1026,7 +1032,7 @@ const Main = ({ history }) => {
           className={`${styles["sticky-elem"]} ${styles["main-message"]}`}
         >
           <p>
-            사랑인피니티
+            사랑
             <br />
             596 x 842
             <br />
@@ -1038,7 +1044,7 @@ const Main = ({ history }) => {
           className={`${styles["sticky-elem"]} ${styles["main-message"]}`}
         >
           <p>
-            LOVE INFINITY
+            LOVE
             <br />
             596 x 842
             <br />
@@ -1161,7 +1167,7 @@ const Main = ({ history }) => {
           className={`${styles["sticky-elem"]} ${styles["main-message"]}`}
         >
           <p>
-            離人症
+            이인증
             <br />
             642 x 822
             <br />
