@@ -13,8 +13,6 @@ import art1 from "Images/art1.jpg";
 import art2 from "Images/art2.jpg";
 import art3 from "Images/art3.jpg";
 import mainCircle1 from "Images/main-circle.png";
-import mainCircle2 from "Images/main-circle.png";
-import mainCircle3 from "Images/main-circle.png";
 
 // 스크롤 가이드
 const ScrollGuide = props => {
@@ -779,7 +777,7 @@ const Main = ({ history }) => {
     window.addEventListener("scroll", handlePageScroll);
 
     // 화면 크기 변경 시 이벤트 핸들링
-    window.addEventListener("resize", handleResizeWindow);
+    // window.addEventListener("resize", handleResizeWindow);
 
     // 휴대폰 가로 세로 방향 변경 시 이벤트 핸들링
     window.addEventListener("orientationchange", handleChangeOrientation);
@@ -823,44 +821,29 @@ const Main = ({ history }) => {
       >
         {!darkMode ? (
           <>
-            <img
+            <div className={styles["title"]}>
+              <div className={styles["title__wrap"]}>
+                <p className={styles["title__wrap--main"]}>
+                  EXHIBITION
+                  <br />
+                  :VARIOUS
+                </p>
+                <p className={styles["title__wrap--sub"]}>
+                  Exhibits the expression of various emotions.
+                  <br />
+                  Love, Anxious, Painful.
+                </p>
+              </div>
+              <div className={styles["title__circle"]}>
+                <img src={mainCircle1} alt=""></img>
+              </div>
+            </div>
+
+            {/* <img
               className={styles["main-circle"]}
               src={mainCircle1}
               alt=""
-            ></img>
-            {/* <img
-              className={styles["main-circle"]}
-              src={mainCircle2}
-              alt=""
-            ></img>
-            <img
-              className={styles["main-circle"]}
-              src={mainCircle3}
-              alt=""
             ></img> */}
-            <div className={styles["title"]}>
-              <p>
-                EXHIBITION
-                <br />
-                :VARIOUS
-              </p>
-              <h1>
-                Exhibits the expression of various emotions.
-                <br />
-                Love, Anxious, None, Painful.
-              </h1>
-            </div>
-            {/* <div className={styles["sub-title"]}>
-              <p>
-                1. LOVE
-                <br />
-                2. AXIETY
-                <br />
-                3. NONE
-                <br />
-                4. NONE-REAL
-              </p>
-            </div> */}
           </>
         ) : (
           <p className={styles["title--dark"]}>
