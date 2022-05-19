@@ -233,7 +233,7 @@ const Main = ({ history }) => {
 
     // 작품 사이사이에 검정색 배경 추가
     if (!darkMode) {
-      if (totalScrollRatio < 10 || totalScrollRatio > 90) {
+      if (totalScrollRatio < 12 || totalScrollRatio > 85) {
         document.body.classList.remove(styles["background--dark"]);
       } else if (totalScrollRatio) {
         document.body.classList.add(styles["background--dark"]);

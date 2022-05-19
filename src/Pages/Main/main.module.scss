@@ -37,7 +37,6 @@
 
     img {
       filter: brightness(60%);
-      transition: opacity 0.5s;
     }
 
     .title {
@@ -207,7 +206,6 @@
     }
 
     .sticky-elem {
-      transition: opacity 0.5s;
       display: none;
       position: fixed;
     }
@@ -224,6 +222,21 @@
 
         .sticky-elem {
           opacity: 0 !important;
+        }
+      }
+    }
+  }
+}
+:global .scrolling-transition {
+  :local {
+    .content {
+      .scroll-section {
+        img.main-image {
+          transition: opacity 0.5s;
+        }
+
+        .sticky-elem {
+          transition: opacity 0.5s;
         }
       }
     }

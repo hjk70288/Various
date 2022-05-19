@@ -15,7 +15,7 @@ const Footer = props => {
     // 요소 다시 보이도록 함
     setTimeout(() => {
       document.body.classList.remove("scrolling");
-    }, 1000);
+    }, 1500);
 
     // 테마 변경
     if (document.body.classList.contains("dark-mode")) {

@@ -17,15 +17,22 @@ const Header = props => {
   }
 
   // 헤더의 바로가기 클릭 시 핸들링
-  const handleClickLink = destination => {
+  const handleClickLink = (destination, hideTime = 500) => {
     // 스크롤링 되는 동안 그 사이에 있는 요소들을 잠시 숨김
     document.body.classList.add("scrolling");
+    // 요소가 다시 보여질 때 opacity transition을 위해 추가
+    document.body.classList.add("scrolling-transition");
+    // 스크롤 맨 위로 이동
     window.scrollBy(0, totalSectionHeight * destination - window.pageYOffset);
 
     // 요소 다시 보이도록 함
     setTimeout(() => {
       document.body.classList.remove("scrolling");
-    }, 500);
+    }, hideTime);
+    // 0.5초 후 클래스 제거
+    setTimeout(() => {
+      document.body.classList.remove("scrolling-transition");
+    }, hideTime + 500);
   };
 
   return (
@@ -34,7 +41,7 @@ const Header = props => {
         <div
           className={`${styles["link"]} ${styles["title"]}`}
           onClick={() => {
-            handleClickLink(0);
+            handleClickLink(0, 1000);
           }}
         >
           {/* VARIOUS */}
@@ -49,7 +56,7 @@ const Header = props => {
         <div
           className={styles["link"]}
           onClick={() => {
-            handleClickLink(0);
+            handleClickLink(0, 1000);
           }}
         >
           0
@@ -84,7 +91,7 @@ const Header = props => {
         <div
           className={styles["link"]}
           onClick={() => {
-            handleClickLink(2);
+            handleClickLink(2, 1000);
           }}
         >
           0
