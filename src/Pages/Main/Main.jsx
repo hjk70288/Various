@@ -231,12 +231,19 @@ const Main = ({ history }) => {
       progressRef.current.style.width = `${delayedTotalScrollRatio}%`;
     }
 
-    // 작품 사이사이에 검정색 배경 추가
     if (!darkMode) {
-      if (totalScrollRatio < 12 || totalScrollRatio > 85) {
-        document.body.classList.remove(styles["background--dark"]);
-      } else if (totalScrollRatio) {
+      // 작품 사이사이에 검정색 배경 추가
+      if (totalScrollRatio >= 12 && totalScrollRatio <= 85) {
         document.body.classList.add(styles["background--dark"]);
+      } else {
+        document.body.classList.remove(styles["background--dark"]);
+      }
+
+      // 푸터 도달 시 배경 변경
+      if (totalScrollRatio > 85) {
+        document.body.classList.add(styles["background--footer"]);
+      } else {
+        document.body.classList.remove(styles["background--footer"]);
       }
     }
 
@@ -654,6 +661,9 @@ const Main = ({ history }) => {
         currentSection = i;
         break;
       }
+    }
+    if (yOffset > totalSectionHeight) {
+      currentSection = 2;
     }
 
     // 현재 스크롤 섹션의 리소스만 화면에 표시될 수 있도록 body에 색션 정보 삽입

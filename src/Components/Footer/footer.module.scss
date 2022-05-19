@@ -1,6 +1,8 @@
 .footer {
-  height: calc(100vh - 57px);
+  // height: calc(100vh - 57px);
+  height: 100vh;
   // background-color: rgba(40, 40, 40, 0.1);
+  // background: linear-gradient(45deg, #b987eb, #87caeb 110%);
   display: flex;
   flex-flow: column;
   justify-content: center;
@@ -15,6 +17,7 @@
     margin: 1em;
     font-family: "bodoni", serif;
     position: relative;
+    color: #33293a;
 
     a,
     div {
@@ -27,7 +30,7 @@
       font-size: 0.5em;
       position: absolute;
       right: 0;
-      color: black;
+      color: #261e2b;
       font-weight: bold;
       bottom: -1.2em;
       opacity: 0;
@@ -60,6 +63,8 @@
   :local {
     .footer {
       .footer__people {
+        color: #ffffff;
+
         a .hidden-message,
         div .hidden-message {
           color: #ffff00;

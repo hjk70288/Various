@@ -5,6 +5,13 @@
     }
   }
 }
+.background--footer {
+  .content {
+    .content-background {
+      background: linear-gradient(45deg, #b987eb, #87caeb 90%);
+    }
+  }
+}
 
 .content {
   overflow-x: hidden;

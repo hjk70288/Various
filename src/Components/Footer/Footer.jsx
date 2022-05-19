@@ -39,20 +39,21 @@ const Footer = props => {
           target="_blank"
           rel="noreferrer"
           href="https://www.instagram.com/llllllilllllilllllillllil"
+          data-hover="CLICK ME"
         >
-          ART BY llllllilllllilllllillllil{" "}
+          ART BY llllllilllllilllllillllil
           <span className={styles["hidden-message"]}>Click To Instagram!</span>
         </a>
       </div>
       <div className={styles["footer__people"]}>
         <a target="_blank" rel="noreferrer" href="https://github.com/hjk70288">
-          DEVELOPED BY KYM{" "}
+          DEVELOPED BY KYM
           <span className={styles["hidden-message"]}>Click To GitHub!</span>
         </a>
       </div>
       <div className={styles["footer__people"]}>
         <div onClick={changeTheme}>
-          CHANGE THEME{" "}
+          CHANGE THEME
           <span className={styles["hidden-message"]}>
             {darkMode ? "Click To Light Mode!" : "Click To Dark Mode!"}
           </span>
