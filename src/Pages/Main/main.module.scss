@@ -37,6 +37,7 @@
 
     img {
       filter: brightness(60%);
+      transition: opacity 0.5s;
     }
 
     .title {
@@ -71,13 +72,10 @@
       .title__circle {
         img {
           filter: unset;
+          transition: unset;
           animation: render-content 1s forwards;
           animation-delay: 1s;
           opacity: 0;
-          // top: 50vh;
-          // transform: translateY(-50%);
-          // right: 10vw;
-          // width: 600px;
           width: 80%;
           float: right;
         }
@@ -143,36 +141,6 @@
         }
       }
     }
-    // .theme-button {
-    //   z-index: 9;
-    //   position: absolute;
-    //   top: 90vh;
-    //   left: 54%;
-    //   transform: translateX(-54%);
-    //   width: 2.5rem;
-
-    //   .theme-button__icon {
-    //     .line {
-    //       animation: line 1.5s infinite;
-
-    //       @keyframes line {
-    //         0% {
-    //           opacity: 0;
-    //           stroke-dasharray: 5px;
-    //         }
-    //         50% {
-    //           opacity: 1;
-    //           stroke-dasharray: 15px;
-    //         }
-
-    //         100% {
-    //           opacity: 0;
-    //           stroke-dasharray: 5px;
-    //         }
-    //       }
-    //     }
-    //   }
-    // }
 
     .main-message {
       bottom: 7vh;
@@ -239,8 +207,25 @@
     }
 
     .sticky-elem {
+      transition: opacity 0.5s;
       display: none;
       position: fixed;
+    }
+  }
+}
+
+:global .scrolling {
+  :local {
+    .content {
+      .scroll-section {
+        img.main-image {
+          opacity: 0 !important;
+        }
+
+        .sticky-elem {
+          opacity: 0 !important;
+        }
+      }
     }
   }
 }

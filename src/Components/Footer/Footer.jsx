@@ -6,10 +6,18 @@ const Footer = props => {
 
   // 테마 변경하기
   const changeTheme = () => {
+    // 스크롤 되는 동안 사이의 요소 잠시 감춤
+    document.body.classList.add("scrolling");
+
     // 스크롤 맨 위로 이동
-    window.scrollBy(0, 0 - window.pageYOffset);
     window.scrollTo(0, 0);
 
+    // 요소 다시 보이도록 함
+    setTimeout(() => {
+      document.body.classList.remove("scrolling");
+    }, 1000);
+
+    // 테마 변경
     if (document.body.classList.contains("dark-mode")) {
       document.body.classList.remove("dark-mode");
       document.body.classList.remove("dark-mode--fin");

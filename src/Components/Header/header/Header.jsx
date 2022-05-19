@@ -16,13 +16,25 @@ const Header = props => {
     totalSectionHeight += scrollSectionInfo[i].sectionHeight;
   }
 
+  // 헤더의 바로가기 클릭 시 핸들링
+  const handleClickLink = destination => {
+    // 스크롤링 되는 동안 그 사이에 있는 요소들을 잠시 숨김
+    document.body.classList.add("scrolling");
+    window.scrollBy(0, totalSectionHeight * destination - window.pageYOffset);
+
+    // 요소 다시 보이도록 함
+    setTimeout(() => {
+      document.body.classList.remove("scrolling");
+    }, 500);
+  };
+
   return (
     <nav className={styles["header"]}>
       <div className={styles["header__links"]}>
         <div
           className={`${styles["link"]} ${styles["title"]}`}
           onClick={() => {
-            window.scrollBy(0, 0 - window.pageYOffset);
+            handleClickLink(0);
           }}
         >
           {/* VARIOUS */}
@@ -37,7 +49,7 @@ const Header = props => {
         <div
           className={styles["link"]}
           onClick={() => {
-            window.scrollBy(0, 0 - window.pageYOffset);
+            handleClickLink(0);
           }}
         >
           0
@@ -45,7 +57,8 @@ const Header = props => {
         <div
           className={styles["link"]}
           onClick={() => {
-            window.scrollBy(0, totalSectionHeight * 0.13 - window.pageYOffset);
+            handleClickLink(0.13);
+            // window.scrollBy(0, totalSectionHeight * 0.13 - window.pageYOffset);
           }}
         >
           1
@@ -53,7 +66,8 @@ const Header = props => {
         <div
           className={styles["link"]}
           onClick={() => {
-            window.scrollBy(0, totalSectionHeight * 0.43 - window.pageYOffset);
+            handleClickLink(0.43);
+            // window.scrollBy(0, totalSectionHeight * 0.43 - window.pageYOffset);
           }}
         >
           2
@@ -61,7 +75,8 @@ const Header = props => {
         <div
           className={styles["link"]}
           onClick={() => {
-            window.scrollBy(0, totalSectionHeight * 0.77 - window.pageYOffset);
+            handleClickLink(0.77);
+            // window.scrollBy(0, totalSectionHeight * 0.77 - window.pageYOffset);
           }}
         >
           3
@@ -69,7 +84,7 @@ const Header = props => {
         <div
           className={styles["link"]}
           onClick={() => {
-            window.scrollBy(0, totalSectionHeight * 2 - window.pageYOffset);
+            handleClickLink(2);
           }}
         >
           0
