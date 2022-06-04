@@ -5,10 +5,8 @@ const Header = props => {
   const { scrollSectionInfo } = props;
 
   // 스크롤 섹션의 높이 설정
-  scrollSectionInfo.map(value => {
-    value.sectionHeight = value.heightRatio * window.innerHeight;
-    return null;
-  });
+  scrollSectionInfo.sectionHeight =
+    scrollSectionInfo.heightRatio * window.innerHeight;
 
   // 스크롤 섹션들의 높이를 모두 합친 값 구하기
   let totalSectionHeight = 0;

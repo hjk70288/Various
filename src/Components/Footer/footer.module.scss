@@ -1,8 +1,5 @@
 .footer {
-  // height: calc(100vh - 57px);
   height: 100vh;
-  // background-color: rgba(40, 40, 40, 0.1);
-  // background: linear-gradient(45deg, #b987eb, #87caeb 110%);
   display: flex;
   flex-flow: column;
   justify-content: center;
@@ -17,7 +14,8 @@
     margin: 1em;
     font-family: "bodoni", serif;
     position: relative;
-    color: #33293a;
+    // color: #33293a;
+    color: #ffffff;
 
     a,
     div {
@@ -30,7 +28,8 @@
       font-size: 0.5em;
       position: absolute;
       right: 0;
-      color: #261e2b;
+      // color: #261e2b;
+      color: #ffff00;
       font-weight: bold;
       bottom: -1.2em;
       opacity: 0;
@@ -52,28 +51,10 @@
     bottom: 1em;
     left: 50%;
     transform: translate(-50%, 0%);
-    color: #505050;
+    color: grey;
     font-size: 1rem;
     white-space: nowrap;
     font-weight: normal;
-  }
-}
-
-:global .dark-mode {
-  :local {
-    .footer {
-      .footer__people {
-        color: #ffffff;
-
-        a .hidden-message,
-        div .hidden-message {
-          color: #ffff00;
-        }
-      }
-      .footer__copy-right {
-        color: grey;
-      }
-    }
   }
 }
 
