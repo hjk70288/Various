@@ -326,6 +326,17 @@ const Main = ({ history }) => {
 
   // 이벤트 리스너, 섹션 정보 등 초기화 (initializing)
   const init = () => {
+    // 사용자가 컴퓨터 환경인지 모바일 환경인지 판단
+    const userInfo = navigator.userAgent;
+    let isMobile = false;
+    if (userInfo.indexOf("iPhone") > -1 || userInfo.indexOf("Android") > -1) {
+      isMobile = true;
+    }
+
+    if (isMobile) {
+      document.body.classList.add("mobile");
+    }
+
     // 스크롤 섹션 정보 설정 및 스크롤 섹션 판단
     setScrollSectionInfo();
     handlePageScroll();
@@ -388,32 +399,30 @@ const Main = ({ history }) => {
       <div className={styles["guide"]}>
         <ScrollGuide scrollSectionInfo={scrollSectionInfo} />
       </div>
+
       <section
         ref={scrollSection}
         className={styles["scroll-section"]}
         id={styles["scroll-section-0"]}
       >
-        <img
-          src={art1}
-          alt=""
+        <div
           ref={ref => artsInSection.current.splice(0, 1, ref)}
-          className={`${styles["sticky-elem"]} ${styles["main-image"]}`}
-          onClick={() => {
-            alert("asd");
-          }}
-        />
-        <img
-          src={art2}
-          alt=""
+          className={`${styles["sticky-elem"]} ${styles["art-frame"]}`}
+        >
+          <img src={art1} alt="" className={styles["art-frame__art"]} />
+        </div>
+        <div
           ref={ref => artsInSection.current.splice(1, 1, ref)}
-          className={`${styles["sticky-elem"]} ${styles["main-image"]}`}
-        />
-        <img
-          src={art3}
-          alt=""
+          className={`${styles["sticky-elem"]} ${styles["art-frame"]}`}
+        >
+          <img src={art2} alt="" className={styles["art-frame__art"]} />
+        </div>
+        <div
           ref={ref => artsInSection.current.splice(2, 1, ref)}
-          className={`${styles["sticky-elem"]} ${styles["main-image"]}`}
-        />
+          className={`${styles["sticky-elem"]} ${styles["art-frame"]}`}
+        >
+          <img src={art3} alt="" className={styles["art-frame__art"]} />
+        </div>
         <div
           ref={artDescRef}
           className={`${styles["sticky-elem"]} ${styles["art-desc"]}`}
@@ -421,6 +430,7 @@ const Main = ({ history }) => {
           {test[artIndex]}
         </div>
       </section>
+
       <Footer />
     </div>
   );
