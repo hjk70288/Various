@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/Various/static/css/main.44027bac.chunk.css",
+    "main.js": "/Various/static/js/main.b486d631.chunk.js",
+    "main.js.map": "/Various/static/js/main.b486d631.chunk.js.map",
+    "runtime-main.js": "/Various/static/js/runtime-main.52714fea.js",
+    "runtime-main.js.map": "/Various/static/js/runtime-main.52714fea.js.map",
+    "static/js/2.285f38b8.chunk.js": "/Various/static/js/2.285f38b8.chunk.js",
+    "static/js/2.285f38b8.chunk.js.map": "/Various/static/js/2.285f38b8.chunk.js.map",
+    "index.html": "/Various/index.html",
+    "static/css/main.44027bac.chunk.css.map": "/Various/static/css/main.44027bac.chunk.css.map",
+    "static/js/2.285f38b8.chunk.js.LICENSE.txt": "/Various/static/js/2.285f38b8.chunk.js.LICENSE.txt",
+    "static/media/love.module.scss": "/Various/static/media/love.2619dce8.jpg",
+    "static/media/common.scss": "/Various/static/media/cursor.b3e91a93.svg",
+    "static/media/painful.module.scss": "/Various/static/media/painful.0ed59e2e.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.52714fea.js",
+    "static/js/2.285f38b8.chunk.js",
+    "static/css/main.44027bac.chunk.css",
+    "static/js/main.b486d631.chunk.js"
+  ]
+}
