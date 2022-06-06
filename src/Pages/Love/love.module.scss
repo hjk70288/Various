@@ -81,15 +81,18 @@
     z-index: 2;
     background-color: rgba(18, 18, 18);
     position: relative;
-    height: 200vh;
+    height: 240vh;
     padding-top: 80vh;
     font-size: 4rem;
     text-align: center;
 
     .info__art {
       .art__image {
-        height: 70vmin;
+        height: 60vmin;
         margin: 0 auto;
+        transform: translateX(-50%);
+        -webkit-box-reflect: right 0px
+          linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6));
       }
     }
 
