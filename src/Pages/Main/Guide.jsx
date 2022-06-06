@@ -13,14 +13,13 @@ const ScrollGuide = props => {
   let totalSectionHeight = scrollSectionInfo.sectionHeight;
 
   let delayedYOffset = 0; // 점차 증가하는 yOffset
-  let yOffset = totalSectionHeight * 0.13; // 목표 yOffset
+  let yOffset = totalSectionHeight * 0.26; // 목표 yOffset
   let rafId; // requestAnimationFrame이 반환하는 값
   let duration = 0.05; // 증가 지속시간 비율
 
   // 부드러운 애니메이션 감속을 위한 처리 (requestAnimationFrame 사용)
   const smoothScrollTo = () => {
     delayedYOffset = delayedYOffset + (yOffset - delayedYOffset) * duration;
-    console.log(delayedYOffset);
     rafId = requestAnimationFrame(smoothScrollTo);
 
     window.scrollTo(0, delayedYOffset); // 스크롤 이동

@@ -19,7 +19,7 @@
     .title__wrap--sub {
       opacity: 0;
       margin-top: 1.5em;
-      font-size: 3vw;
+      font-size: 2.5vw;
       animation: render-content 1s forwards;
       animation-delay: 1.8s;
       white-space: nowrap;
@@ -69,10 +69,9 @@
       opacity: 0.5;
       top: 50%;
       left: 50%;
-      height: 50%;
+      height: 50vmin;
       transform: translate3d(-50%, -50%, 0) scale(0.4);
-      background-color: #ddc;
-      border: solid 5vmin #eee;
+      border: solid 4vmin #eee;
       border-bottom-color: #fff;
       border-left-color: #eee;
       border-right-color: #eee;
@@ -80,23 +79,23 @@
 
       &:before {
         border-radius: 2px;
-        bottom: -2vmin;
+        bottom: -1.5vmin;
         box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25) inset;
+        content: "";
+        left: -1.5vmin;
+        position: absolute;
+        right: -1.5vmin;
+        top: -1.5vmin;
+      }
+      &:after {
+        border-radius: 2px;
+        bottom: -2vmin;
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
         content: "";
         left: -2vmin;
         position: absolute;
         right: -2vmin;
         top: -2vmin;
-      }
-      &:after {
-        border-radius: 2px;
-        bottom: -2.5vmin;
-        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
-        content: "";
-        left: -2.5vmin;
-        position: absolute;
-        right: -2.5vmin;
-        top: -2.5vmin;
       }
 
       .art-frame__art {
@@ -114,6 +113,7 @@
       font-size: 4rem;
       left: 50%;
       transform: translate3d(-50%, 0, 0);
+      font-family: "bodoni", serif;
 
       p {
         animation: render-desc 0.5s forwards;
@@ -170,7 +170,7 @@
         font-size: 12vw;
       }
       .title__wrap--sub {
-        font-size: 4.5vw;
+        font-size: 3.5vw;
       }
     }
 
@@ -179,10 +179,6 @@
         p {
           margin-left: 4vh;
         }
-      }
-
-      .detail-message {
-        right: 4vh;
       }
     }
   }
@@ -196,7 +192,7 @@
       }
       .title__wrap--sub {
         margin-top: 2em;
-        font-size: 6vw;
+        font-size: 5vw;
         white-space: unset;
       }
     }
@@ -214,9 +210,9 @@
         }
       }
 
-      .detail-message {
-        font-size: 1.8rem;
-        right: 3vh;
+      .art-desc {
+        font-size: 3rem;
+        bottom: 15vh;
       }
     }
   }
@@ -242,7 +238,7 @@
         font-size: 4vw;
       }
       .title__wrap--sub {
-        font-size: 1vw;
+        font-size: 1.5vw;
       }
     }
     .guide {

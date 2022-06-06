@@ -18,7 +18,7 @@
       overflow: hidden;
 
       .background__image {
-        background-image: url("../../Images/art3.jpg");
+        background-image: url("../../Images/painful.jpg");
         background-attachment: fixed;
         background-position: center;
         background-repeat: no-repeat;
@@ -79,20 +79,12 @@
 
   .info {
     z-index: 2;
+    background-color: rgba(18, 18, 18);
     position: relative;
-    background: linear-gradient(45deg, #b987eb, #b987eb00 60%),
-      linear-gradient(135deg, #87ceeb, #87ceeb00 60%),
-      linear-gradient(225deg, #eb87b7, #eb87b700 60%),
-      linear-gradient(315deg, #ffff00, #ffff0000 60%);
-    // background: linear-gradient(45deg, #dda0dd, rgba(255, 255, 255, 0) 60%),
-    //   linear-gradient(135deg, #87ceeb, rgba(255, 255, 255, 0) 60%),
-    //   linear-gradient(225deg, #e4e785, rgba(255, 255, 255, 0) 60%),
-    //   linear-gradient(315deg, #e07a5e, rgba(255, 255, 255, 0) 60%);
-    height: 300vh;
+    height: 200vh;
     padding-top: 80vh;
     font-size: 4rem;
     text-align: center;
-    backdrop-filter: brightness(10);
 
     .info__art {
       position: relative;
@@ -330,7 +322,7 @@
     height: 100%;
 
     .next__background {
-      background-image: url("../../Images/art1.jpg");
+      background-image: url("../../Images/love.jpg");
       background-position: center;
       background-size: cover;
       position: absolute;
@@ -352,6 +344,7 @@
       left: 7vh;
       font-weight: bold;
       line-height: 1.2em;
+      font-family: "bodoni", serif;
 
       .next__button--text:before,
       .next__button--text:after {
@@ -376,16 +369,6 @@
       .next__button--text:before,
       .next__button--text:after {
         transition: all 0.8s;
-      }
-    }
-  }
-}
-
-:global .dark-mode {
-  :local {
-    .content {
-      .info {
-        background: #000000;
       }
     }
   }

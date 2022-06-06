@@ -1,14 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
-import styles from "./art1.module.scss";
+import styles from "./love.module.scss";
 import Header from "Components/Header/header/DetailHeader";
 import Progress from "Components/Header/progress/Progress";
 import calcAnimationValues from "Hooks/calcAnimationValues";
 import renderComponent from "Hooks/renderComponent";
-import art from "Images/art1.jpg";
+import art from "Images/love.jpg";
 
 /* 효과 미정 */
-const Art1 = ({ history }) => {
-  const artRef = useRef(); // Info 영역의 작품 Ref
+const Love = ({ history }) => {
   const progressRef = useRef(); // 스크롤 진행률 Ref
   const nextBackgroundRef = useRef(); // Next 영역의 배경 Ref
   const nextButtonRef = useRef(); // Next 영역의 버튼(메시지) Ref
@@ -53,16 +52,6 @@ const Art1 = ({ history }) => {
     }
   };
 
-  // 마우스 이동 시 이벤트 핸들링
-  const handleMoveMouse = e => {
-    const xDeg = ((window.innerWidth / 2 - e.clientX) / 30) * -1;
-    const yDeg = (window.innerHeight / 2 - e.clientY) / 30;
-
-    if (artRef.current) {
-      artRef.current.style.transform = `rotateY(${xDeg}deg) rotateX(${yDeg}deg)`;
-    }
-  };
-
   useEffect(() => {
     // 사용자가 컴퓨터 환경인지 모바일 환경인지 판단
     const userInfo = navigator.userAgent;
@@ -79,12 +68,8 @@ const Art1 = ({ history }) => {
       setIsRender(true);
     }, 1500);
 
-    // Intro 영역의 작품 Rotate 효과 추가
-    window.addEventListener("mousemove", handleMoveMouse);
-
     return () => {
       window.removeEventListener("scroll", handlePageScroll);
-      window.removeEventListener("mousemove", handleMoveMouse);
     };
   }, [setIsMobile]);
 
@@ -114,33 +99,35 @@ const Art1 = ({ history }) => {
           }`}
         >
           <div className={styles["desc__title"]}>사랑</div>
-          <div>무한한사랑</div>
+          <div>Love</div>
         </div>
       </section>
+
       <section className={styles["info"]}>
-        <div className={styles["info__top"]}>
-          <div className={styles["info__art"]}>
-            <div className={styles["art"]} ref={artRef}>
-              <img className={styles["art__image"]} src={art} alt=""></img>
-            </div>
-          </div>
-          <div className={styles["info__desc"]}>
-            대충 설명하는 내용
-            <div
-              style={{
-                fontWeight: "normal",
-                fontSize: "1.5rem",
-                marginTop: "2em",
-              }}
-            >
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
-              nihil reprehenderit tempore deleniti rem molestias velit suscipit.
-              Beatae quaerat distinctio libero, consequuntur eum autem optio, in
-              sed perspiciatis rem repudiandae?
-            </div>
+        <div className={styles["info__art"]}>
+          <img className={styles["art__image"]} src={art} alt=""></img>
+        </div>
+        <div className={styles["info__desc"]}>
+          사랑 (Love)
+          <br />
+          2021
+          <div
+            style={{
+              fontWeight: "normal",
+              fontSize: "1.5rem",
+              marginTop: "1em",
+              textAlign: "left",
+              lineHeight: "1.2em",
+            }}
+          >
+            사랑은 미움의 대립개념으로 볼 수도 있다. 사랑의 표현 방법은 한결같지
+            않으며 교제 형태에 따라 다르게 나타난다. 모든 감정, 마음과 얽혀있는
+            무언가는 사랑일 수도 있기 때문에 자신의 색안경을 끼고 보이는 데로만
+            판단하지 않도록 조심해야 하는 것이 사랑이다.
           </div>
         </div>
       </section>
+
       <section className={styles["transparent-area"]}></section>
       <section className={styles["next"]}>
         <div
@@ -151,7 +138,7 @@ const Art1 = ({ history }) => {
           ref={nextButtonRef}
           className={styles["next__button"]}
           onClick={() => {
-            renderComponent(history, "/art2");
+            renderComponent(history, "/anxious");
           }}
         >
           <div className={styles["next__button--text"]}>NEXT</div>
@@ -161,4 +148,4 @@ const Art1 = ({ history }) => {
   );
 };
 
-export default Art1;
+export default Love;

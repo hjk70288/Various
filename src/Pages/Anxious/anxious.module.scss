@@ -18,7 +18,7 @@
       overflow: hidden;
 
       .background__image {
-        background-image: url("../../Images/art1.jpg");
+        background-image: url("../../Images/anxious.jpg");
         background-attachment: fixed;
         background-position: center;
         background-repeat: no-repeat;
@@ -79,46 +79,94 @@
 
   .info {
     z-index: 2;
-    position: relative;
-    // background-color: #606060;
     background-color: rgba(18, 18, 18);
-    height: 400vh;
+    position: relative;
+    height: 200vh;
     padding-top: 80vh;
+    font-size: 4rem;
     text-align: center;
-    backdrop-filter: brightness(10);
 
-    .info__top {
-      display: flex;
-      .info__art {
-        perspective: 500px;
-        width: 50vw;
-        padding-left: 3rem;
-        .art {
-          transform-style: preserve-3d;
-          .art__image {
-            width: 50vw;
-            box-shadow: 1px 1px 60px 6px pink;
-            transition: transform 0.05s;
-            border-radius: 15px;
-            background-size: cover;
-          }
-          .art__title {
-            position: absolute;
-            top: 7vh;
-            left: 7vh;
-            font-size: 2.3rem;
-            font-weight: bold;
-            transform: translateZ(80px);
+    .info__art {
+      perspective: 400px;
+
+      .art {
+        transform-style: preserve-3d;
+
+        &.art--rotate-top {
+          display: inline-block;
+          animation: rotate-top 2s;
+
+          @keyframes rotate-top {
+            0% {
+              transform: rotateX(0deg);
+            }
+            100% {
+              transform: rotateX(360deg);
+            }
           }
         }
-      }
+        &.art--rotate-bottom {
+          display: inline-block;
+          animation: rotate-bottom 2s;
 
-      .info__desc {
-        font-size: 2.5rem;
-        width: 50vw;
-        font-weight: bold;
-        padding: 0 2em;
+          @keyframes rotate-bottom {
+            0% {
+              transform: rotateX(0deg);
+            }
+            100% {
+              transform: rotateX(-360deg);
+            }
+          }
+        }
+        &.art--rotate-left {
+          display: inline-block;
+          animation: rotate-left 2s;
+
+          @keyframes rotate-left {
+            0% {
+              transform: rotateY(0deg);
+            }
+            100% {
+              transform: rotateY(-360deg);
+            }
+          }
+        }
+        &.art--rotate-right {
+          display: inline-block;
+          animation: rotate-right 2s;
+
+          @keyframes rotate-right {
+            0% {
+              transform: rotateY(0deg);
+            }
+            100% {
+              transform: rotateY(360deg);
+            }
+          }
+        }
+
+        .art__image {
+          width: 70vw;
+          // box-shadow: 1px 1px 60px 6px #3d3274;
+          transition: transform 0.05s;
+          // border-radius: 15px;
+        }
+        .art__title {
+          position: absolute;
+          top: 7vh;
+          left: 7vh;
+          font-size: 2.3rem;
+          font-weight: bold;
+          transform: translateZ(80px);
+        }
       }
+    }
+
+    .info__desc {
+      font-size: 2.5rem;
+      width: 50vw;
+      font-weight: bold;
+      margin: 2em auto 0 auto;
     }
   }
 
@@ -137,7 +185,7 @@
     height: 100%;
 
     .next__background {
-      background-image: url("../../Images/art2.jpg");
+      background-image: url("../../Images/painful.jpg");
       background-position: center;
       background-size: cover;
       position: absolute;
@@ -203,18 +251,10 @@
       }
     }
     .info {
-      .info__top {
-        display: unset;
-
-        .info__art {
-          width: 100vw;
-          padding: 0;
-        }
-        .info__desc {
-          font-size: 2rem;
-          margin-top: 2em;
-          width: 100vw;
-        }
+      .info__desc {
+        font-size: 2rem;
+        width: 100vw;
+        padding: 0 2em;
       }
     }
     .next {

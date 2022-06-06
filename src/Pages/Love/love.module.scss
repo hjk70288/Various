@@ -18,7 +18,7 @@
       overflow: hidden;
 
       .background__image {
-        background-image: url("../../Images/art2.jpg");
+        background-image: url("../../Images/love.jpg");
         background-attachment: fixed;
         background-position: center;
         background-repeat: no-repeat;
@@ -79,94 +79,17 @@
 
   .info {
     z-index: 2;
+    background-color: rgba(18, 18, 18);
     position: relative;
-    background: linear-gradient(45deg, #b987eb, #b987eb00 60%),
-      linear-gradient(135deg, #87ceeb, #87ceeb00 60%),
-      linear-gradient(225deg, #eb87b7, #eb87b700 60%),
-      linear-gradient(315deg, #ffff00, #ffff0000 60%);
-    // background: linear-gradient(45deg, #dda0dd, rgba(255, 255, 255, 0) 60%),
-    //   linear-gradient(135deg, #87ceeb, rgba(255, 255, 255, 0) 60%),
-    //   linear-gradient(225deg, #e4e785, rgba(255, 255, 255, 0) 60%),
-    //   linear-gradient(315deg, #e07a5e, rgba(255, 255, 255, 0) 60%);
-    height: 300vh;
+    height: 200vh;
     padding-top: 80vh;
     font-size: 4rem;
     text-align: center;
-    backdrop-filter: brightness(10);
 
     .info__art {
-      perspective: 500px;
-
-      .art {
-        transform-style: preserve-3d;
-
-        &.art--rotate-top {
-          display: inline-block;
-          animation: rotate-top 2s;
-
-          @keyframes rotate-top {
-            0% {
-              transform: rotateX(0deg);
-            }
-            100% {
-              transform: rotateX(360deg);
-            }
-          }
-        }
-        &.art--rotate-bottom {
-          display: inline-block;
-          animation: rotate-bottom 2s;
-
-          @keyframes rotate-bottom {
-            0% {
-              transform: rotateX(0deg);
-            }
-            100% {
-              transform: rotateX(-360deg);
-            }
-          }
-        }
-        &.art--rotate-left {
-          display: inline-block;
-          animation: rotate-left 2s;
-
-          @keyframes rotate-left {
-            0% {
-              transform: rotateY(0deg);
-            }
-            100% {
-              transform: rotateY(-360deg);
-            }
-          }
-        }
-        &.art--rotate-right {
-          display: inline-block;
-          animation: rotate-right 2s;
-
-          @keyframes rotate-right {
-            0% {
-              transform: rotateY(0deg);
-            }
-            100% {
-              transform: rotateY(360deg);
-            }
-          }
-        }
-
-        .art__image {
-          width: 70vw;
-          box-shadow: 1px 1px 60px 6px #3d3274;
-          transition: transform 0.05s;
-          border-radius: 15px;
-        }
-        .art__title {
-          position: absolute;
-          top: 7vh;
-          left: 7vh;
-          font-size: 2.3rem;
-          font-weight: bold;
-          transform: translateZ(80px);
-        }
+      .art__image {
+        height: 70vmin;
+        margin: 0 auto;
       }
     }
 
@@ -193,7 +116,7 @@
     height: 100%;
 
     .next__background {
-      background-image: url("../../Images/art3.jpg");
+      background-image: url("../../Images/anxious.jpg");
       background-position: center;
       background-size: cover;
       position: absolute;
@@ -245,16 +168,6 @@
   }
 }
 
-:global .dark-mode {
-  :local {
-    .content {
-      .info {
-        background: #000000;
-      }
-    }
-  }
-}
-
 .before-load {
   overflow: hidden;
   height: 100vh;
@@ -275,6 +188,7 @@
         padding: 0 2em;
       }
     }
+
     .next {
       .next__button {
         bottom: 3vh;

@@ -8,9 +8,9 @@ import Loading from "Components/Loading/Loading";
 import Header from "Components/Header/header/Header";
 import Progress from "Components/Header/progress/Progress";
 import Footer from "Components/Footer/Footer";
-import art1 from "Images/art1.jpg";
-import art2 from "Images/art2.jpg";
-import art3 from "Images/art3.jpg";
+import love from "Images/love.jpg";
+import anxious from "Images/anxious.jpg";
+import painful from "Images/painful.jpg";
 import ScrollGuide from "./Guide";
 
 const Main = ({ history }) => {
@@ -20,8 +20,6 @@ const Main = ({ history }) => {
   const scrollSection = useRef(); // 스크롤 섹션
   const artsInSection = useRef([]); //스크롤 섹션 내의 작품 목록
   const artDescRef = useRef(); // 작품 설명
-  // const [darkMode, setDarkMode] = useState(true);
-  // const darkMode = true;
   const [artIndex, setArtIndex] = useState(0);
   let yOffset = 0; // 현재 스크롤 위치
   let delayedYOffset = 0; // 부드러운 애니메이션에 사용되는 yOffset (점점 커지다가 yOffset과 동일해짐)
@@ -63,7 +61,7 @@ const Main = ({ history }) => {
       imageInScale2: [0.4, 1, { start: 0.51, end: 0.75 }],
 
       artDescFadeOut: [1, 0, { start: 0.76, end: 0.8 }],
-      imageFadeOut: [-50, -200, { start: 0.76, end: 1 }],
+      imageFadeOut: [-50, -400, { start: 0.76, end: 1 }],
     },
   };
   // 스크롤 위치에 따른 애니메이션 수치 계산
@@ -122,12 +120,21 @@ const Main = ({ history }) => {
       setArtIndex(2);
     }
 
-    if (scrollRatio < 0.25) {
+    // artDesc Opacty 조정
+    if (scrollRatio < 0.76) {
       objs.artDesc.style.opacity = calcAnimationValues(
         values.artDescFadeIn,
         sectionYOffset
       );
+    } else {
+      objs.artDesc.style.opacity = calcAnimationValues(
+        values.artDescFadeOut,
+        sectionYOffset
+      );
+    }
 
+    // 작품 애니메이션
+    if (scrollRatio < 0.25) {
       objs.image0.style.opacity = 1;
       objs.image0.style.transform = `translate3d(-50%, ${calcAnimationValues(
         values.imageFadeIn,
@@ -203,11 +210,6 @@ const Main = ({ history }) => {
         sectionYOffset
       )}%`;
     } else {
-      objs.artDesc.style.opacity = calcAnimationValues(
-        values.artDescFadeOut,
-        sectionYOffset
-      );
-
       objs.image1.style.transform = `translate3d(-50%, ${calcAnimationValues(
         values.imageFadeOut,
         sectionYOffset
@@ -231,7 +233,6 @@ const Main = ({ history }) => {
       (value, index) => (scrollSectionInfo.objs[`image${index}`] = value)
     );
     scrollSectionInfo.objs["artDesc"] = artDescRef.current;
-    console.log(scrollSectionInfo);
   };
 
   let duration = 0.1;
@@ -308,6 +309,7 @@ const Main = ({ history }) => {
         e.srcElement.classList.contains(styles["theme-button__icon"]) ||
         e.srcElement.classList.contains(headerStyles["link"]) ||
         e.srcElement.classList.contains(headerStyles["title__word"]) ||
+        e.srcElement.classList.contains(styles["art-frame"]) ||
         e.srcElement.classList.contains(styles["detail-message__link"]) ||
         e.srcElement.classList.contains(footerStyles["hidden-message"])
       ) {
@@ -345,7 +347,7 @@ const Main = ({ history }) => {
     window.addEventListener("scroll", handlePageScroll);
 
     // 화면 크기 변경 시 이벤트 핸들링
-    // window.addEventListener("resize", handleResizeWindow);
+    window.addEventListener("resize", handleResizeWindow);
 
     // 휴대폰 가로 세로 방향 변경 시 이벤트 핸들링
     window.addEventListener("orientationchange", handleChangeOrientation);
@@ -370,7 +372,7 @@ const Main = ({ history }) => {
     /* eslint-disable-next-line */
   }, []);
 
-  const test = [
+  const ArtDesc = [
     <p key={1}>Love</p>,
     <p key={2}>Anxious</p>,
     <p key={3}>Painful</p>,
@@ -408,26 +410,35 @@ const Main = ({ history }) => {
         <div
           ref={ref => artsInSection.current.splice(0, 1, ref)}
           className={`${styles["sticky-elem"]} ${styles["art-frame"]}`}
+          onClick={() => {
+            renderComponent(history, "/love");
+          }}
         >
-          <img src={art1} alt="" className={styles["art-frame__art"]} />
+          <img src={love} alt="" className={styles["art-frame__art"]} />
         </div>
         <div
           ref={ref => artsInSection.current.splice(1, 1, ref)}
           className={`${styles["sticky-elem"]} ${styles["art-frame"]}`}
+          onClick={() => {
+            renderComponent(history, "/anxious");
+          }}
         >
-          <img src={art2} alt="" className={styles["art-frame__art"]} />
+          <img src={anxious} alt="" className={styles["art-frame__art"]} />
         </div>
         <div
           ref={ref => artsInSection.current.splice(2, 1, ref)}
           className={`${styles["sticky-elem"]} ${styles["art-frame"]}`}
+          onClick={() => {
+            renderComponent(history, "/painful");
+          }}
         >
-          <img src={art3} alt="" className={styles["art-frame__art"]} />
+          <img src={painful} alt="" className={styles["art-frame__art"]} />
         </div>
         <div
           ref={artDescRef}
           className={`${styles["sticky-elem"]} ${styles["art-desc"]}`}
         >
-          {test[artIndex]}
+          {ArtDesc[artIndex]}
         </div>
       </section>
 

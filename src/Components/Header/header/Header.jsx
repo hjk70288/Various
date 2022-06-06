@@ -7,31 +7,26 @@ const Header = props => {
   // 스크롤 섹션의 높이 설정
   scrollSectionInfo.sectionHeight =
     scrollSectionInfo.heightRatio * window.innerHeight;
+  const sectionHeight = scrollSectionInfo.sectionHeight;
 
-  // 스크롤 섹션들의 높이를 모두 합친 값 구하기
-  let totalSectionHeight = 0;
-  for (let i = 0; i < scrollSectionInfo.length; i++) {
-    totalSectionHeight += scrollSectionInfo[i].sectionHeight;
-  }
+  // // 헤더의 바로가기 클릭 시 핸들링
+  // const handleClickLink = (destination, hideTime = 500) => {
+  //   // 스크롤링 되는 동안 그 사이에 있는 요소들을 잠시 숨김
+  //   document.body.classList.add("scrolling");
+  //   // 요소가 다시 보여질 때 opacity transition을 위해 추가
+  //   document.body.classList.add("scrolling-transition");
+  //   // 스크롤 맨 위로 이동
+  //   window.scrollBy(0, sectionHeight * destination - window.pageYOffset);
 
-  // 헤더의 바로가기 클릭 시 핸들링
-  const handleClickLink = (destination, hideTime = 500) => {
-    // 스크롤링 되는 동안 그 사이에 있는 요소들을 잠시 숨김
-    document.body.classList.add("scrolling");
-    // 요소가 다시 보여질 때 opacity transition을 위해 추가
-    document.body.classList.add("scrolling-transition");
-    // 스크롤 맨 위로 이동
-    window.scrollBy(0, totalSectionHeight * destination - window.pageYOffset);
-
-    // 요소 다시 보이도록 함
-    setTimeout(() => {
-      document.body.classList.remove("scrolling");
-    }, hideTime);
-    // 0.5초 후 클래스 제거
-    setTimeout(() => {
-      document.body.classList.remove("scrolling-transition");
-    }, hideTime + 500);
-  };
+  //   // 요소 다시 보이도록 함
+  //   setTimeout(() => {
+  //     document.body.classList.remove("scrolling");
+  //   }, hideTime);
+  //   // 0.5초 후 클래스 제거
+  //   setTimeout(() => {
+  //     document.body.classList.remove("scrolling-transition");
+  //   }, hideTime + 500);
+  // };
 
   return (
     <nav className={styles["header"]}>
@@ -39,7 +34,8 @@ const Header = props => {
         <div
           className={`${styles["link"]} ${styles["title"]}`}
           onClick={() => {
-            handleClickLink(0, 1000);
+            // handleClickLink(0, 1000);
+            window.scrollTo(0, 0);
           }}
         >
           {/* VARIOUS */}
@@ -54,16 +50,8 @@ const Header = props => {
         <div
           className={styles["link"]}
           onClick={() => {
-            handleClickLink(0, 1000);
-          }}
-        >
-          0
-        </div>
-        <div
-          className={styles["link"]}
-          onClick={() => {
-            handleClickLink(0.13);
-            // window.scrollBy(0, totalSectionHeight * 0.13 - window.pageYOffset);
+            // handleClickLink(0.26);
+            window.scrollBy(0, sectionHeight * 0.26 - window.pageYOffset);
           }}
         >
           1
@@ -71,8 +59,8 @@ const Header = props => {
         <div
           className={styles["link"]}
           onClick={() => {
-            handleClickLink(0.43);
-            // window.scrollBy(0, totalSectionHeight * 0.43 - window.pageYOffset);
+            // handleClickLink(0.51);
+            window.scrollBy(0, sectionHeight * 0.51 - window.pageYOffset);
           }}
         >
           2
@@ -80,19 +68,11 @@ const Header = props => {
         <div
           className={styles["link"]}
           onClick={() => {
-            handleClickLink(0.77);
-            // window.scrollBy(0, totalSectionHeight * 0.77 - window.pageYOffset);
+            // handleClickLink(0.75);
+            window.scrollBy(0, sectionHeight * 0.75 - window.pageYOffset);
           }}
         >
           3
-        </div>
-        <div
-          className={styles["link"]}
-          onClick={() => {
-            handleClickLink(2, 1000);
-          }}
-        >
-          0
         </div>
         {/* <a
           className={styles["link"]}
