@@ -11,7 +11,7 @@ import Painful from "Pages/Painful/Painful";
 import Error from "Pages/Error/Error";
 
 ReactDOM.render(
-  <BrowserRouter>
+  <BrowserRouter basename="/Various/">
     <Switch>
       <Route exact path="/" component={CheckTheme(Main)} />
       <Route path="/love" component={CheckTheme(Love)} />
